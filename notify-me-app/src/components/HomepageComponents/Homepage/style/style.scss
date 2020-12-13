@@ -1,0 +1,67 @@
+@import "../../../../style/helper_styles/breakpoints";
+
+.homepage-wrapper {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.homepage-container-grid {
+  height: 80%;
+  width: 80%;
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 1.5fr 1fr;
+}
+
+.homepage-banner-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.homepage-login-col {
+  // background: gray;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: $large_bp) {
+  html {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: $medium_bp) {
+  // body {
+  //   display: none;
+  // }
+
+  .homepage-container-grid {
+    height: 100%;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr;
+  }
+
+  .homepage-banner-col {
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    height: 45vh;
+  }
+
+  .homepage-login-col {
+    height: 85vh;
+    width: 70%;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: $small_bp) {
+  html {
+    font-size: 10px;
+  }
+}

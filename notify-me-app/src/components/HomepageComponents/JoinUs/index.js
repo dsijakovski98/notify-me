@@ -2,6 +2,7 @@ import "./style/style.css";
 import React from 'react';
 import Button from "@material-ui/core/Button";
 import PersonAddIcon from '@material-ui/icons/PersonAdd';
+import { Link } from "react-router-dom";
 
 const styles = {
     largeIcon: {
@@ -19,11 +20,13 @@ const styles = {
   };
 
 function index() {
+    const rootPage = "/notify-me-RST";
+
     return (
         <div className="join-us-wrapper">
             <Button variant="contained" color="primary"
              startIcon={<PersonAddIcon style={styles.mediumIcon} />} >
-                Join Us
+                <Link to={`${rootPage}/register`}>Join Us</Link>
             </Button>
         </div>
     )

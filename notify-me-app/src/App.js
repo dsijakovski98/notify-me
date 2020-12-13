@@ -4,7 +4,6 @@ import RegisterPage from "./components/RegisterPageComponents/RegisterPage";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
 function App() {
-
   const rootPage = "/notify-me-RST";
 
   return (

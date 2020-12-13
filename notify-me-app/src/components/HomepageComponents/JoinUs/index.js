@@ -24,10 +24,12 @@ function index() {
 
     return (
         <div className="join-us-wrapper">
-            <Button variant="contained" color="primary"
-             startIcon={<PersonAddIcon style={styles.mediumIcon} />} >
-                <Link to={`${rootPage}/register`}>Join Us</Link>
-            </Button>
+            <Link to={`${rootPage}/register`}>
+                <Button variant="contained" color="primary"
+                startIcon={<PersonAddIcon style={styles.mediumIcon} />} >
+                    Join Us
+                </Button>
+            </Link>
         </div>
     )
 }

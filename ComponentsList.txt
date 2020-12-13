@@ -1,0 +1,45 @@
+* Generic
+	- AppBar:
+		^ Logo + AppName []
+		^ Avatar + Notifications []
+		$ USER - Account Menu [] *
+		$ COMPANY - Company Details []
+		
+* Home page
+	- Banner Logo [x]
+	- Join Us Button [x]
+	- Login Form [x] > Container [x] & Presentation []
+* Register page
+	- RegistrationType []
+	- Multi-Step Register Form:
+		$ USER
+		^ GeneralInfoUser []
+		^ ContactInfoUser []
+		^ Profile Picture []
+		
+		$ COMPANY
+		^ GeneralInfoCompany []
+		^ ServiceInfo []
+		^ ContactInfoCompany []
+		^ Logo/Avatar []
+	- RegisterStepsDesriptor []
+	- Successfull Registration Component []
+* User page
+	- Tabs x3 []
+	- PostsList []
+	- PostsListItem []
+	- PostDetails (dialog) []
+
+* Company page
+	- PostsHistory Carrousel []
+	- CreatePost Button []
+	- CreatePost Form []
+* Edit profile page (render props method ???)
+	$ USER
+		^ EditGeneralInfoUser []
+		^ EditContactInfoUser []
+		^ EditProfilePage []
+	$ COMPANY
+		^ EditGeneralInfoCompany []
+		^ EditContactInfoCompany []
+		^ EditLogo []

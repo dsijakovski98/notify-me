@@ -1,0 +1,31 @@
+@import "../../../../style/helper_styles/colors";
+
+.banner-wrapper {
+  color: $base_text;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.banner-app-name {
+  // background: red;
+  height: 100%;
+}
+
+.banner-title {
+  font-size: 7rem;
+  font-weight: 400;
+}
+
+.banner-subtitle {
+  font-size: 2.5rem;
+  font-weight: 300;
+  padding-left: 0.1em;
+}
+
+.banner-logo-wrapper {
+  display: flex;
+  align-items: center;
+  margin-top: 0.5em;
+}

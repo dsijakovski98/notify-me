@@ -2,14 +2,15 @@
 
 .homepage-wrapper {
   height: 100%;
-  display: flex;
-  align-items: center;
+  display: grid;
+  place-items: center;
 }
 
 .homepage-container-grid {
   height: 80%;
   width: 80%;
   margin: 0 auto;
+  // background: #000;
 
   display: grid;
   grid-template-rows: 1fr;
@@ -36,12 +37,12 @@
 }
 
 @media (max-width: $medium_bp) {
-  // body {
-  //   display: none;
-  // }
+  .homepage-wrapper {
+    display: flex;
+  }
 
   .homepage-container-grid {
-    height: 100%;
+    // height: 100%;
     grid-template-rows: 1fr 1fr;
     grid-template-columns: 1fr;
   }
@@ -55,7 +56,7 @@
 
   .homepage-login-col {
     height: 85vh;
-    width: 70%;
+    width: 80%;
     margin: 0 auto;
   }
 }
@@ -63,5 +64,11 @@
 @media (max-width: $small_bp) {
   html {
     font-size: 10px;
+  }
+}
+
+@media (max-width: $xsmall_bp) {
+  html {
+    font-size: 8px;
   }
 }

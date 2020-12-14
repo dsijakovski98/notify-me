@@ -1,23 +1,26 @@
 import "./style/style.css";
-import React, { useEffect } from "react";
+import React from "react";
 import NotificationsActiveIcon from '@material-ui/icons/NotificationsActive';
+import useCurrentWidth from "../../../customHooks/useCurrentWidth";
 
-const styles = {
-    largeIcon: {
-      width: 130,
-      height: 120,
-    },
-  };
 
-function index() {
-    
+
+function Banner() {
+
+    const currentWidth = useCurrentWidth();
+    const styles = {
+        iconSize: {
+          width: currentWidth / 10,
+          height: currentWidth / 10,
+        },
+      };
 
     return (
         <div className="banner-wrapper">
             <div className="banner-logo-wrapper">
                 <NotificationsActiveIcon 
                 style={
-                    styles.largeIcon
+                    styles.iconSize
                 }
                  color="primary" />
             </div>
@@ -31,4 +34,4 @@ function index() {
     )
 }
 
-export default index
+export default Banner

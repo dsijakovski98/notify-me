@@ -1,10 +1,10 @@
 import "./style/style.css";
 import React from "react";
-import Banner from "../Banner";
-import JoinUs from "../JoinUs";
-import LoginForm from "../LoginForm";
+import Banner from "../Banner/Banner";
+import JoinUs from "../JoinUs/JoinUs";
+import LoginFormContainer from "../LoginForm/LoginFormContainer";
 
-function index() {
+function Homepage() {
     return (
         <div className="homepage-wrapper">
             <div className="homepage-container-grid" >
@@ -13,11 +13,11 @@ function index() {
                     <JoinUs />
                 </div>
                 <div className="homepage-login-col" > 
-                    <LoginForm />
+                    <LoginFormContainer />
                 </div>
             </div>
         </div>
     )
 }
 
-export default index;
+export default Homepage;

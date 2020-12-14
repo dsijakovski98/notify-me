@@ -1,11 +1,8 @@
 .homepage-wrapper {
   height: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
 }
 
 .homepage-container-grid {
@@ -52,8 +49,12 @@
 }
 
 @media (max-width: 1000px) {
+  .homepage-wrapper {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
   .homepage-container-grid {
-    height: 100%;
     -ms-grid-rows: 1fr 1fr;
         grid-template-rows: 1fr 1fr;
     -ms-grid-columns: 1fr;
@@ -73,7 +74,7 @@
   }
   .homepage-login-col {
     height: 85vh;
-    width: 70%;
+    width: 80%;
     margin: 0 auto;
   }
 }
@@ -81,6 +82,12 @@
 @media (max-width: 700px) {
   html {
     font-size: 10px;
+  }
+}
+
+@media (max-width: 500px) {
+  html {
+    font-size: 8px;
   }
 }
 /*# sourceMappingURL=style.css.map */

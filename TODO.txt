@@ -1,7 +1,11 @@
 
 * 13/12/2020
 	- HomePage frontend:
-		> Banner component []
-		> JoinUs Button component []
-		> Login Form component []
-		> Routing to Register and Profile []
+		> Banner component [x]
+		> JoinUs Button component [x]
+		> Login Form component [x]
+		> Routing to Register Page [x]
+* 14/12/2020
+	- Cleanup:
+		> Reformat components into Container + Presenter []
+	- Material UI tutorial []

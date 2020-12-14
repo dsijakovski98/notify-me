@@ -1,11 +1,24 @@
+@import "../../../../style/helper_styles/breakpoints";
+
 .join-us-wrapper {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
 
   button {
-    font-size: 2rem;
-    padding: 0.5em 2.5em;
+    font-size: 1.5rem;
+    padding: 0.5em 1.2em;
     border-radius: 1.5em;
+  }
+}
+
+@media (max-width: $medium_bp) {
+  .join-us-wrapper {
+    flex-direction: column;
+    margin-top: 2em;
+
+    button {
+      margin: 0.5em;
+    }
   }
 }

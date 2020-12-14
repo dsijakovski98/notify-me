@@ -1,4 +1,5 @@
 @import "../../../../style/helper_styles/colors";
+@import "../../../../style//helper_styles//breakpoints";
 
 .login-form-wrapper {
   height: 85%;
@@ -46,4 +47,17 @@
 
 .login-form-submit {
   width: 100%;
+}
+
+@media (max-width: $medium_bp) {
+  .login-form-wrapper {
+    width: 90%;
+    height: 80%;
+  }
+}
+
+@media (max-width: $small_bp) {
+  .login-form-wrapper {
+    height: 65%;
+  }
 }

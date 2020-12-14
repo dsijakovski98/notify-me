@@ -6,7 +6,7 @@ import Avatar from "@material-ui/core/Avatar";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import { Button } from "@material-ui/core";
 
-function index() {
+function LoginFormPresenter({username, setUsername, password, setPassword, signIn}) {
 
     return (
         <div className="login-form-wrapper">
@@ -30,6 +30,8 @@ function index() {
                     id="email"
                     autoComplete="current-email"
                     color="primary"
+                    value={username}
+                    onChange={e => setUsername(e.target.value)}
                 />
                 <TextField
                     variant="outlined"
@@ -41,6 +43,8 @@ function index() {
                     type="password"
                     id="password"
                     autoComplete="current-password"
+                    value={password}
+                    onChange={e => setPassword(e.target.value)}
                 />
             </div>
 
@@ -48,7 +52,8 @@ function index() {
                 <Button
                     variant="contained"
                     fullWidth
-                    color="primary">
+                    color="primary"
+                    onClick={e => signIn(e)} >
                     Sign in
                 </Button>
             </div>
@@ -56,4 +61,4 @@ function index() {
     )
 }
 
-export default index;
+export default LoginFormPresenter

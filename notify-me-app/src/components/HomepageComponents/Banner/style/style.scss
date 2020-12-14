@@ -1,4 +1,5 @@
 @import "../../../../style/helper_styles/colors";
+@import "../../../../style/helper_styles/breakpoints";
 
 .banner-wrapper {
   color: $base_text;
@@ -14,7 +15,7 @@
 }
 
 .banner-title {
-  font-size: 7rem;
+  font-size: 6.5rem;
   font-weight: 400;
 }
 
@@ -28,4 +29,34 @@
   display: flex;
   align-items: center;
   margin-top: 0.5em;
+}
+
+@media (max-width: $large_bp) {
+  .banner-title {
+    font-size: 6rem;
+  }
+}
+
+@media (max-width: $medium_bp) {
+  .banner-app-name {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .banner-title {
+    font-size: 5.5rem;
+  }
+}
+
+@media (max-width: $medium_bp) {
+  .banner-app-name {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .banner-title {
+    font-size: 5rem;
+  }
 }

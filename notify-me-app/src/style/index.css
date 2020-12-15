@@ -5,6 +5,10 @@
           box-sizing: border-box;
 }
 
+html {
+  background-color: #2f303a;
+}
+
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Roboto";
   -webkit-font-smoothing: antialiased;

@@ -13,8 +13,8 @@
   display: grid;
   -ms-grid-rows: 1fr;
       grid-template-rows: 1fr;
-  -ms-grid-columns: 1.8fr 1fr;
-      grid-template-columns: 1.8fr 1fr;
+  -ms-grid-columns: 1.5fr 1fr;
+      grid-template-columns: 1.5fr 1fr;
 }
 
 .homepage-banner-col {
@@ -73,8 +73,8 @@
     height: 45vh;
   }
   .homepage-login-col {
-    height: 85vh;
-    width: 80%;
+    height: 90vh;
+    width: 70%;
     margin: 0 auto;
   }
 }

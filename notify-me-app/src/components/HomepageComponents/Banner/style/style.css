@@ -40,13 +40,13 @@
   margin-top: 0.5em;
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1260px) {
   .banner-title {
     font-size: 6rem;
   }
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1100px) {
   .banner-app-name {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -64,7 +64,7 @@
   }
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1100px) {
   .banner-app-name {
     display: -webkit-box;
     display: -ms-flexbox;

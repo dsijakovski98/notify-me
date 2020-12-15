@@ -14,7 +14,7 @@
 
   display: grid;
   grid-template-rows: 1fr;
-  grid-template-columns: 1.5fr 1fr;
+  grid-template-columns: 1.8fr 1fr;
 }
 
 .homepage-banner-col {
@@ -32,7 +32,7 @@
 
 @media (max-width: $large_bp) {
   html {
-    font-size: 12px;
+    font-size: 15px;
   }
 }
 
@@ -63,7 +63,7 @@
 
 @media (max-width: $small_bp) {
   html {
-    font-size: 10px;
+    font-size: 11px;
   }
 }
 

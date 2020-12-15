@@ -4,11 +4,20 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
+  // background: #000;
 
   button {
     font-size: 1.5rem;
     padding: 0.5em 1.2em;
     border-radius: 1.5em;
+    margin: 2em 0.5em;
+  }
+}
+
+@media (max-width: $large_bp) {
+  .join-us-wrapper button {
+    font-size: 1.3rem;
+    margin: 2.5em 0.5em;
   }
 }
 
@@ -18,7 +27,8 @@
     margin-top: 2em;
 
     button {
-      margin: 0.5em;
+      margin: 0.6em;
+      font-size: 1.6rem;
     }
   }
 }

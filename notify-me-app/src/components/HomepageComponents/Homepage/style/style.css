@@ -13,8 +13,8 @@
   display: grid;
   -ms-grid-rows: 1fr;
       grid-template-rows: 1fr;
-  -ms-grid-columns: 1.5fr 1fr;
-      grid-template-columns: 1.5fr 1fr;
+  -ms-grid-columns: 1.8fr 1fr;
+      grid-template-columns: 1.8fr 1fr;
 }
 
 .homepage-banner-col {
@@ -42,13 +42,13 @@
           align-items: center;
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1260px) {
   html {
-    font-size: 12px;
+    font-size: 15px;
   }
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1100px) {
   .homepage-wrapper {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -81,7 +81,7 @@
 
 @media (max-width: 700px) {
   html {
-    font-size: 10px;
+    font-size: 11px;
   }
 }
 

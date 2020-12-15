@@ -6,7 +6,7 @@ import Avatar from "@material-ui/core/Avatar";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import { Button } from "@material-ui/core";
 
-function LoginFormPresenter({username, setUsername, password, setPassword, signIn}) {
+function LoginFormPresenter(props) {
 
     return (
         <div className="login-form-wrapper">
@@ -28,10 +28,10 @@ function LoginFormPresenter({username, setUsername, password, setPassword, signI
                     label="Email"
                     type="email"
                     id="email"
-                    autoComplete="current-email"
-                    color="primary"
-                    value={username}
-                    onChange={e => setUsername(e.target.value)}
+                    helperText={props.emailError}
+                    error={props.emailError.length ? true : false}
+                    value={props.email}
+                    onChange={e => props.setEmail(e.target.value)}
                 />
                 <TextField
                     variant="outlined"
@@ -42,9 +42,10 @@ function LoginFormPresenter({username, setUsername, password, setPassword, signI
                     label="Password"
                     type="password"
                     id="password"
-                    autoComplete="current-password"
-                    value={password}
-                    onChange={e => setPassword(e.target.value)}
+                    helperText={props.passwordError}
+                    error={props.passwordError.length ? true : false}
+                    value={props.password}
+                    onChange={e => props.setPassword(e.target.value)}
                 />
             </div>
 
@@ -53,7 +54,7 @@ function LoginFormPresenter({username, setUsername, password, setPassword, signI
                     variant="contained"
                     fullWidth
                     color="primary"
-                    onClick={e => signIn(e)} >
+                    onClick={e => props.signIn(e)} >
                     Sign in
                 </Button>
             </div>

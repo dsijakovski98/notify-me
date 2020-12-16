@@ -1,0 +1,92 @@
+@import "../../../../style/helper_styles/colors";
+@import "../../../../style/helper_styles/breakpoints";
+
+.form-container-flex {
+  width: 85%;
+  margin: 0 auto;
+
+  padding: 0 2em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  h1 {
+    color: $base_text;
+  }
+
+  input {
+    color: $base_text;
+  }
+
+  label {
+    color: $base_text;
+  }
+
+  fieldset {
+    border-color: $primary;
+  }
+
+  button {
+    font-size: 1.2rem;
+  }
+}
+
+// .form-explanation-container {
+//   // background: red;
+//   //   padding: 3em;
+// }
+
+.form-inputs-container {
+  width: 42%;
+  background: $form_background;
+  border: 2px solid $primary;
+  border-radius: 1em;
+  padding: 1em 1.5em;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.login-form-inputs {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-form-submit {
+  width: 100%;
+}
+
+@media (max-width: $medium_bp) {
+  .form-container-flex {
+    flex-direction: column;
+
+    h2 {
+      padding-bottom: 1em;
+      text-align: center;
+      font-size: 3.5em;
+    }
+  }
+  .form-inputs-container {
+    width: 90%;
+  }
+}
+
+@media (max-width: $small_bp) {
+  .form-container-flex {
+    flex-direction: column;
+
+    h2 {
+      padding-bottom: 1em;
+      text-align: center;
+      font-size: 2.5em;
+    }
+  }
+  .form-inputs-container {
+    width: 90%;
+  }
+}

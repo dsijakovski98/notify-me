@@ -28,7 +28,7 @@
 .banner-logo-wrapper {
   display: flex;
   align-items: center;
-  margin-top: 0.5em;
+  margin-top: 0.2em;
 }
 
 @media (max-width: $large_bp) {
@@ -58,5 +58,15 @@
 
   .banner-title {
     font-size: 5rem;
+  }
+
+  .banner-subtitle {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: $small_bp) {
+  .banner-title {
+    font-size: 3.5rem;
   }
 }

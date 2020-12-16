@@ -7,5 +7,10 @@
 		> Routing to Register Page [x]
 * 14/12/2020
 	- Cleanup:
-		> Reformat components into Container + Presenter []
-	- Material UI tutorial []
+		> Reformat components into Container + Presenter [x]
+	- Material UI tutorial [x]
+
+* 15/12/2020
+	- Framer Motion animation on Homepage []
+	- Multi-step UserRegistration component []
+	- Multi-step CompanyRegistration component []

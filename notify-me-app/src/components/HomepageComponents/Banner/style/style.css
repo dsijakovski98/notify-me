@@ -37,7 +37,7 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin-top: 0.5em;
+  margin-top: 0.2em;
 }
 
 @media (max-width: 1260px) {
@@ -79,6 +79,15 @@
   }
   .banner-title {
     font-size: 5rem;
+  }
+  .banner-subtitle {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 700px) {
+  .banner-title {
+    font-size: 3.5rem;
   }
 }
 /*# sourceMappingURL=style.css.map */

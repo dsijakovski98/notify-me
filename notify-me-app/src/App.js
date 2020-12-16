@@ -1,20 +1,43 @@
-import React from "react";
+import React, { useEffect } from "react";
+import Navbar from "./components/Navbar/Navbar";
 import Homepage from "./components/HomepageComponents/Homepage/Homepage";
 import RegisterPage from "./components/RegisterPageComponents/RegisterPage/RegisterPage";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { Switch, Route, withRouter } from "react-router-dom";
 
-function App() {
+function App(props) {
+
   const rootPage = "/notify-me-RST";
+  const location = props.location.pathname;
+
+  // Set document title
+  useEffect(() => {
+
+    switch(location) {
+      case `${rootPage}/register/user`:
+      case `${rootPage}/register/company`:
+        document.title = "Notify-Me - Register";
+        break;
+      case `${rootPage}`:
+        document.title = "Notify-Me - Home";
+        break;
+      default:
+        return null;
+    }
+
+  }, [location]);
 
   return (
-    <Router>
+
       <div className="main-wrapper">
-        <Route path={`${rootPage}`} exact component={Homepage} />
-        <Route path={`${rootPage}/register/:type`} exact component={RegisterPage} />
-        {/* TODO: Add more page routes */}
+          <Switch>
+            <Route path={`${rootPage}`} exact component={Homepage} />
+            <Navbar />
+          </Switch>
+            <Route path={`${rootPage}/register/:type`} exact component={RegisterPage} />
+          {/* TODO: Add more page routes */}
       </div>
-    </Router>
+
   );  
 }
 
-export default App;
+export default withRouter(App);

@@ -32,3 +32,11 @@
     }
   }
 }
+
+@media (max-width: $small_bp) {
+  .join-us-wrapper {
+    button {
+      font-size: 1.2rem;
+    }
+  }
+}

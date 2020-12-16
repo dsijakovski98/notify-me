@@ -7,10 +7,8 @@ import { Typography, TextField, Button, Avatar, Grid } from '@material-ui/core';
 import { KeyboardDatePicker, MuiPickersUtilsProvider } from '@material-ui/pickers';
 
 
-function UserGeneralDetailsPresenter({ values }) {
+function UserGeneralDetailsPresenter({ values, continueRegistration }) {
 
-
-        
     return (
         <div className="form-container-flex">
             <div className="form-explanation-container">
@@ -100,7 +98,7 @@ function UserGeneralDetailsPresenter({ values }) {
                                     variant="contained"
                                     fullWidth
                                     color="primary"
-                                    onClick={e => values.continueRegistration(e)}
+                                    onClick={e => continueRegistration(e)}
                                 >
                                     Continue
                                 </Button>

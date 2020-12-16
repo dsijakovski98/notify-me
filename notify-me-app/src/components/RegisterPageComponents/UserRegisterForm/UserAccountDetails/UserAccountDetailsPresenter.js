@@ -3,7 +3,7 @@ import "../style/style.css";
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { Typography, TextField, Button, Avatar, Grid } from '@material-ui/core';
 
-function UserAccountDetailsPresenter({values}) {
+function UserAccountDetailsPresenter({values, continueRegistration, goBackRegistration}) {
     return (
         <div className="form-container-flex">
             <div className="form-explanation-container">
@@ -76,15 +76,13 @@ function UserAccountDetailsPresenter({values}) {
                     <br/>
                     <br/>
                     <br/>
-                    <br/>
-                    <br/>
                     <div className="login-form-submit">
                     <Grid container spacing={2}>
                             <Grid item xs={12} sm={6}>
                                 <Button
                                     variant="contained"
                                     fullWidth
-                                    onClick={e => values.goBackRegistration(e)}
+                                    onClick={e => goBackRegistration(e)}
                                 >
                                     Back
                                 </Button>
@@ -94,7 +92,7 @@ function UserAccountDetailsPresenter({values}) {
                                     variant="contained"
                                     fullWidth
                                     color="primary"
-                                    onClick={e => values.continueRegistration(e)}
+                                    onClick={e => continueRegistration(e)}
                                 >
                                     Continue
                                 </Button>

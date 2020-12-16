@@ -1,0 +1,29 @@
+@import "../../../../style/helper_styles/breakpoints";
+
+.confirm-list-container {
+  text-align: center;
+}
+
+.detail-title {
+  font-size: 1.5rem;
+}
+
+.detail-value {
+  font-size: 1.2rem;
+  font-weight: 200;
+}
+
+@media (max-width: $medium_bp) {
+  .confirm-details-title {
+    font-size: 2.5rem;
+  }
+
+  .detail-title {
+    font-size: 1.2rem;
+  }
+
+  .detail-value {
+    font-size: 1rem;
+    font-weight: 200;
+  }
+}

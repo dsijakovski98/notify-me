@@ -1,15 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import UserAccountDetailsPresenter from "./UserAccountDetailsPresenter";
 
-function UserAccountDetailsContainer({nextStep, prevStep}) {
-
-    const [userEmail, setUserEmail] = useState("");
-    const [userPassword, setUserPassword] = useState("");
-    const [passwordConfirm, setPasswordConfirm] = useState("");
-
-    const [emailErr, setEmailErr] = useState("");
-    const [passwordErr, setPasswordErr] = useState("");
-    const [confirmPasswordErr, setConfirmPasswordErr] = useState("");
+function UserAccountDetailsContainer({values, nextStep, prevStep}) {
 
     const continueRegistration = (e) => {
         e.preventDefault();
@@ -25,28 +17,29 @@ function UserAccountDetailsContainer({nextStep, prevStep}) {
 
     const validateInputs = () => {
         // Clear previous errors
-        setEmailErr("");
-        setPasswordErr("");
-        setConfirmPasswordErr("");
+        values.setEmailErr("");
+        values.setPasswordErr("");
+        values.setConfirmPasswordErr("");
 
         let emailError = "";
         let passwordError = "";
         let cPasswordError = "";
 
         // Passwords mismatch
-        if(userPassword !== passwordConfirm) cPasswordError = "Passwords don't match!";
+        if(values.userPassword !== values.passwordConfirm)
+            cPasswordError = "Passwords don't match!";
         
         // Empty fields
-        if(userEmail === "") emailError = "Enter an email!";
-        if(userPassword === "") passwordError = "Enter a password!";
-        if(passwordConfirm === "") cPasswordError = "Confirm your password!";
+        if(values.userEmail === "") emailError = "Enter an email!";
+        if(values.userPassword === "") passwordError = "Enter a password!";
+        if(values.passwordConfirm === "") cPasswordError = "Confirm your password!";
         
 
 
         if(emailError.length || passwordError.length || cPasswordError.length) {
-            setEmailErr(emailError);
-            setPasswordErr(passwordError);
-            setConfirmPasswordErr(cPasswordError);
+            values.setEmailErr(emailError);
+            values.setPasswordErr(passwordError);
+            values.setConfirmPasswordErr(cPasswordError);
             return false;
         }
         
@@ -54,29 +47,15 @@ function UserAccountDetailsContainer({nextStep, prevStep}) {
         return true;
     }
 
-    const values = {
-        userEmail,
-        setUserEmail,
-
-        userPassword,
-        setUserPassword,
-
-        passwordConfirm,
-        setPasswordConfirm,
-
-        emailErr,
-        passwordErr,
-        confirmPasswordErr,
-        
-        continueRegistration,
-        goBackRegistration
-    }
-
     return (
         <>
-            <UserAccountDetailsPresenter values={values} />
+            <UserAccountDetailsPresenter 
+                values={values}
+                continueRegistration={continueRegistration}
+                goBackRegistration={goBackRegistration}
+            />
         </>
     )
 }
 
-export default UserAccountDetailsContainer
+export default UserAccountDetailsContainer;

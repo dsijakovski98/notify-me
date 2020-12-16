@@ -14,43 +14,51 @@ const useStyles = makeStyles({
 function CompanyFormContainer() {
     const classes = useStyles();
 
-    const [step, setStep] = useState(1);
+    // const [step, setStep] = useState(1);
 
-    const setCurrentComponent = () => {
-        switch(step) {
-            case 1:
-                return (
-                    // GeneralUserDetails
-                    <h1 style={{color: 'white'}}>General Details</h1>
-                )
-            case 2:
-                return (
-                    // AccountUserDetails
-                    <h1 style={{color: 'white'}}>Account Details</h1>
-                )
-            case 3:
-                return (
-                    // ProfilePicture
-                    <h1 style={{color: 'white'}}>Profile Picture</h1>
-                )
-            case 4:
-                return (
-                    // ConfirmInput
-                    <h1 style={{color: 'white'}}>Confirm Details</h1>
-                )
-            case 5:
-                return (
-                    // Success
-                    <h1 style={{color: 'white'}}>Successfull registration</h1>
-                )
-            default:
-                return alert("Invalid step!");
-        }
-    }
+    // const nextStep = () => {
+    //     setStep(step + 1);
+    // }
+
+    // const prevStep = () => {
+    //     setStep(step - 1);
+    // }
+
+    // const setCurrentComponent = () => {
+    //     switch(step) {
+    //         case 1:
+    //             return (
+    //                 // GeneralUserDetails
+    //                 <h1 style={{color: 'white'}}>General Details</h1>
+    //             )
+    //         case 2:
+    //             return (
+    //                 // AccountUserDetails
+    //                 <h1 style={{color: 'white'}}>Account Details</h1>
+    //             )
+    //         case 3:
+    //             return (
+    //                 // ProfilePicture
+    //                 <h1 style={{color: 'white'}}>Profile Picture</h1>
+    //             )
+    //         case 4:
+    //             return (
+    //                 // ConfirmInput
+    //                 <h1 style={{color: 'white'}}>Confirm Details</h1>
+    //             )
+    //         case 5:
+    //             return (
+    //                 // Success
+    //                 <h1 style={{color: 'white'}}>Successfull registration</h1>
+    //             )
+    //         default:
+    //             return alert("Invalid step!");
+    //     }
+    // }
 
     return (
         <Grid container className={classes.userFormGrid} direction="row" spacing={4}>
-            {setCurrentComponent()}
+            {/* {setCurrentComponent()} */}
             Company
         </Grid>
     )

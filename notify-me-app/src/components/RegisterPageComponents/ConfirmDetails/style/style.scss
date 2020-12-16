@@ -1,16 +1,19 @@
 @import "../../../../style/helper_styles/breakpoints";
+@import "../../../../style/helper_styles/colors";
 
 .confirm-list-container {
   text-align: center;
 }
 
 .detail-title {
-  font-size: 1.5rem;
+  font-size: 1.6rem;
+  font-weight: 400;
 }
 
 .detail-value {
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   font-weight: 200;
+  color: $base_text;
 }
 
 @media (max-width: $medium_bp) {
@@ -19,11 +22,11 @@
   }
 
   .detail-title {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
   }
 
   .detail-value {
-    font-size: 1rem;
-    font-weight: 200;
+    font-size: 1.2rem;
+    // font-weight: 200;
   }
 }

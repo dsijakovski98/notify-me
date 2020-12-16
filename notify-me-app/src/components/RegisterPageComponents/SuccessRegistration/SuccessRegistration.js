@@ -14,7 +14,7 @@ function SuccessRegistration() {
     const classes = useStyles();
 
     return (
-        <>
+        <div className="success-container">
             <Typography variant="h1" id="congrats-text">Congratulations!</Typography>
             <Typography variant="h4" className={classes.subtitle} id="subtitle-text">
                 You have created an account!
@@ -31,7 +31,7 @@ function SuccessRegistration() {
                     Go to homepage
                 </Button>
             </Link>
-        </>
+        </div>
     )
 }
 

@@ -25,16 +25,14 @@ function ConfirmDetails({values, nextStep, prevStep}) {
                     return (
                             <div key={key}>
                                 <ListItem className={classes.root}>
-                                    <Typography className="detail-title"
-                                        variant="h6">
+                                    <h3 className="detail-title">
                                         {key}
-                                    </Typography>
+                                    </h3>
                                 </ListItem>
                                 <ListItem className={classes.root}>
-                                    <Typography className="detail-value"
-                                        variant="subtitle2">
+                                    <p className="detail-value">
                                         {detailValues[index]}
-                                    </Typography>
+                                    </p>
                                 </ListItem>
                                 <hr/>
                                 <br/>

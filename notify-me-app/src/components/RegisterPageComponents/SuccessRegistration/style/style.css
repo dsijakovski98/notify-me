@@ -1,26 +1,40 @@
-.home-button {
+.success-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.success-container button {
   padding: 0.5em 1.5em;
   font-size: 2rem;
 }
 
 @media (max-width: 1100px) {
   #congrats-text {
-    font-size: 3.5rem;
+    font-size: 4rem;
   }
   #subtitle-text {
-    font-size: 1.6rem;
+    font-size: 2rem;
   }
-  .home-button {
-    font-size: 1rem;
+  .success-container button {
+    padding: 0.3em 1.2em;
+    font-size: 1.5rem;
   }
 }
 
-@media (max-width: 1100px) {
+@media (max-width: 700px) {
   #congrats-text {
-    font-size: 2.8rem;
+    font-size: 2.5rem;
   }
   #subtitle-text {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
   }
 }
 /*# sourceMappingURL=style.css.map */

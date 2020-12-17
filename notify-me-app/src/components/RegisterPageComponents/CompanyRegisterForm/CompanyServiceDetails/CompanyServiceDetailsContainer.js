@@ -22,7 +22,7 @@ function CompanyServiceDetailsContainer({values, nextStep, prevStep}) {
 
     const validateInputs = () => {
         // Clear inputs
-        return false;
+        // return false;
     }
 
     const continueRegistration = (e) => {

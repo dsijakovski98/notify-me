@@ -32,6 +32,7 @@ function CompanyGeneralDetailsPresenter({values, continueRegistration}) {
                                 variant="outlined"
                                 required
                                 fullWidth
+                                autoFocus
                                 label="Company Name"
                                 type="text"
                                 error={values.companyNameErr ? true : false}
@@ -64,7 +65,6 @@ function CompanyGeneralDetailsPresenter({values, continueRegistration}) {
                                 required
                                 fullWidth
                                 label="CEO First Name"
-                                autoFocus
                                 type="text"
                                 error={
                                     values.companyFounderFirstNameErr 

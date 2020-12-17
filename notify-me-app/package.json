@@ -14,11 +14,13 @@
     "date-fns": "^2.16.1",
     "firebase": "^8.1.2",
     "framer-motion": "^2.9.5",
+    "material-ui-chip-input": "^1.1.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.1",
+    "react-select-plus": "^1.0.0-rc.3.patch12",
     "web-vitals": "^0.2.4"
   },
   "scripts": {

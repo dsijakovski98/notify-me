@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import "../../style/style.css";
 import 'date-fns';
 import DateFnsUtils from '@date-io/date-fns';
@@ -7,13 +7,13 @@ import { Typography, TextField, Button, Avatar, Grid } from '@material-ui/core';
 import { KeyboardDatePicker, MuiPickersUtilsProvider } from '@material-ui/pickers';
 
 
-function UserGeneralDetailsPresenter({ values, continueRegistration }) {
 
+function CompanyGeneralDetailsPresenter({values, continueRegistration}) {
     return (
         <div className="form-container-flex">
             <div className="form-explanation-container">
                 <Typography variant="h2">
-                    Enter user details
+                    Enter company details
                 </Typography>
             </div>
             <div className="form-inputs-container">
@@ -24,37 +24,22 @@ function UserGeneralDetailsPresenter({ values, continueRegistration }) {
                     
                     <Typography component="h1" variant="h5" >Sign up</Typography>
                     <br/>
-                    <Grid container spacing={2}>
-                        <Grid item xs={12} sm={6}>
-                            <TextField
-                                margin="dense"
-                                variant="outlined"
-                                required
-                                fullWidth
-                                label="First Name"
-                                autoFocus
-                                type="text"
-                                error={values.firstNameErr ? true : false}
-                                helperText={values.firstNameErr}
-                                value={values.firstName}
-                                onChange={(e) => values.setFirstName(e.target.value)}
-                            />
-                        </Grid>
 
-                        <Grid item xs={12} sm={6}>
+                    <Grid container spacing={2}>
+                        <Grid item xs={12}>
                             <TextField
                                 margin="dense"
                                 variant="outlined"
                                 required
                                 fullWidth
-                                label="Last Name"
+                                label="Company Name"
                                 type="text"
-                                error={values.lastNameErr ? true : false}
-                                helperText={values.lastNameErr}
-                                value={values.lastName}
-                                onChange={(e) => values.setLastName(e.target.value)}
+                                error={values.companyNameErr ? true : false}
+                                helperText={values.companyNameErr}
+                                value={values.companyName}
+                                onChange={(e) => values.setCompanyName(e.target.value)}
                             />
-                        </Grid>
+                        </Grid>  
 
                         <Grid item xs={12}>
                             <MuiPickersUtilsProvider utils={DateFnsUtils}>
@@ -64,28 +49,56 @@ function UserGeneralDetailsPresenter({ values, continueRegistration }) {
                                     variant="dialog"
                                     format="dd/MM/yyyy"
                                     margin="normal"
-                                    label="Date of Birth"
+                                    label="Date of Incorporation"
                                     maxDate={new Date()}
-                                    value={values.dateOfBirth}
-                                    onChange={date => values.setDateOfBirth(date)}
+                                    value={values.companyStartDate}
+                                    onChange={date => values.setCompanyStartDate(date)}
                                 />
                             </MuiPickersUtilsProvider>
                         </Grid>
 
-                        <Grid item xs={12}>
+                        <Grid item xs={12} sm={6}>
                             <TextField
                                 margin="dense"
                                 variant="outlined"
                                 required
                                 fullWidth
-                                label="City"
+                                label="CEO First Name"
+                                autoFocus
                                 type="text"
-                                error={values.cityErr ? true : false}
-                                helperText={values.cityErr}
-                                value={values.city}
-                                onChange={(e) => values.setCity(e.target.value)}
+                                error={
+                                    values.companyFounderFirstNameErr 
+                                    ? true : false
+                                }
+                                helperText={
+                                    values.companyFounderFirstNameErr
+                                }
+                                value={values.companyFounderFirstName}
+                                onChange={(e) =>
+                                    values.setCompanyFounderFirstName(e.target.value)}
                             />
-                        </Grid>               
+                        </Grid>
+
+                        <Grid item xs={12} sm={6}>
+                            <TextField
+                                margin="dense"
+                                variant="outlined"
+                                required
+                                fullWidth
+                                label="CEO Last Name"
+                                type="text"
+                                error={
+                                    values.companyFounderLastNameErr 
+                                    ? true : false
+                                }
+                                helperText={
+                                    values.companyFounderLastNameErr
+                                }
+                                value={values.companyFounderLastName}
+                                onChange={(e) =>
+                                    values.setCompanyFounderLastName(e.target.value)}
+                            />
+                        </Grid>              
 
                     </Grid>
                     <br/>
@@ -112,4 +125,4 @@ function UserGeneralDetailsPresenter({ values, continueRegistration }) {
     )
 }
 
-export default UserGeneralDetailsPresenter;
+export default CompanyGeneralDetailsPresenter

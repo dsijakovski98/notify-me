@@ -1,90 +1,28 @@
 import React, { useState } from 'react'
+
 import UserGeneralDetailsContainer from "./UserGeneralDetails/UserGeneralDetailsContainer";
+import useGeneralDetails from "./UserGeneralDetails/useGeneralDetailsValues";
+
 import UserAccountDetailsContainer from "./UserAccountDetails/UserAccountDetailsContainer";
+import useAccountDetails from "./UserAccountDetails/useAccountDetails";
+
 import UserProfilePictureContainer from "./UserProfilePicture/UserProfilePictureContainer";
+import useProfilePicture from "./UserProfilePicture/useProfilePicture";
+
 import ConfirmDetails from "../ConfirmDetails/ConfirmDetails";
 import SuccessRegistration from "../SuccessRegistration/SuccessRegistration";
 
 function UserFormContainer() {
     const [step, setStep] = useState(1);
 
-    // User General Details
-    const [firstName, setFirstName] = useState("");
-    const [lastName, setLastName] = useState("");
-    const [dateOfBirth, setDateOfBirth] = useState(new Date());
-    const [city, setCity] = useState("");
-
-    const [firstNameErr, setFirstNameErr] = useState("");
-    const [lastNameErr, setLastNameErr] = useState("");
-    const [cityErr, setCityErr] = useState("");
-
-    const generalDetailsValues = {
-        firstName,
-        setFirstName,
-        firstNameErr,
-        setFirstNameErr,
-
-        lastName,
-        setLastName,
-        lastNameErr,
-        setLastNameErr,
-
-        dateOfBirth,
-        setDateOfBirth,
-
-        city,
-        setCity,
-        cityErr,
-        setCityErr
-    }
-
-    // User Account Details
-    const [userEmail, setUserEmail] = useState("");
-    const [userPassword, setUserPassword] = useState("");
-    const [passwordConfirm, setPasswordConfirm] = useState("");
-
-    const [emailErr, setEmailErr] = useState("");
-    const [passwordErr, setPasswordErr] = useState("");
-    const [confirmPasswordErr, setConfirmPasswordErr] = useState("");
-
-    const AccountDetailsValues = {
-        userEmail,
-        setUserEmail,
-        setEmailErr,
-
-        userPassword,
-        setUserPassword,
-        setPasswordErr,
-
-        passwordConfirm,
-        setPasswordConfirm,
-        setConfirmPasswordErr,
-
-        emailErr,
-        passwordErr,
-        confirmPasswordErr
-    }
-
-    // User Profile Picture Details
-    const [file, setFile] = useState(null);
-    const [fileErr, setFileErr] = useState("");
-
-    const ProfilePictureDetails = {
-        file,
-        setFile,
-
-        fileErr,
-        setFileErr
-    }
+    const [userGeneralDetailsValues, userGeneralDetailsParams] = useGeneralDetails();
+    const [userAccountDetailsValues, userAccountDetailsParams] = useAccountDetails();
+    const [userProfilePictureValues] = useProfilePicture();
 
     // All Details
     const AllDetails = {
-        "First Name": firstName,
-        "Last Name": lastName,
-        "Date of Birth": 
-            `${dateOfBirth.getDate()}/${dateOfBirth.getMonth()}/${dateOfBirth.getFullYear()}`,
-        "City":city,
-        "Email":userEmail,
+        ...userGeneralDetailsParams,
+        ...userAccountDetailsParams
     }
 
     const nextStep = () => {
@@ -102,7 +40,7 @@ function UserFormContainer() {
                     // GeneralUserDetails
                     <UserGeneralDetailsContainer
                         nextStep={nextStep}
-                        values={generalDetailsValues}
+                        values={userGeneralDetailsValues}
                     />
                 )
             case 2:
@@ -111,7 +49,7 @@ function UserFormContainer() {
                     <UserAccountDetailsContainer
                         nextStep={nextStep}
                         prevStep={prevStep}
-                        values={AccountDetailsValues}
+                        values={userAccountDetailsValues}
                     />
                 )
             case 3:
@@ -120,7 +58,7 @@ function UserFormContainer() {
                     <UserProfilePictureContainer
                         nextStep={nextStep}
                         prevStep={prevStep}
-                        values={ProfilePictureDetails}
+                        values={userProfilePictureValues}
                     />
                 )
             case 4:

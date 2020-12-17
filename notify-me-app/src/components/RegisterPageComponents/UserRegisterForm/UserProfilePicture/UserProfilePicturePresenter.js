@@ -1,5 +1,5 @@
 import "./style/upload_style.css"
-import "../style/style.css";
+import "../../style/style.css";
 import React from 'react'
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { Typography, Button, Avatar, Grid } from '@material-ui/core';
@@ -23,18 +23,16 @@ function UserProfilePicturePresenter({values, continueRegistration, goBackRegist
                     
                     <Typography component="h1" variant="h5" >Sign up</Typography>
                     <br/>
-                    <br/>
                     <div id="upload-pic-text">
-                        <Typography variant="h5">Select your profile picture</Typography>
+                        <Typography variant="h5">Select your profile picture (optional)</Typography>
                     </div>
-                    <Typography variant="subtitle2">(Optional)</Typography>
-                    <br/>
                     <div className="upload-container">
                         <label id="upload_label">
                             <input type="file" />
                             <span>+</span>
                         </label>
                     </div>
+                    <Typography variant="body1" color="error">{values.fileErr}</Typography>
                     <br/>
                     <br/>
                     <br/>

@@ -1,5 +1,5 @@
 import React from 'react'
-import "../style/style.css";
+import "../../style/style.css";
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { Typography, TextField, Button, Avatar, Grid } from '@material-ui/core';
 

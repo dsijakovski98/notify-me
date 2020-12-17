@@ -1,66 +1,106 @@
 import React, { useState } from 'react'
-import { Grid } from '@material-ui/core';
-import { makeStyles } from "@material-ui/core/styles";
 
-const useStyles = makeStyles({
-    userFormGrid: {
-        width: '70%',
-        margin: '0 auto'
-    }
-});
+import CompanyGeneralDetailsContainer from "./CompanyGeneralDetails/CompanyGeneralDetailsContainer";
+import useCompanyGeneralDetails from "./CompanyGeneralDetails/useCompanyGeneralDetails";
 
+import CompanyServiceDetailsContainer from "./CompanyServiceDetails/CompanyServiceDetailsContainer";
+import useCompanyServiceDetails from "./CompanyServiceDetails/useCompanyServiceDetails";
 
+import CompanyAccountDetailsContainer from "./CompanyAccountDetails/CompanyAccountDetailsContainer";
+import useCompanyAccountDetails from "./CompanyAccountDetails/useCompanyAccountDetails";
+
+import CompanyProfilePictureContainer from "./CompanyProfilePicture/CompanyProfilePictureContainer";
+import useCompanyProfilePicture from "./CompanyProfilePicture/useCompanyProfilePicture";
+
+import ConfirmDetails from "../ConfirmDetails/ConfirmDetails";
+import SuccessRegistration from "../SuccessRegistration/SuccessRegistration";
 
 function CompanyFormContainer() {
-    const classes = useStyles();
+    const [step, setStep] = useState(1);
 
-    // const [step, setStep] = useState(1);
+    const [companyGeneralDetailsValues, companyGeneralDetailsParams] =
+        useCompanyGeneralDetails();
+    const [companyServiceDetailsValues, companyServiceDetailsParams] = 
+        useCompanyServiceDetails();
+    const [companyAccountDetailsValues, companyAccountDetailsParams] = 
+        useCompanyAccountDetails();    
+    const [companyProfilePictureValues] = useCompanyProfilePicture();
 
-    // const nextStep = () => {
-    //     setStep(step + 1);
-    // }
+    // All Details
+    const allDetails = {
+        ...companyGeneralDetailsParams,
+        ...companyServiceDetailsParams,
+        ...companyAccountDetailsParams
+    }
 
-    // const prevStep = () => {
-    //     setStep(step - 1);
-    // }
+    const nextStep = () => {
+        setStep(step + 1);
+    }
 
-    // const setCurrentComponent = () => {
-    //     switch(step) {
-    //         case 1:
-    //             return (
-    //                 // GeneralUserDetails
-    //                 <h1 style={{color: 'white'}}>General Details</h1>
-    //             )
-    //         case 2:
-    //             return (
-    //                 // AccountUserDetails
-    //                 <h1 style={{color: 'white'}}>Account Details</h1>
-    //             )
-    //         case 3:
-    //             return (
-    //                 // ProfilePicture
-    //                 <h1 style={{color: 'white'}}>Profile Picture</h1>
-    //             )
-    //         case 4:
-    //             return (
-    //                 // ConfirmInput
-    //                 <h1 style={{color: 'white'}}>Confirm Details</h1>
-    //             )
-    //         case 5:
-    //             return (
-    //                 // Success
-    //                 <h1 style={{color: 'white'}}>Successfull registration</h1>
-    //             )
-    //         default:
-    //             return alert("Invalid step!");
-    //     }
-    // }
+    const prevStep = () => {
+        setStep(step - 1);
+    }
+
+    const setCurrentComponent = () => {
+        switch(step) {
+            case 1:
+                return (
+                    // GeneralUserDetails
+                    <CompanyGeneralDetailsContainer 
+                        values={companyGeneralDetailsValues}
+                        nextStep={nextStep}
+                    />
+                )
+            case 2:
+                return (
+                    // Company Service Details
+                    <CompanyServiceDetailsContainer 
+                        values={companyServiceDetailsValues}
+                        nextStep={nextStep}
+                        prevStep={prevStep}
+                    />
+                )
+            case 3:
+                return (
+                    // Company Account Details
+                    <CompanyAccountDetailsContainer
+                        values={companyAccountDetailsValues}
+                        nextStep={nextStep}
+                        prevStep={prevStep}
+                    />
+                )
+            case 4:
+                return (
+                    // Company Profile Picture
+                    <CompanyProfilePictureContainer 
+                        values={companyProfilePictureValues}
+                        nextStep={nextStep}
+                        prevStep={prevStep}
+                    />
+                )
+            case 5:
+                return (
+                    // Confirm Inputs
+                    <ConfirmDetails 
+                        values={allDetails}
+                        nextStep={nextStep}
+                        prevStep={prevStep}
+                    />
+                )
+            case 6:
+                return (
+                    // Successfull Registration
+                    <SuccessRegistration />
+                )
+            default:
+                return alert("Invalid step!");
+        }
+    }
 
     return (
-        <Grid container className={classes.userFormGrid} direction="row" spacing={4}>
-            {/* {setCurrentComponent()} */}
-            Company
-        </Grid>
+        <>
+            {setCurrentComponent()}
+        </>
     )
 }
 

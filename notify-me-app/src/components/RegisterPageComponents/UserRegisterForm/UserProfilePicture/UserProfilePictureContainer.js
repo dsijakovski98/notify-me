@@ -34,6 +34,7 @@ function UserProfilePictureContainer({values, nextStep, prevStep}) {
         <>
             <UserProfilePicturePresenter
                 values={values}
+                uploadFile={uploadFile}
                 continueRegistration={continueRegistration}
                 goBackRegistration={goBackRegistration}
             />

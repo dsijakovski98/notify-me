@@ -63,6 +63,7 @@
 
 @media (max-width: $medium_bp) {
   .form-container-flex {
+    width: 95%;
     flex-direction: column;
 
     h2 {

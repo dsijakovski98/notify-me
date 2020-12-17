@@ -2,14 +2,7 @@ import React from 'react'
 import CompanyGeneralDetailsPresenter from './CompanyGeneralDetailsPresenter'
 
 function CompanyGeneralDetailsContainer({values, nextStep}) {
-
-    const continueRegistration = (e) => {
-        e.preventDefault();
-        if(validateInputs()) {
-            nextStep();
-        }
-    }
-
+    
     const validateInputs = () => {
         // Clear previous errors
         values.setCompanyNameErr("");
@@ -40,6 +33,13 @@ function CompanyGeneralDetailsContainer({values, nextStep}) {
             }
 
         return true;
+    }
+
+    const continueRegistration = (e) => {
+        e.preventDefault();
+        if(validateInputs()) {
+            nextStep();
+        }
     }
 
     return (

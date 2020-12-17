@@ -3,7 +3,7 @@ import { useState } from "react";
 const useCompanyServiceDetails = () => {
     // Company Service Details
     const [headCity, setHeadCity] = useState("");
-    const [serviceType, setServiceType] = useState("");
+    const [serviceType, setServiceType] = useState("Electricity");
     const [branches, setBranches] = useState([]);
 
     const [headCityErr, setHeadCityErr] = useState("");

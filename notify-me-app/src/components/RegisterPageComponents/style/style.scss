@@ -1,5 +1,5 @@
-@import "../../../../style/helper_styles/colors";
-@import "../../../../style/helper_styles/breakpoints";
+@import "../../../style/helper_styles/colors";
+@import "../../../style/helper_styles/breakpoints";
 
 .form-container-flex {
   width: 85%;
@@ -20,6 +20,7 @@
 
   label {
     color: $base_text;
+    font-size: 0.9rem;
   }
 
   fieldset {

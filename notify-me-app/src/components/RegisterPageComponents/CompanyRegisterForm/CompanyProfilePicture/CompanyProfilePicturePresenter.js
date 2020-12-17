@@ -1,9 +1,62 @@
-import React from 'react'
+import React from 'react';
+import "../../style/style.css";
+import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import { Typography, Button, Avatar, Grid } from '@material-ui/core';
 
-function CompanyProfilePicturePresenter() {
+function CompanyProfilePicturePresenter({values, continueRegistration, goBackRegistration}) {
     return (
-        <div>
-            
+        <div className="form-container-flex">
+            <div className="form-explanation-container" >
+                <Typography variant="h2">
+                    Upload the company's logo
+                </Typography>
+            </div>
+            <div className="form-inputs-container">
+                <div className="login-form-inputs">
+                    <Avatar style={{backgroundColor: '#3f51b5'}}>
+                        <LockOutlinedIcon />
+                    </Avatar>
+                    
+                    <Typography component="h1" variant="h5" >Sign up</Typography>
+                    <br/>
+                    <div id="upload-pic-text">
+                        <Typography variant="h6" style={{fontWeight: 300}}>Select your profile picture (optional)</Typography>
+                    </div>
+                    <div className="upload-container">
+                        <label id="upload_label">
+                            <input type="file" />
+                            <span>+</span>
+                        </label>
+                    </div>
+                    <Typography variant="body1" color="error">{values.fileErr}</Typography>
+                    <br/>
+                    <br/>
+                    <div className="login-form-submit">
+                    <Grid container spacing={2}>
+                            <Grid item xs={12} sm={6}>
+                                <Button
+                                    variant="contained"
+                                    fullWidth
+                                    onClick={e => goBackRegistration(e)}
+                                >
+                                    Back
+                                </Button>
+                            </Grid>
+                            <Grid item xs={12} sm={6}>
+                                <Button
+                                    variant="contained"
+                                    fullWidth
+                                    color="primary"
+                                    onClick={e => continueRegistration(e)}
+                                >
+                                    Skip
+                                </Button>
+                            </Grid>
+                        </Grid>
+                    </div>
+                </div>
+
+            </div>
         </div>
     )
 }

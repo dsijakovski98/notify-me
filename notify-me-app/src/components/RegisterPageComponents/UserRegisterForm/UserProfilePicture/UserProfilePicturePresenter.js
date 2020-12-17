@@ -24,7 +24,7 @@ function UserProfilePicturePresenter({values, continueRegistration, goBackRegist
                     <Typography component="h1" variant="h5" >Sign up</Typography>
                     <br/>
                     <div id="upload-pic-text">
-                        <Typography variant="h5">Select your profile picture (optional)</Typography>
+                        <Typography variant="h6" style={{fontWeight: 300}}>Select your profile picture (optional)</Typography>
                     </div>
                     <div className="upload-container">
                         <label id="upload_label">
@@ -33,7 +33,6 @@ function UserProfilePicturePresenter({values, continueRegistration, goBackRegist
                         </label>
                     </div>
                     <Typography variant="body1" color="error">{values.fileErr}</Typography>
-                    <br/>
                     <br/>
                     <br/>
                     <div className="login-form-submit">

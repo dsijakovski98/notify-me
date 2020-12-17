@@ -1,10 +1,32 @@
-import React from 'react'
+import React from 'react';
+import CompanyProfilePicturePresenter from "./CompanyProfilePicturePresenter";
 
-function CompanyProfilePictureContainer() {
+function CompanyProfilePictureContainer({values, nextStep, prevStep}) {
+
+    const validateInputs = () => {
+        return true;
+    }
+
+    const continueRegistration = (e) => {
+        e.preventDefault();
+        if(validateInputs()) {
+            nextStep();
+        }
+    }
+
+    const goBackRegistration = (e) => {
+        e.preventDefault();
+        prevStep();
+    }
+
     return (
-        <div>
-            
-        </div>
+        <>
+            <CompanyProfilePicturePresenter
+                values={values}
+                continueRegistration={continueRegistration}
+                goBackRegistration={goBackRegistration}
+            />  
+        </>
     )
 }
 

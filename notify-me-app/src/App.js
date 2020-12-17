@@ -15,10 +15,10 @@ function App(props) {
     switch(location) {
       case `${rootPage}/register/user`:
       case `${rootPage}/register/company`:
-        document.title = "Notify-Me - Register";
+        document.title = "Notify Me - Register";
         break;
       case `${rootPage}`:
-        document.title = "Notify-Me - Home";
+        document.title = "Notify Me - Home";
         break;
       default:
         return null;

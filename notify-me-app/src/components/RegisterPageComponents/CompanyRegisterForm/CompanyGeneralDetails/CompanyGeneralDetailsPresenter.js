@@ -103,7 +103,6 @@ function CompanyGeneralDetailsPresenter({values, continueRegistration}) {
                     </Grid>
                     <br/>
                     <br/>
-                    <br/>
                     <div className="login-form-submit">
                     <Grid container spacing={2} justify="center">
                             <Grid item xs={12} sm={6}>

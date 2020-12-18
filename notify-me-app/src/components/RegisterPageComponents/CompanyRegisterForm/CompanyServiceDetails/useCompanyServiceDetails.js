@@ -7,8 +7,6 @@ const useCompanyServiceDetails = () => {
     const [branches, setBranches] = useState([]);
 
     const [headCityErr, setHeadCityErr] = useState("");
-    const [branchesErr, setBranchesErr] = useState("");
-    const [serviceTypeErr, setServiceTypeErr] = useState("");
 
     const serviceDetailsValues = {
         headCity,
@@ -18,13 +16,9 @@ const useCompanyServiceDetails = () => {
 
         serviceType,
         setServiceType,
-        serviceTypeErr,
-        setServiceTypeErr,
 
         branches,
-        setBranches,
-        branchesErr,
-        setBranchesErr
+        setBranches
     }
 
     const serviceDetailsParams = {

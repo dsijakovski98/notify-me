@@ -1,14 +1,39 @@
 import React from 'react';
+import "./style/company_upload_style.css";
 import "../../style/style.css";
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { Typography, Button, Avatar, Grid } from '@material-ui/core';
 
-function CompanyProfilePicturePresenter({values, continueRegistration, goBackRegistration}) {
+function CompanyProfilePicturePresenter
+({values, continueRegistration, goBackRegistration, uploadFile}) {
+
+    const uploadLabelButton = (
+        <div className="upload-container">
+            <label id="upload_label">
+                <input type="file" onChange={uploadFile}/>
+                <span>+</span>
+            </label>
+        </div>
+    );
+    const profilePicElement = (
+        <div className="upload-container-img">
+            <div className="profile-pic-container">
+                <img alt="profile-pic" src="https://source.unsplash.com/random">
+                </img>
+            </div>
+            <label id="upload_label">
+                <input type="file" onChange={uploadFile}/>
+                <span>+</span>
+            </label>
+        </div>
+    );
+
+    
     return (
         <div className="form-container-flex">
             <div className="form-explanation-container" >
                 <Typography variant="h2">
-                    Upload the company's logo
+                    Upload a profile picture
                 </Typography>
             </div>
             <div className="form-inputs-container">
@@ -22,13 +47,12 @@ function CompanyProfilePicturePresenter({values, continueRegistration, goBackReg
                     <div id="upload-pic-text">
                         <Typography variant="h6" style={{fontWeight: 300}}>Select your profile picture (optional)</Typography>
                     </div>
-                    <div className="upload-container">
-                        <label id="upload_label">
-                            <input type="file" />
-                            <span>+</span>
-                        </label>
-                    </div>
-                    <Typography variant="body1" color="error">{values.fileErr}</Typography>
+                    <br/>
+                        {values.file ? profilePicElement : uploadLabelButton}
+                        {values.fileErr 
+                            ? <Typography variant="body1" color="error">
+                                {values.fileErr}
+                            </Typography> : null}
                     <br/>
                     <br/>
                     <div className="login-form-submit">
@@ -49,7 +73,7 @@ function CompanyProfilePicturePresenter({values, continueRegistration, goBackReg
                                     color="primary"
                                     onClick={e => continueRegistration(e)}
                                 >
-                                    Skip
+                                    {values.file ? "Continue" : "Skip"}
                                 </Button>
                             </Grid>
                         </Grid>

@@ -5,26 +5,37 @@ const validImageTypes = ["image/png", "image/jpg", "image/jpeg"];
 
 function UserProfilePictureContainer({values, nextStep, prevStep}) {
 
-    // TODO: Connect to firebase for uploading files
+  let fileError = false;
 
-    const uploadFile = (e) => {
-        const selectedFile = e.target.files[0];
-        if (selectedFile) {
-          values.setFile(selectedFile);
+  const uploadFile = (e) => {
+      values.setFileErr("");
+
+      const selectedFile = e.target.files[0];
+
+      if (selectedFile) {
           if (validImageTypes.includes(selectedFile.type)) {
-            values.setErr("");
-          } else {
-            values.setErr("Select a valid file (png or jpg);");
-          }
-        } else {
-          values.setFile(null);
+              values.setFile(selectedFile);
+              values.setFileErr("");
+              fileError = false;
         }
-      };
+        else {
+              values.setFileErr("Select a valid file (png, jpg or jpeg)");
+              fileError = true;
+          }
+      }
 
-    const continueRegistration = (e) => {
+      else {
+        values.setFile(null);
+        fileError = true;
+      }
+    };
+
+  const continueRegistration = (e) => {
       e.preventDefault();
-      nextStep();
-    }
+      if(!fileError) {
+          nextStep();
+      }
+  }
 
     const goBackRegistration = (e) => {
       prevStep();

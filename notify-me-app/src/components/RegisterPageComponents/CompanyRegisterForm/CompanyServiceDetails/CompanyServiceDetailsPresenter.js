@@ -1,13 +1,13 @@
 import React from 'react'
 import "../../style/style.css";
 import Select from '@material-ui/core/Select';
-import ChipInput from 'material-ui-chip-input'
+import ChipInput from 'material-ui-chip-input';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { Typography, TextField, Button, Avatar, Grid, MenuItem, InputLabel }
  from '@material-ui/core';
 
 function CompanyServiceDetailsPresenter
-({values, continueRegistration, goBackRegistration, typesOfServices, cities,
+({values, continueRegistration, goBackRegistration, typesOfServices, defaultCities,
     handleBranchAdd, handleBranchRemove
 }) {
     return (
@@ -26,6 +26,7 @@ function CompanyServiceDetailsPresenter
                     <Typography component="h1" variant="h5" >Sign up</Typography>
                     <br/>
                     <br/>
+                    <br/>
                     <Grid container spacing={2} alignItems="center" >
                 
                         {/* Email input */}
@@ -37,7 +38,7 @@ function CompanyServiceDetailsPresenter
                                 fullWidth
                                 autoFocus
                                 label="City Headquarters"
-                                type="email"
+                                type="text"
                                 error={values.headCityErr ? true : false}
                                 helperText={values.headCityErr}
                                 value={values.headCity}
@@ -47,13 +48,10 @@ function CompanyServiceDetailsPresenter
 
                         {/* Password input */}
                         <Grid item xs={12} sm={6}>
-                        <InputLabel htmlFor="services-select">Service Type</InputLabel>
-                        <Select style={{color: '#f5f5f5', marginBottom: '0.5em'}}
+                        <Select style={{color: '#f5f5f5'}}
                             margin="dense"
                             fullWidth
-                            variant="outlined"
-                            label="demo-simple-select-label"
-                            id="services-select"
+                            variant="standard"
                             value={values.serviceType}
                             onChange={(e) => values.setServiceType(e.target.value)}
                         >
@@ -69,23 +67,23 @@ function CompanyServiceDetailsPresenter
 
                         {/* Confirm password input */}
                         <Grid item xs={12}>
+                            <>
                             <ChipInput
                                 fullWidth
-                                dataSource={cities}
-                                defaultValue={values.branches[0]}
-                                placeholder="List of branch cities"
-                                onRequestAdd={
-                                    city => handleBranchAdd(city)
-                                }
-                                onRequestDelete={
+                                allowDuplicates={false}
+                                dataSource={defaultCities}
+                                value={values.branches}
+                                placeholder="Branch cities  -  ⤵  to add"
+                                onAdd={(city) => handleBranchAdd(city)}
+                                onDelete={
                                     (city, index) => handleBranchRemove(city, index)
                                 }
-                            >
-                                
-                            </ChipInput>
+                            />
+                            </>
                         </Grid>            
 
                     </Grid>
+                    <br/>
                     <br/>
                     <br/>
                     <br/>

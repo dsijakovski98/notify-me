@@ -8,7 +8,7 @@ const typesOfServices = [
 ]
 
 // Dummy data, replace with call to database
-const cities = [
+const defaultCities = [
     "Skopje",
     "Ohrid",
     "Kumanovo",
@@ -22,8 +22,29 @@ function CompanyServiceDetailsContainer({values, nextStep, prevStep}) {
 
     const validateInputs = () => {
         // Clear inputs
+        values.setHeadCityErr("");
+
+        let cityError = "";
+
+        // Add default city
+        if(!values.branches.includes(values.headCity) && values.headCity.length > 0 ) {
+            handleBranchAdd(values.headCity);
+        }
+
+        // Empty fields
+        if(values.headCity === "") cityError = "Enter headquarters city!";
+        
+        if(cityError.length) {
+            values.setHeadCityErr(cityError);
+            return false;
+        }
+
+        
+
         return true;
     }
+
+
 
     const continueRegistration = (e) => {
         e.preventDefault();
@@ -42,7 +63,7 @@ function CompanyServiceDetailsContainer({values, nextStep, prevStep}) {
         newBranchesList.push(city);
         values.setBranches(newBranchesList);
     }
-
+    
     const handleBranchRemove = (city, index) => {
         const newBranchesList = [...values.branches];
         newBranchesList.splice(index, 1);
@@ -57,7 +78,7 @@ function CompanyServiceDetailsContainer({values, nextStep, prevStep}) {
                 continueRegistration={continueRegistration}
                 goBackRegistration={goBackRegistration}
                 typesOfServices={typesOfServices}
-                cities={cities}
+                defaultCities={defaultCities}
                 handleBranchAdd={handleBranchAdd}
                 handleBranchRemove={handleBranchRemove}
             />

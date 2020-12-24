@@ -1,0 +1,37 @@
+@import "../../../style/helper_styles/breakpoints";
+
+.post-links-container-grid {
+  width: 80%;
+  // height: 100%;
+  margin: 0 auto;
+  margin-top: 12em;
+  display: grid;
+  place-items: center;
+  //   background: green;
+}
+
+.post-links-container-flex {
+  width: 90%;
+  height: 100%;
+  margin: 0 auto;
+  // background: red;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+@media (max-width: $small_bp) {
+  .post-links-container-grid {
+    margin-top: 5em;
+    height: 95vh;
+  }
+
+  .post-links-container-flex {
+    flex-direction: column;
+    padding-bottom: 1em;
+  }
+
+  .post-icon {
+    margin-bottom: 5em;
+  }
+}

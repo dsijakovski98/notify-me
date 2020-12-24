@@ -3,6 +3,7 @@ import Navbar from "./components/Navbar/Navbar";
 import Homepage from "./components/HomepageComponents/Homepage/Homepage";
 import RegisterPage from "./components/RegisterPageComponents/RegisterPage/RegisterPage";
 import { Switch, Route, withRouter } from "react-router-dom";
+import UserHomepageContainer from "./components/UserHomepageComponents/UserHomepage/UserHomepageContainer";
 
 function App(props) {
 
@@ -35,6 +36,7 @@ function App(props) {
           </Switch>
             <Route path={`${rootPage}/register/:type`} exact component={RegisterPage} />
           {/* TODO: Add more page routes */}
+            <Route path={`${rootPage}/user-page`} exact component={UserHomepageContainer} />
       </div>
 
   );  

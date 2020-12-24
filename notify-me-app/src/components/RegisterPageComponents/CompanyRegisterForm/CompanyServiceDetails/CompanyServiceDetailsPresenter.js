@@ -3,7 +3,7 @@ import "../../style/style.css";
 import Select from '@material-ui/core/Select';
 import ChipInput from 'material-ui-chip-input';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import { Typography, TextField, Button, Avatar, Grid, MenuItem, InputLabel }
+import { Typography, TextField, Button, Avatar, Grid, MenuItem }
  from '@material-ui/core';
 
 function CompanyServiceDetailsPresenter

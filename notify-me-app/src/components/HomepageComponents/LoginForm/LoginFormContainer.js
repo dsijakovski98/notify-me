@@ -1,9 +1,12 @@
 import "./style/style.css";
 import LoginFormPresenter from "./LoginFormPresenter";
 import React, { useState } from 'react';
+import { withRouter } from "react-router-dom";
 import {emailPattern} from "../../../helperFunctions/validators";
 
-function LoginFormContainer() {
+function LoginFormContainer(props) {
+
+    const TEST_MODE = true;
 
     const [emailInput, setEmailInput] = useState("");
     const [passwordInput, setPasswordInput] = useState("");
@@ -14,11 +17,13 @@ function LoginFormContainer() {
     const signIn = (e) => {
         e.preventDefault();
         validateLogin();
-        console.log(emailInput);
-        console.log(passwordInput);
     }
 
     const validateLogin = () => {
+
+        if(TEST_MODE) {
+            props.history.push("/notify-me-RST/user-page")
+        }
         // Clear previous errors
         setEmailErr("");
         setPasswordErr("");
@@ -33,6 +38,9 @@ function LoginFormContainer() {
 
         // Check user existence
         // * Firebase required *
+
+        // If valid login : 
+        // props.history.push("/notify-me-RST/user-page")
     }
 
     return (
@@ -48,4 +56,4 @@ function LoginFormContainer() {
     )
 }
 
-export default LoginFormContainer;
+export default withRouter(LoginFormContainer);

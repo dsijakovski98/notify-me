@@ -34,7 +34,7 @@ function LoginFormContainer(props) {
 
         // Pattern match
         if(!emailPattern.test(emailInput) && emailInput.length)
-            setEmailErr("Enter a valid email!");
+            setEmailErr("Email invalid format!");
 
         // Check user existence
         // * Firebase required *

@@ -43,7 +43,6 @@ function UserGeneralDetailsContainer({values, nextStep}) {
         return true;
     }
 
-
     return (
         <>
             <UserGeneralDetailsPresenter

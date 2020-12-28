@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import UserProfilePicturePresenter from "./UserProfilePicturePresenter";
 
 const validImageTypes = ["image/png", "image/jpg", "image/jpeg"];

@@ -35,7 +35,9 @@ const useCompanyGeneralDetails = () => {
     const generalDetailsParams = {
         "Company Name": companyName,
         "Date of Incorporation":
-            `${companyStartDate.getDate()}/${companyStartDate.getMonth()}/${companyStartDate.getFullYear()}`,
+            companyStartDate ? 
+            `${companyStartDate.getDate()}/${companyStartDate.getMonth()}/${companyStartDate.getFullYear()}`
+            : "",
         "Founder Name": `${companyFounderFirstName} ${companyFounderLastName}`,
     }
 

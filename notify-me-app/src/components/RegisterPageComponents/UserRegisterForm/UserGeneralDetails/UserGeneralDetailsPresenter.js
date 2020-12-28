@@ -64,6 +64,7 @@ function UserGeneralDetailsPresenter({ values, continueRegistration, genders }) 
                                     fullWidth
                                     variant="dialog"
                                     format="dd/MM/yyyy"
+                                    placeholder="DD/MM/YYYY"
                                     margin="normal"
                                     label="Date of Birth"
                                     maxDate={new Date()}

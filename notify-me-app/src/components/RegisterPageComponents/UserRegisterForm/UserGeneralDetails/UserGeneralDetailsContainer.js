@@ -1,6 +1,8 @@
 import React from 'react';
 import UserGeneralDetailsPresenter from "./UserGeneralDetailsPresenter";
 
+const genders = ["Male", "Female", "Other"];
+
 function UserGeneralDetailsContainer({values, nextStep}) {
 
 
@@ -44,7 +46,8 @@ function UserGeneralDetailsContainer({values, nextStep}) {
 
     return (
         <>
-            <UserGeneralDetailsPresenter 
+            <UserGeneralDetailsPresenter
+                genders={genders} 
                 values={values}
                 continueRegistration={continueRegistration}
             />

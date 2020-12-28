@@ -1,5 +1,6 @@
 import React from 'react'
 import CompanyAccountDetailsPresenter from "./CompanyAccountDetailsPresenter";
+import { emailPattern } from "../../../../helperFunctions/validators";
 
 function CompanyAccountDetailsContainer({values, nextStep, prevStep}) {
 
@@ -24,6 +25,11 @@ function CompanyAccountDetailsContainer({values, nextStep, prevStep}) {
             compPwdError = "Enter password!";
         if(values.companyConfirmPassword === "")
             compConfirmPwdError = "Confirm password!";
+        
+        
+        // Email format validation
+        if(!emailPattern.test(values.companyEmail))
+            compEmailError = "Email invalid format!";
 
 
         if(compEmailError.length || compPwdError.length ||

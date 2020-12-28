@@ -5,6 +5,7 @@ const useGeneralDetails = () => {
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [dateOfBirth, setDateOfBirth] = useState(new Date());
+    const [gender, setGender] = useState("Other");
     const [city, setCity] = useState("");
 
     const [firstNameErr, setFirstNameErr] = useState("");
@@ -25,6 +26,9 @@ const useGeneralDetails = () => {
         dateOfBirth,
         setDateOfBirth,
 
+        gender,
+        setGender,
+
         city,
         setCity,
         cityErr,
@@ -36,7 +40,8 @@ const useGeneralDetails = () => {
         "Last Name": lastName,
         "Date of Birth": 
             `${dateOfBirth.getDate()}/${dateOfBirth.getMonth()}/${dateOfBirth.getFullYear()}`,
-        "City":city,
+        "Gender": gender,
+        "City": city,
     }
 
     return [generalDetailsValues, generalDetailsParams];

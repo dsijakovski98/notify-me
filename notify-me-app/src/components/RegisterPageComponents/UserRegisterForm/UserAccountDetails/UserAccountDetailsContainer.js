@@ -1,5 +1,6 @@
 import React from 'react';
 import UserAccountDetailsPresenter from "./UserAccountDetailsPresenter";
+import { emailPattern } from "../../../../helperFunctions/validators";
 
 function UserAccountDetailsContainer({values, nextStep, prevStep}) {
 
@@ -34,7 +35,8 @@ function UserAccountDetailsContainer({values, nextStep, prevStep}) {
         if(values.userPassword === "") passwordError = "Enter a password!";
         if(values.passwordConfirm === "") cPasswordError = "Confirm your password!";
         
-
+        // Valid email format
+        if(!emailPattern.test(values.userEmail)) emailError = "Email invalid format!";
 
         if(emailError.length || passwordError.length || cPasswordError.length) {
             values.setEmailErr(emailError);

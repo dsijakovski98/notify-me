@@ -9,6 +9,7 @@ function CompanyProfilePictureContainer({values, nextStep, prevStep}) {
 
     const uploadFile = (e) => {
         values.setFileErr("");
+        fileError = false;
 
         const selectedFile = e.target.files[0];
 

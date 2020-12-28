@@ -3,11 +3,12 @@ import "../../style/style.css";
 import 'date-fns';
 import DateFnsUtils from '@date-io/date-fns';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import { Typography, TextField, Button, Avatar, Grid } from '@material-ui/core';
+import { Typography, TextField, Button, Avatar, Grid, Select, MenuItem, InputLabel, FormControl }
+ from '@material-ui/core';
 import { KeyboardDatePicker, MuiPickersUtilsProvider } from '@material-ui/pickers';
 
 
-function UserGeneralDetailsPresenter({ values, continueRegistration }) {
+function UserGeneralDetailsPresenter({ values, continueRegistration, genders }) {
 
     return (
         <div className="form-container-flex">
@@ -24,7 +25,7 @@ function UserGeneralDetailsPresenter({ values, continueRegistration }) {
                     
                     <Typography component="h1" variant="h5" >Sign up</Typography>
                     <br/>
-                    <Grid container spacing={2}>
+                    <Grid container spacing={2} alignItems="center" justify="flex-end">
                         <Grid item xs={12} sm={6}>
                             <TextField
                                 margin="dense"
@@ -72,7 +73,7 @@ function UserGeneralDetailsPresenter({ values, continueRegistration }) {
                             </MuiPickersUtilsProvider>
                         </Grid>
 
-                        <Grid item xs={12}>
+                        <Grid item xs={12} sm={6}>
                             <TextField
                                 margin="dense"
                                 variant="outlined"
@@ -85,7 +86,29 @@ function UserGeneralDetailsPresenter({ values, continueRegistration }) {
                                 value={values.city}
                                 onChange={(e) => values.setCity(e.target.value)}
                             />
-                        </Grid>               
+                        </Grid>
+
+                        <Grid item xs={8} sm={6}>
+                        <FormControl>
+                            <InputLabel htmlFor="genders">Gender</InputLabel>
+                            <Select style={{color: '#f5f5f5'}}
+                                margin="dense"
+                                fullWidth
+                                variant="standard"
+                                id="genders"
+                                value={values.gender}
+                                onChange={(e) => values.setGender(e.target.value)}
+                            >
+                                {genders.map(gender => {
+                                    return (
+                                        <MenuItem key={gender} value={gender}>
+                                            {gender}
+                                        </MenuItem>
+                                    )
+                                })}
+                            </Select>
+                        </FormControl>
+                        </Grid>            
 
                     </Grid>
                     <br/>

@@ -1,0 +1,13 @@
+* Database design []
+* Firebase user auth []
+* Registration form:
+	User:
+		> Email verification [x]
+		> Gender [x]
+		> Image Upload [x]
+		> Insert user into database []
+	Company:
+		> Email verification [x]
+		> Image Upload [x]
+		> Insert company into database []
+	Insert profile picture into database table []

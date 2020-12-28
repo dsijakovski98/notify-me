@@ -1,33 +1,13 @@
-import "./style/upload_style.css"
+import "../../style/upload_style/style.css";
 import "../../style/style.css";
 import React from 'react'
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { Typography, Button, Avatar, Grid } from '@material-ui/core';
+import ProgressBar from "../../ProgressBar/ProgressBar";
 
 
 function UserProfilePicturePresenter
 ({values, continueRegistration, goBackRegistration, uploadFile}) {
-
-    const uploadLabelButton = (
-        <div className="upload-container">
-            <label id="upload_label">
-                <input type="file" onChange={uploadFile}/>
-                <span>+</span>
-            </label>
-        </div>
-    );
-    const profilePicElement = (
-        <div className="upload-container-img">
-            <div className="profile-pic-container">
-                <img alt="profile-pic" src="https://source.unsplash.com/random">
-                </img>
-            </div>
-            <label id="upload_label">
-                <input type="file" onChange={uploadFile}/>
-                <span>+</span>
-            </label>
-        </div>
-    );
 
     return (
         <div className="form-container-flex">
@@ -48,7 +28,32 @@ function UserProfilePicturePresenter
                         <Typography variant="h6" style={{fontWeight: 300}}>Select your profile picture (optional)</Typography>
                     </div>
                     <br/>
-                        {values.file ? profilePicElement : uploadLabelButton}
+
+                    <div className="upload-container-img">
+                        <div className="profile-pic-container">
+
+                            {values.imageSource && 
+                                <img alt="profile" src={values.imageSource}>
+                                </img>
+                            }
+                            {
+                                values.file && 
+                                <ProgressBar
+                                    file={values.file}
+                                    setFile={values.setFile}
+                                    accountType={"user"}
+                                    setImageSource={values.setImageSource}
+                                />
+                            }
+                        </div>
+                    </div>
+                    
+                    <div className="upload-container">
+                        <label id="upload_label">
+                            <input type="file" onChange={uploadFile}/>
+                            <span>+</span>
+                        </label>
+                    </div>
                         {values.fileErr 
                             ? <Typography variant="body1" color="error">
                                 {values.fileErr}
@@ -73,7 +78,7 @@ function UserProfilePicturePresenter
                                     color="primary"
                                     onClick={e => continueRegistration(e)}
                                 >
-                                    {values.file ? "Continue" : "Skip"}
+                                    {values.imageSource ? "Continue" : "Skip"}
                                 </Button>
                             </Grid>
                         </Grid>

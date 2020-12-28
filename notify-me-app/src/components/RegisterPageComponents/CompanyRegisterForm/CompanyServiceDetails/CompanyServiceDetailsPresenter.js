@@ -1,9 +1,8 @@
 import React from 'react'
 import "../../style/style.css";
-import Select from '@material-ui/core/Select';
 import ChipInput from 'material-ui-chip-input';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import { Typography, TextField, Button, Avatar, Grid, MenuItem }
+import { Typography, TextField, Button, Avatar, Grid, MenuItem, Select }
  from '@material-ui/core';
 
 function CompanyServiceDetailsPresenter
@@ -29,7 +28,7 @@ function CompanyServiceDetailsPresenter
                     <br/>
                     <Grid container spacing={2} alignItems="center" >
                 
-                        {/* Email input */}
+                        {/* Headquarters input */}
                         <Grid item xs={12} sm={6}>
                             <TextField
                                 margin="dense"
@@ -46,7 +45,7 @@ function CompanyServiceDetailsPresenter
                             />
                         </Grid>   
 
-                        {/* Password input */}
+                        {/* Type of service input */}
                         <Grid item xs={12} sm={6}>
                         <Select style={{color: '#f5f5f5'}}
                             margin="dense"
@@ -65,7 +64,7 @@ function CompanyServiceDetailsPresenter
                         </Select>
                         </Grid>
 
-                        {/* Confirm password input */}
+                        {/* Branches input */}
                         <Grid item xs={12}>
                             <>
                             <ChipInput

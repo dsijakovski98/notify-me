@@ -9,6 +9,7 @@ function App(props) {
 
   const rootPage = "/notify-me-RST";
   const location = props.location.pathname;
+  
 
   // Set document title
   useEffect(() => {

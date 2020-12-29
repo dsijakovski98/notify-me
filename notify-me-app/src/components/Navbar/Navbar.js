@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { AppBar, Toolbar, Typography, Grid } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import NotificationsActiveIcon from '@material-ui/icons/NotificationsActive';
+import { AuthContext } from "../../firebase/auth";
 
 const useStyles = makeStyles({
     root: {
@@ -26,6 +27,10 @@ const useStyles = makeStyles({
   });
 
 function Navbar() {
+    const { currentUser } = useContext(AuthContext);
+
+    if(currentUser) console.log(currentUser);
+
     const classes = useStyles();
 
     return (

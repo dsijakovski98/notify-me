@@ -2,11 +2,12 @@ import "./style/style.css";
 import LoginFormPresenter from "./LoginFormPresenter";
 import React, { useState } from 'react';
 import { withRouter } from "react-router-dom";
-import {emailPattern} from "../../../helperFunctions/validators";
+import {emailPattern} from "../../../helpers/validators";
+import { login } from "../../../helpers/currentUserManager";
 
 function LoginFormContainer(props) {
 
-    const TEST_MODE = true;
+    const TEST_MODE = false;
 
     const [emailInput, setEmailInput] = useState("");
     const [passwordInput, setPasswordInput] = useState("");
@@ -16,31 +17,42 @@ function LoginFormContainer(props) {
 
     const signIn = (e) => {
         e.preventDefault();
-        validateLogin();
+        if(validateLogin()) {
+            login(emailInput, passwordInput);
+            props.history.push("/notify-me-RST/user-page");
+        }
     }
 
     const validateLogin = () => {
 
-        if(TEST_MODE) {
-            props.history.push("/notify-me-RST/user-page")
-        }
+        // if(TEST_MODE) {
+        //     props.history.push("/notify-me-RST/user-page")
+        // }
         // Clear previous errors
         setEmailErr("");
         setPasswordErr("");
 
+        let emailError = "";
+        let pwdError = "";
+
         // Empty fields
-        if(emailInput === "") setEmailErr("Enter your email!");
-        if(passwordInput === "") setPasswordErr("Enter your password!");
+        if(emailInput === "") emailError = "Enter your email!";
+        if(passwordInput === "") pwdError = "Enter your password!";
 
         // Pattern match
         if(!emailPattern.test(emailInput) && emailInput.length)
-            setEmailErr("Email invalid format!");
+            emailError = "Email invalid format!";
 
+        if(emailError.length || pwdError.length) {
+            setEmailErr(emailError);
+            setPasswordErr(pwdError);
+            return false;
+        }
+            
         // Check user existence
         // * Firebase required *
 
-        // If valid login : 
-        // props.history.push("/notify-me-RST/user-page")
+        return true;
     }
 
     return (

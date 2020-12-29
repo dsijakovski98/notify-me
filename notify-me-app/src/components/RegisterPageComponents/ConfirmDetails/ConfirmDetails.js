@@ -2,6 +2,7 @@ import "./style/style.css";
 import React from 'react'
 import { List, ListItem, Typography, Grid, Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+import { register, logout } from "../../../helpers/currentUserManager";
 
 const useStyles = makeStyles({
     root: {
@@ -10,11 +11,19 @@ const useStyles = makeStyles({
     },
 })
 
-function ConfirmDetails({values, nextStep, prevStep}) {
+function ConfirmDetails({values, nextStep, prevStep, email, password, displayName}) {
+
     const classes = useStyles();
 
     const keys = Object.keys(values);
     const detailValues = Object.values(values);
+
+    const registerAccount = () => {
+        register(email, password, displayName);
+        logout();
+        nextStep();
+    }
+
 
     return (
         <div className="confirm-list-container">
@@ -57,7 +66,7 @@ function ConfirmDetails({values, nextStep, prevStep}) {
                     variant="contained"
                     fullWidth
                     color="primary"
-                    onClick={nextStep}
+                    onClick={registerAccount}
                 >
                     Continue
                 </Button>

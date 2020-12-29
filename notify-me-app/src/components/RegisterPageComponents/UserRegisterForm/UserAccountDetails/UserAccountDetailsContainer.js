@@ -1,6 +1,6 @@
 import React from 'react';
 import UserAccountDetailsPresenter from "./UserAccountDetailsPresenter";
-import { emailPattern } from "../../../../helperFunctions/validators";
+import { emailPattern } from "../../../../helpers/validators";
 
 function UserAccountDetailsContainer({values, nextStep, prevStep}) {
 
@@ -37,6 +37,10 @@ function UserAccountDetailsContainer({values, nextStep, prevStep}) {
         
         // Valid email format
         if(!emailPattern.test(values.userEmail)) emailError = "Email invalid format!";
+
+        // Password length
+        if(values.userPassword.length < 6)
+            passwordError = "Password must be at least 6 characters!";
 
         if(emailError.length || passwordError.length || cPasswordError.length) {
             values.setEmailErr(emailError);

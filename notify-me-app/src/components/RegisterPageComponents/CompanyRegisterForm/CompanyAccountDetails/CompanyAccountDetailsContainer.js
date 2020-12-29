@@ -1,6 +1,6 @@
 import React from 'react'
 import CompanyAccountDetailsPresenter from "./CompanyAccountDetailsPresenter";
-import { emailPattern } from "../../../../helperFunctions/validators";
+import { emailPattern } from "../../../../helpers/validators";
 
 function CompanyAccountDetailsContainer({values, nextStep, prevStep}) {
 
@@ -31,6 +31,9 @@ function CompanyAccountDetailsContainer({values, nextStep, prevStep}) {
         if(!emailPattern.test(values.companyEmail))
             compEmailError = "Email invalid format!";
 
+        // Password length
+        if(values.companyPassword.length < 6)
+            compPwdError = "Password must be at least 6 characters!";
 
         if(compEmailError.length || compPwdError.length ||
             compConfirmPwdError.length) {

@@ -85,6 +85,9 @@ function CompanyFormContainer() {
                         values={allDetails}
                         nextStep={nextStep}
                         prevStep={prevStep}
+                        email={companyAccountDetailsValues.companyEmail}
+                        password={companyAccountDetailsValues.companyPassword}
+                        displayName={companyGeneralDetailsValues.companyName}
                     />
                 )
             case 6:

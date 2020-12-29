@@ -68,6 +68,9 @@ function UserFormContainer() {
                         nextStep={nextStep}
                         prevStep={prevStep}
                         values={AllDetails}
+                        email={userAccountDetailsValues.userEmail}
+                        password={userAccountDetailsValues.userPassword}
+                        displayName={userGeneralDetailsValues.firstName}
                     />
                 )
             case 5:

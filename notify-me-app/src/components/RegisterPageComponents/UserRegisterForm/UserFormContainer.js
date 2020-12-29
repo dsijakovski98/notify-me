@@ -71,6 +71,7 @@ function UserFormContainer() {
                         email={userAccountDetailsValues.userEmail}
                         password={userAccountDetailsValues.userPassword}
                         displayName={userGeneralDetailsValues.firstName}
+                        img={userProfilePictureValues.imageSource}
                     />
                 )
             case 5:

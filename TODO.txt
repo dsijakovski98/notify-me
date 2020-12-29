@@ -1,13 +1,10 @@
-* Database design [x]
-* Firebase user auth [x]
+
 * Registration form:
 	User:
-		> Email verification [x]
-		> Gender [x]
-		> Image Upload [x]
 		> Insert user into database []
 	Company:
-		> Email verification [x]
-		> Image Upload [x]
 		> Insert company into database []
-	Insert profileURL in user registration
+
+	Insert profileURL in registration [x]
+* Protect links from entering without auth []
+* Don't go to success page, redirect to sign-in []

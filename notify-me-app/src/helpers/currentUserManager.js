@@ -1,10 +1,18 @@
 import { auth } from "../firebase/config";
 
-const register = (email, password, name) => {
+const logoutUser = () => {
+    auth.signOut();
+}
+
+const register = (email, password, name, profilePicSource) => {
+    if(!profilePicSource.length) {
+        profilePicSource = null;
+    }
     auth.createUserWithEmailAndPassword(email, password)
     .then((result) => {
         result.user.updateProfile({
-            displayName: name
+            displayName: name,
+            photoURL: profilePicSource
         })
     })
     .catch((err) => {
@@ -22,8 +30,6 @@ const login = (email, password) => {
     })
 }
 
-const logout = () => {
-    auth.signOut();
-}
 
-export { register, login, logout }
+
+export { register, login, logoutUser }

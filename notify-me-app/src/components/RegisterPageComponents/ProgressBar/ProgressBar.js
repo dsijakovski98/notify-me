@@ -7,6 +7,7 @@ function ProgressBar({file, setFile, accountType, setImageSource}) {
     const {progress, url, err} = useStorage(file, accountType);
 
     useEffect(() => {
+        setImageSource("");
         if(url) {
             setImageSource(url);
             setFile(null);

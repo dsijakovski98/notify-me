@@ -88,6 +88,7 @@ function CompanyFormContainer() {
                         email={companyAccountDetailsValues.companyEmail}
                         password={companyAccountDetailsValues.companyPassword}
                         displayName={companyGeneralDetailsValues.companyName}
+                        img={companyProfilePictureValues.imageSource}
                     />
                 )
             case 6:

@@ -2,7 +2,7 @@ import "./style/style.css";
 import React from 'react'
 import { List, ListItem, Typography, Grid, Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import { register, logout } from "../../../helpers/currentUserManager";
+import { register } from "../../../helpers/currentUserManager";
 
 const useStyles = makeStyles({
     root: {
@@ -11,7 +11,7 @@ const useStyles = makeStyles({
     },
 })
 
-function ConfirmDetails({values, nextStep, prevStep, email, password, displayName}) {
+function ConfirmDetails({values, nextStep, prevStep, email, password, displayName, img}) {
 
     const classes = useStyles();
 
@@ -19,8 +19,7 @@ function ConfirmDetails({values, nextStep, prevStep, email, password, displayNam
     const detailValues = Object.values(values);
 
     const registerAccount = () => {
-        register(email, password, displayName);
-        logout();
+        register(email, password, displayName, img);
         nextStep();
     }
 

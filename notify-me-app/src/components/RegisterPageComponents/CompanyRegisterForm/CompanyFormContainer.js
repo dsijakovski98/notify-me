@@ -91,11 +91,6 @@ function CompanyFormContainer() {
                         img={companyProfilePictureValues.imageSource}
                     />
                 )
-            case 6:
-                return (
-                    // Successfull Registration
-                    <SuccessRegistration />
-                )
             default:
                 return alert("Invalid step!");
         }

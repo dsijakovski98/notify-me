@@ -1,5 +1,6 @@
 import "./style/style.css";
 import React from 'react'
+import { withRouter } from "react-router-dom";
 import { List, ListItem, Typography, Grid, Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { register } from "../../../helpers/currentUserManager";
@@ -11,7 +12,7 @@ const useStyles = makeStyles({
     },
 })
 
-function ConfirmDetails({values, nextStep, prevStep, email, password, displayName, img}) {
+function ConfirmDetails({values, nextStep, prevStep, email, password, displayName, img, history}) {
 
     const classes = useStyles();
 
@@ -20,7 +21,7 @@ function ConfirmDetails({values, nextStep, prevStep, email, password, displayNam
 
     const registerAccount = () => {
         register(email, password, displayName, img);
-        nextStep();
+        history.push("/notify-me-RST/user-page");
     }
 
 
@@ -76,4 +77,4 @@ function ConfirmDetails({values, nextStep, prevStep, email, password, displayNam
     )
 }
 
-export default ConfirmDetails
+export default withRouter(ConfirmDetails)

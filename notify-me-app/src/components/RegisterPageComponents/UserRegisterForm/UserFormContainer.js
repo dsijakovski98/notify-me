@@ -74,11 +74,6 @@ function UserFormContainer() {
                         img={userProfilePictureValues.imageSource}
                     />
                 )
-            case 5:
-                return (
-                    // Success
-                    <SuccessRegistration />
-                )
             default:
                 return alert("Invalid step!")
         }

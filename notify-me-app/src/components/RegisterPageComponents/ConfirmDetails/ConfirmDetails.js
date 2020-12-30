@@ -20,8 +20,10 @@ function ConfirmDetails({values, nextStep, prevStep, email, password, displayNam
     const detailValues = Object.values(values);
 
     const registerAccount = () => {
-        register(email, password, displayName, img);
-        history.push("/notify-me-RST/user-page");
+        const registerPromise = register(email, password, displayName, img);
+        registerPromise.then(() => {
+            history.push("/notify-me-RST/user-page");
+        })
     }
 
 

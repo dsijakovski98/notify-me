@@ -10,7 +10,6 @@ import UserProfilePictureContainer from "./UserProfilePicture/UserProfilePicture
 import useProfilePicture from "./UserProfilePicture/useProfilePicture";
 
 import ConfirmDetails from "../ConfirmDetails/ConfirmDetails";
-import SuccessRegistration from "../SuccessRegistration/SuccessRegistration";
 
 function UserFormContainer() {
     const [step, setStep] = useState(1);

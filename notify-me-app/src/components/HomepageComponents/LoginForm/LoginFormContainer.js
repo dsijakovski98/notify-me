@@ -7,8 +7,6 @@ import { login } from "../../../helpers/currentUserManager";
 
 function LoginFormContainer(props) {
 
-    const TEST_MODE = false;
-
     const [emailInput, setEmailInput] = useState("");
     const [passwordInput, setPasswordInput] = useState("");
     
@@ -19,15 +17,15 @@ function LoginFormContainer(props) {
         e.preventDefault();
         if(validateLogin()) {
             login(emailInput, passwordInput);
+            // TODO: Get account type: USER or COMPANY
+            // if type is USER
             props.history.push("/notify-me-RST/user-page");
+            // if type is COMPANY
+            // props.history.push("/notify-me-RST/company-page");
         }
     }
 
     const validateLogin = () => {
-
-        // if(TEST_MODE) {
-        //     props.history.push("/notify-me-RST/user-page")
-        // }
         // Clear previous errors
         setEmailErr("");
         setPasswordErr("");

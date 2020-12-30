@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { withRouter } from "react-router-dom";
 import UserFormContainer from "../UserRegisterForm/UserFormContainer";
 import CompanyFormContainer from "../CompanyRegisterForm/CompanyFormContainer"
 import { Box } from '@material-ui/core';
 import { makeStyles } from "@material-ui/core/styles";
+import { AuthContext } from "../../../firebase/auth";
 
 const useStyles = makeStyles({
     centerFormContainer: {
@@ -14,6 +15,13 @@ const useStyles = makeStyles({
 });
 
 function RegisterPage(props) {
+    const { currentUser } = useContext(AuthContext);
+
+    if(currentUser) {
+        // TODO: check account type to redirect
+        props.history.push("/notify-me-RST/user-page");
+    }
+
     const classes = useStyles();
 
     const registerType = props.match.params.type;

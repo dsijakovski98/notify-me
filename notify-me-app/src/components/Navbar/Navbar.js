@@ -1,13 +1,11 @@
 import React, { useContext } from 'react';
-import { AppBar, Toolbar, Typography, Grid, Avatar, IconButton } from "@material-ui/core";
-import { Link, withRouter } from "react-router-dom";
+import UserDataAvatar from "./UserDataAvatar";
+import { AppBar, Toolbar, Typography, Grid, Avatar } from "@material-ui/core";
+import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import NotificationsActiveIcon from '@material-ui/icons/NotificationsActive';
 import { AuthContext } from "../../firebase/auth";
 import defaultPic from "../../images/default-profile-picture.png";
-import { blue } from '@material-ui/core/colors';
-import {logoutUser} from "../../helpers/currentUserManager";
-import ExitToAppOutlinedIcon from '@material-ui/icons/ExitToAppOutlined';
 
 const useStyles = makeStyles({
     root: {
@@ -27,15 +25,6 @@ const useStyles = makeStyles({
       marginBottom: 5,
       marginRight: 5
     },
-    avatar: {
-      width: 48,
-      height: 48,
-      marginLeft: '0.5em',
-      backgroundColor: blue[800]
-    },
-    avatarImg: {
-      objectFit: 'contain'
-    },
     logoutButton: {
       paddingBottom: 4
     },
@@ -49,7 +38,8 @@ const useStyles = makeStyles({
     }
   });
 
-function Navbar(props) {
+
+function Navbar() {
     const { currentUser } = useContext(AuthContext);
     let profilePicture = defaultPic;
     let displayName = "Unknown";
@@ -61,11 +51,6 @@ function Navbar(props) {
     } 
 
     const classes = useStyles();
-
-    const logout = () => {
-      logoutUser();
-      props.history.push("/notify-me-RST/");
-    }
 
     return (
         <AppBar className={classes.root} position="sticky">
@@ -95,26 +80,12 @@ function Navbar(props) {
 
 
           </Grid>
-              
-
           {
             currentUser &&
-            <>
-              <Grid container alignItems="flex-end" justify="flex-end">
-                <Typography variant="subtitle1">{displayName}</Typography>
-                <Avatar
-                  className={classes.avatar}
-                  classes={{img: classes.avatarImg}}
-                  src={profilePicture} />
-                <IconButton className={classes.logoutButton}
-                  onClick={() => logout()}
-                >
-                    <ExitToAppOutlinedIcon 
-                    className={classes.logout}
-                    color="primary" />
-                </IconButton>
-              </Grid>
-              </>
+            <UserDataAvatar
+              displayName={displayName}
+              profilePicture={profilePicture}
+            />
           }
 
         </Toolbar>
@@ -122,4 +93,4 @@ function Navbar(props) {
     )
 }
 
-export default withRouter(Navbar);
+export default Navbar;

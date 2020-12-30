@@ -8,7 +8,7 @@ const register = (email, password, name, profilePicSource) => {
     if(!profilePicSource.length) {
         profilePicSource = null;
     }
-    auth.createUserWithEmailAndPassword(email, password)
+    return auth.createUserWithEmailAndPassword(email, password)
     .then((result) => {
         result.user.updateProfile({
             displayName: name,

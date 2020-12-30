@@ -60,6 +60,8 @@ function CompanyServiceDetailsContainer({values, nextStep, prevStep}) {
 
     const handleBranchAdd = (city) => {
         const newBranchesList = [...values.branches];
+        // TODO: check if input city is valid
+        // if(validCities.contains(city))
         newBranchesList.push(city);
         values.setBranches(newBranchesList);
     }

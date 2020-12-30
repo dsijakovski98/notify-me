@@ -1,10 +1,10 @@
+* LoginFormContainer
+	> Check login account type []
 
-* Registration form:
-	User:
-		> Insert user into database []
-	Company:
-		> Insert company into database []
+* Check account type in redirect actions []
 
-	Insert profileURL in registration [x]
-* Protect links from entering without auth []
-* Don't go to success page, redirect to sign-in []
+* Check if chip input city branches is valid []
+
+* Add user to users table on register []
+* Add company to companies table on register []
+

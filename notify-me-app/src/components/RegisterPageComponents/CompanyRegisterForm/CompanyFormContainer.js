@@ -13,7 +13,6 @@ import CompanyProfilePictureContainer from "./CompanyProfilePicture/CompanyProfi
 import useCompanyProfilePicture from "./CompanyProfilePicture/useCompanyProfilePicture";
 
 import ConfirmDetails from "../ConfirmDetails/ConfirmDetails";
-import SuccessRegistration from "../SuccessRegistration/SuccessRegistration";
 
 function CompanyFormContainer() {
     const [step, setStep] = useState(1);

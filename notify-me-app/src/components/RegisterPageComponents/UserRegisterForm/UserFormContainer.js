@@ -19,9 +19,16 @@ function UserFormContainer() {
     const [userProfilePictureValues] = useProfilePicture();
 
     // All Details
-    const AllDetails = {
+    const allDetails = {
         ...userGeneralDetailsParams,
         ...userAccountDetailsParams
+    }
+
+    // All values
+    const allValues = {
+        ...userGeneralDetailsValues,
+        ...userAccountDetailsValues,
+        ...userProfilePictureValues
     }
 
     const nextStep = () => {
@@ -64,13 +71,10 @@ function UserFormContainer() {
                 return (
                     // ConfirmInput
                     <ConfirmDetails
-                        nextStep={nextStep}
+                        parameters={allDetails}
                         prevStep={prevStep}
-                        values={AllDetails}
-                        email={userAccountDetailsValues.userEmail}
-                        password={userAccountDetailsValues.userPassword}
-                        displayName={userGeneralDetailsValues.firstName}
-                        img={userProfilePictureValues.imageSource}
+                        values={allValues}
+                        accountType={"user"}
                     />
                 )
             default:

@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import UserDataAvatar from "./UserDataAvatar";
-import { AppBar, Toolbar, Typography, Grid, Avatar } from "@material-ui/core";
+import { AppBar, Toolbar, Typography, Grid } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import NotificationsActiveIcon from '@material-ui/icons/NotificationsActive';

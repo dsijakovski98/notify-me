@@ -32,6 +32,14 @@ function CompanyFormContainer() {
         ...companyAccountDetailsParams
     }
 
+    // All Values
+    const allValues = {
+        ...companyGeneralDetailsValues,
+        ...companyServiceDetailsValues,
+        ...companyAccountDetailsValues,
+        ...companyProfilePictureValues
+    }
+
     const nextStep = () => {
         setStep(step + 1);
     }
@@ -81,13 +89,10 @@ function CompanyFormContainer() {
                 return (
                     // Confirm Inputs
                     <ConfirmDetails 
-                        values={allDetails}
-                        nextStep={nextStep}
+                        parameters={allDetails}
                         prevStep={prevStep}
-                        email={companyAccountDetailsValues.companyEmail}
-                        password={companyAccountDetailsValues.companyPassword}
-                        displayName={companyGeneralDetailsValues.companyName}
-                        img={companyProfilePictureValues.imageSource}
+                        values={allValues}
+                        accountType={"company"}
                     />
                 )
             default:

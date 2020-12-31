@@ -1,9 +1,13 @@
 import "./style/style.css";
 import React from 'react'
 import { withRouter } from "react-router-dom";
+
 import { List, ListItem, Typography, Grid, Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+
 import { register } from "../../../helpers/currentUserManager";
+import { addUser, addCompany } from "../../../helpers/databaseAdd";
+import { v4 as uuidv4 } from 'uuid';
 
 const useStyles = makeStyles({
     root: {
@@ -12,20 +16,82 @@ const useStyles = makeStyles({
     },
 })
 
-function ConfirmDetails({values, nextStep, prevStep, email, password, displayName, img, history}) {
+function ConfirmDetails(props) {
+    const {parameters, prevStep, values, accountType} = props;
 
     const classes = useStyles();
 
-    const keys = Object.keys(values);
-    const detailValues = Object.values(values);
+    const keys = Object.keys(parameters);
+    const detailValues = Object.values(parameters);
+    
 
     const registerAccount = () => {
-        const registerPromise = register(email, password, displayName, img);
+        // Generate id
+        const id = uuidv4();
+        let accountData = null;
+
+        if(accountType === "user") {
+            accountData = extractUserData(id);
+        }
+        else if(accountType === "company") {
+            accountData = extractCompanyData(id);
+        }
+
+        const {email, password, displayName, profileUrl} = accountData;
+
+        const registerPromise = register(email, password, displayName, profileUrl);
         registerPromise.then(() => {
-            history.push("/notify-me-RST/user-page");
+
+            let redirectPage = `${accountType}-page`;
+            // Check account type
+            if(accountType === "user") {
+                // Insert user into database
+                addUser(accountData);
+            }
+            else if(accountType === "company") {
+                // Insert company into database
+                addCompany(accountData);
+            }
+
+            props.history.push(`/notify-me-RST/${redirectPage}`);
         })
+
+
     }
 
+
+    const extractUserData = (id) => {
+        return {
+            id,
+            email: values.userEmail,
+            password: values.userPassword,
+            displayName: values.firstName,
+            profileUrl: values.imageSource,
+
+            firstName: values.firstName,
+            lastName: values.lastName,
+            gender: values.gender,
+            dateOfBirth: values.dateOfBirth
+        }
+    }
+
+    const extractCompanyData = (id) => {
+        return {
+            id,
+            email: values.companyEmail,
+            password: values.companyPassword,
+            displayName: values.companyName,
+            profileUrl: values.imageSource,
+
+            companyName: values.companyName,
+            dateOfCreation: values.companyStartDate,
+            ceoFirstName: values.companyFounderFirstName,
+            ceoLastName: values.companyFounderLastName,
+            cityHeadquarters: values.headCity,
+            serviceType: values.serviceType,
+            branches: values.branches
+        }
+    }
 
     return (
         <div className="confirm-list-container">

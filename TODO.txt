@@ -1,3 +1,5 @@
+
+
 * LoginFormContainer
 	> Check login account type []
 
@@ -5,6 +7,6 @@
 
 * Check if chip input city branches is valid []
 
-* Add user to users table on register []
-* Add company to companies table on register []
+* Add user to users table on register [x]
+* Add company to companies table on register [x]
 

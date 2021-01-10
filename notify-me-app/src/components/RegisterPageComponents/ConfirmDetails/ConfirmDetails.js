@@ -46,14 +46,20 @@ function ConfirmDetails(props) {
             // Check account type
             if(accountType === "user") {
                 // Insert user into database
-                addUser(accountData);
+                const userPromise = addUser(accountData);
+                userPromise.then(() => {
+                    props.history.push(`/notify-me-RST/${redirectPage}`);
+                })
             }
             else if(accountType === "company") {
                 // Insert company into database
-                addCompany(accountData);
+                const companyPromise = addCompany(accountData);
+                companyPromise.then(() => {
+                    props.history.push(`/notify-me-RST/${redirectPage}`);
+                })
             }
 
-            props.history.push(`/notify-me-RST/${redirectPage}`);
+            // props.history.push(`/notify-me-RST/${redirectPage}`);
         })
 
 
@@ -136,7 +142,7 @@ function ConfirmDetails(props) {
                     color="primary"
                     onClick={registerAccount}
                 >
-                    Continue
+                    Register
                 </Button>
             </Grid>
         </Grid>

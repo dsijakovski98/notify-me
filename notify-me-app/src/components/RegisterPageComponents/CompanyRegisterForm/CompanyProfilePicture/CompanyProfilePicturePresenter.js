@@ -27,7 +27,6 @@ function CompanyProfilePicturePresenter
                     <div id="upload-pic-text">
                         <Typography variant="h6" style={{fontWeight: 300}}>Select your profile picture (optional)</Typography>
                     </div>
-                    <br/>
                     <div className="upload-container-img">
                         <div className="profile-pic-container">
 
@@ -35,15 +34,12 @@ function CompanyProfilePicturePresenter
                                 <img alt="profile" src={values.imageSource}>
                                 </img>
                             }
-                            {
-                                values.file && 
-                                <ProgressBar
-                                    file={values.file}
-                                    setFile={values.setFile}
-                                    accountType={"user"}
-                                    setImageSource={values.setImageSource}
-                                />
-                            }
+                            <ProgressBar
+                                file={values.file}
+                                setFile={values.setFile}
+                                accountType={"user"}
+                                setImageSource={values.setImageSource}
+                            />
                         </div>
                     </div>
                     
@@ -57,8 +53,6 @@ function CompanyProfilePicturePresenter
                             ? <Typography variant="body1" color="error">
                                 {values.fileErr}
                             </Typography> : null}
-                    <br/>
-                    <br/>
                     <div className="login-form-submit">
                     <Grid container spacing={2}>
                             <Grid item xs={12} sm={6}>

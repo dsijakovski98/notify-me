@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react'
 import "../style/upload_style/style.css";
-import useStorage from '../../../customHooks/useStorage';
+import { useStorageUpload } from '../../../customHooks/useStorage';
 import { motion } from "framer-motion";
 
 function ProgressBar({file, setFile, accountType, setImageSource}) {
-    const {progress, url, err} = useStorage(file, accountType);
+    const {progress, url, err} = useStorageUpload(file, accountType);
 
     useEffect(() => {
         setImageSource("");
@@ -17,14 +17,16 @@ function ProgressBar({file, setFile, accountType, setImageSource}) {
         }
     }, [url, err, setFile, setImageSource])
 
+
     return (
-        <div className="progress-wrapper">
+        
+            <div className="progress-wrapper">
             <motion.div className="progress-bar"
             initial={{ width: 0 }}
             animate={{ width: progress + '%' }}
             >
             </motion.div>
-        </div>
+            </div>
     )
 }
 

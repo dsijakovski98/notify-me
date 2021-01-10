@@ -7,7 +7,7 @@ import { COMPANY_TABLE_COLUMNS } from "../firebase/tables";
 const addUser = (user) => {
     const ref = firestore.collection(TABLE_NAMES.USERS_TABLE);
 
-    ref.doc(user.id)
+    return ref.doc(user.id)
     .set({
         [USERS_TABLE_COLUMNS.UID]: user.id,
         [USERS_TABLE_COLUMNS.FIRST_NAME]: user.firstName,
@@ -24,7 +24,7 @@ const addUser = (user) => {
 const addCompany = (company) => {
     const ref = firestore.collection(TABLE_NAMES.COMPANIES_TABLE);
 
-    ref.doc(company.id)
+    return ref.doc(company.id)
     .set({
         [COMPANY_TABLE_COLUMNS.COMPANY_ID]: company.id,
         [COMPANY_TABLE_COLUMNS.COMPANY_NAME]: company.companyName,

@@ -1,5 +1,6 @@
 import React from 'react';
 import UserProfilePicturePresenter from "./UserProfilePicturePresenter";
+import { storageRemove } from "../../../../customHooks/useStorage";
 
 const validImageTypes = ["image/png", "image/jpg", "image/jpeg"];
 
@@ -10,6 +11,10 @@ function UserProfilePictureContainer({values, nextStep, prevStep}) {
   const uploadFile = (e) => {
       values.setFileErr("");
       fileError = false;
+
+      if(values.imageSource) {
+        storageRemove(values.imageSource);
+      }
 
       const selectedFile = e.target.files[0];
 

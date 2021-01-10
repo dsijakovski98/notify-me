@@ -1,5 +1,7 @@
 import React from 'react';
 import CompanyProfilePicturePresenter from "./CompanyProfilePicturePresenter";
+import { storageRemove } from "../../../../customHooks/useStorage";
+
 
 const validImageTypes = ["image/png", "image/jpg", "image/jpeg"];
 
@@ -10,6 +12,10 @@ function CompanyProfilePictureContainer({values, nextStep, prevStep}) {
     const uploadFile = (e) => {
         values.setFileErr("");
         fileError = false;
+
+        if(values.imageSource) {
+            storageRemove(values.imageSource);
+          }
 
         const selectedFile = e.target.files[0];
 

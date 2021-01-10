@@ -1,11 +1,19 @@
 
+* Fix registration profile picture bug [x]
+
+* Validate chip input entry:
+	> Capitalize first letter before add [x]
+	> Check if input is a valid city [x]
+
+* Design company page UI:
+	> Add post button []
+	> Post creation modal []
+	> Posts history list []
 
 * LoginFormContainer
 	> Check login account type []
 
 * Check account type in redirect actions []
-
-* Check if chip input city branches is valid []
 
 * Add user to users table on register [x]
 * Add company to companies table on register [x]

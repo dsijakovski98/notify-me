@@ -26,13 +26,18 @@ function CompanyServiceDetailsContainer({values, nextStep, prevStep}) {
 
         let cityError = "";
 
-        // Add default city
-        if(!values.branches.includes(values.headCity) && values.headCity.length > 0 ) {
-            handleBranchAdd(values.headCity);
-        }
 
         // Empty fields
         if(values.headCity === "") cityError = "Enter headquarters city!";
+
+        const headCityCapitalized = 
+            values.headCity.slice(0, 1).toUpperCase() + values.headCity.slice(1);
+        values.setHeadCity(headCityCapitalized);
+
+        // Add default city
+        if(!values.branches.includes(headCityCapitalized)) {
+            handleBranchAdd(headCityCapitalized);
+        }
         
         if(cityError.length) {
             values.setHeadCityErr(cityError);
@@ -60,10 +65,17 @@ function CompanyServiceDetailsContainer({values, nextStep, prevStep}) {
 
     const handleBranchAdd = (city) => {
         const newBranchesList = [...values.branches];
-        // TODO: check if input city is valid
-        // if(validCities.contains(city))
-        newBranchesList.push(city);
-        values.setBranches(newBranchesList);
+        
+        // Capitalize first letter of entry
+        const capitalizedCity = 
+            city.slice(0, 1).toUpperCase() + city.slice(1);
+
+        console.log(capitalizedCity);
+        // Check if valid input and not already in array
+        if(defaultCities.includes(capitalizedCity) && !values.branches.includes(capitalizedCity)) {
+            newBranchesList.push(capitalizedCity);
+            values.setBranches(newBranchesList);
+        }
     }
     
     const handleBranchRemove = (city, index) => {

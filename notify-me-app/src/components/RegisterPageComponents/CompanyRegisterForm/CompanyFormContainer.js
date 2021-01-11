@@ -12,7 +12,7 @@ import useCompanyAccountDetails from "./CompanyAccountDetails/useCompanyAccountD
 import CompanyProfilePictureContainer from "./CompanyProfilePicture/CompanyProfilePictureContainer";
 import useCompanyProfilePicture from "./CompanyProfilePicture/useCompanyProfilePicture";
 
-import ConfirmDetails from "../ConfirmDetails/ConfirmDetails";
+import ConfirmDetailsContainer from "../ConfirmDetails/ConfirmDetailsContainer";
 
 function CompanyFormContainer() {
     const [step, setStep] = useState(1);
@@ -88,7 +88,7 @@ function CompanyFormContainer() {
             case 5:
                 return (
                     // Confirm Inputs
-                    <ConfirmDetails 
+                    <ConfirmDetailsContainer 
                         parameters={allDetails}
                         prevStep={prevStep}
                         values={allValues}

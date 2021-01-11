@@ -9,7 +9,7 @@ import useAccountDetails from "./UserAccountDetails/useAccountDetails";
 import UserProfilePictureContainer from "./UserProfilePicture/UserProfilePictureContainer";
 import useProfilePicture from "./UserProfilePicture/useProfilePicture";
 
-import ConfirmDetails from "../ConfirmDetails/ConfirmDetails";
+import ConfirmDetailsContainer from "../ConfirmDetails/ConfirmDetailsContainer";
 
 function UserFormContainer() {
     const [step, setStep] = useState(1);
@@ -70,7 +70,7 @@ function UserFormContainer() {
             case 4:
                 return (
                     // ConfirmInput
-                    <ConfirmDetails
+                    <ConfirmDetailsContainer
                         parameters={allDetails}
                         prevStep={prevStep}
                         values={allValues}

@@ -47,7 +47,6 @@ function Navbar() {
     if(currentUser) {
       profilePicture = currentUser.photoURL;
       displayName = currentUser.displayName;
-      console.log(currentUser);
     } 
 
     const classes = useStyles();

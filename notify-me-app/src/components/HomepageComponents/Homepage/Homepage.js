@@ -5,13 +5,29 @@ import JoinUs from "../JoinUs/JoinUs";
 import LoginFormContainer from "../LoginForm/LoginFormContainer";
 import { AuthContext } from "../../../firebase/auth";
 import { withRouter } from "react-router-dom";
+import { IsUserLogin } from "../../../helpers/queryManager";
+
 
 function Homepage({history}) {
     const { currentUser } = useContext(AuthContext);
 
-    if(currentUser) {
+    const checkRedirect = async () => {
         // TODO: check account type to redirect
-        history.push("/notify-me-RST/user-page");
+        let redirectPage = "";
+        const isUser = await IsUserLogin(currentUser.email);
+        
+        if(isUser) {
+            redirectPage = "user-page";
+        }
+        else {
+            redirectPage = "company-page";
+        }
+
+        history.push(`/notify-me-RST/${redirectPage}`);
+    }
+
+    if(currentUser) {
+        checkRedirect();
     }
 
     return (

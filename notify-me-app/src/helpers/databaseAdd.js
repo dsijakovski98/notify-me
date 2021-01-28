@@ -5,11 +5,12 @@ import { COMPANY_TABLE_COLUMNS } from "../firebase/tables";
 
 
 const addUser = (user) => {
-    const ref = firestore.collection(TABLE_NAMES.USERS_TABLE);
+    const usersRef = firestore.collection(TABLE_NAMES.USERS_TABLE);
 
-    return ref.doc(user.id)
+    return usersRef.doc(user.id)
     .set({
         [USERS_TABLE_COLUMNS.UID]: user.id,
+        [USERS_TABLE_COLUMNS.EMAIL]: user.email,
         [USERS_TABLE_COLUMNS.FIRST_NAME]: user.firstName,
         [USERS_TABLE_COLUMNS.LAST_NAME]: user.lastName,
         [USERS_TABLE_COLUMNS.GENDER]: user.gender,
@@ -22,11 +23,12 @@ const addUser = (user) => {
 }
 
 const addCompany = (company) => {
-    const ref = firestore.collection(TABLE_NAMES.COMPANIES_TABLE);
+    const companiesRef = firestore.collection(TABLE_NAMES.COMPANIES_TABLE);
 
-    return ref.doc(company.id)
+    return companiesRef.doc(company.id)
     .set({
         [COMPANY_TABLE_COLUMNS.COMPANY_ID]: company.id,
+        [COMPANY_TABLE_COLUMNS.EMAIL]: company.email,
         [COMPANY_TABLE_COLUMNS.COMPANY_NAME]: company.companyName,
         [COMPANY_TABLE_COLUMNS.DATE_OF_CREATION]: company.dateOfCreation,
         [COMPANY_TABLE_COLUMNS.CEO_FIRST_NAME]: company.ceoFirstName,

@@ -70,7 +70,6 @@ function CompanyServiceDetailsContainer({values, nextStep, prevStep}) {
         const capitalizedCity = 
             city.slice(0, 1).toUpperCase() + city.slice(1);
 
-        console.log(capitalizedCity);
         // Check if valid input and not already in array
         if(defaultCities.includes(capitalizedCity) && !values.branches.includes(capitalizedCity)) {
             newBranchesList.push(capitalizedCity);

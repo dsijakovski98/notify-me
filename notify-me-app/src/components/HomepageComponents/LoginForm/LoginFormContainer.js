@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { withRouter } from "react-router-dom";
 import {emailPattern} from "../../../helpers/validators";
 import { login } from "../../../helpers/currentUserManager";
+import { IsUserLogin } from "../../../helpers/queryManager";
 
 function LoginFormContainer(props) {
 
@@ -13,19 +14,24 @@ function LoginFormContainer(props) {
     const [emailErr, setEmailErr] = useState("");
     const [passwordErr, setPasswordErr] = useState("");
 
-    const signIn = (e) => {
+    const signIn = async (e) => {
         e.preventDefault();
-        if(validateLogin()) {
-            login(emailInput, passwordInput);
-            // TODO: Get account type: USER or COMPANY
-            // if type is USER
-            props.history.push("/notify-me-RST/user-page");
-            // if type is COMPANY
-            // props.history.push("/notify-me-RST/company-page");
+        if(await validateLogin()) {
+            const isUser = await IsUserLogin(emailInput);
+            let redirectPage = "";
+
+            if(isUser) {
+                redirectPage = "user-page";
+            }
+            else {
+                redirectPage = "company-page";
+            }
+
+            props.history.push(`/notify-me-RST/${redirectPage}`);
         }
     }
 
-    const validateLogin = () => {
+    const validateLogin = async () => {
         // Clear previous errors
         setEmailErr("");
         setPasswordErr("");
@@ -41,15 +47,26 @@ function LoginFormContainer(props) {
         if(!emailPattern.test(emailInput) && emailInput.length)
             emailError = "Email invalid format!";
 
+            
+        // Check user existence
+        const loginData = await login(emailInput, passwordInput);
+        if(loginData.error) {
+            switch (loginData.code) {
+                case 'auth/wrong-password':
+                    pwdError = loginData.message;
+                    break;
+                default:
+                    emailError = loginData.message;
+                    break;
+            }
+        }
+
         if(emailError.length || pwdError.length) {
             setEmailErr(emailError);
             setPasswordErr(pwdError);
             return false;
         }
-            
-        // Check user existence
-        // * Firebase required *
-
+        
         return true;
     }
 

@@ -2,7 +2,7 @@ import "./style/style.css";
 import React from 'react'
 import { withRouter } from "react-router-dom";
 
-import { auth } from "../../../firebase/config";
+import { register } from "../../../helpers/currentUserManager";
 import { addUser, addCompany } from "../../../helpers/databaseAdd";
 
 import ConfirmDetailsPresenter from "./ConfirmDetailsPresenter";
@@ -15,7 +15,7 @@ function ConfirmDetailsContainer(props) {
     const keys = Object.keys(parameters);
     const detailValues = Object.values(parameters);
 
-    const registerAccount = () => {
+    const registerAccount = async () => {
         let accountData = getAccountData();
 
         const {email, password, displayName} = accountData;
@@ -24,45 +24,40 @@ function ConfirmDetailsContainer(props) {
         // Register account
 
         // Check if profile picture exists
-
         if(!profileUrl) {
             profileUrl = null;
         }
 
         // Create the account
-        auth.createUserWithEmailAndPassword(email, password)
-        .then((result) => {
-            result.user.updateProfile({
-                displayName,
-                photoURL: profileUrl
-            })
-    
-            // Connecting the auth uid and database uid
-            accountData.id = result.user.uid;
+        const user = await register(email, password);
 
-            const redirectPage = `${accountType}-page`;
-            insertAccountToDatabase(accountData, redirectPage);
-        })
-        .catch((err) => {
-            console.log(err);
-        })
+        // Set display name and profile picture URL
+        user.updateProfile({
+            displayName,
+            photoURL: profileUrl
+        });
+
+        // Connecting the auth uid and database uid
+        accountData.id = user.uid;
+
+        // Insert the account into the database
+        const redirectPage = `${accountType}-page`;
+        insertAccountToDatabase(accountData, redirectPage);
 
     }
 
     const insertAccountToDatabase = (accountData, redirectPage) => {
-            // Check account type
             if(accountType === "user") {
                 // Insert user into database
-                const userPromise = addUser(accountData);
-                userPromise.then(() => {
+                const userAddedPromise = addUser(accountData);
+                userAddedPromise.then(() => {
                     props.history.push(`/notify-me-RST/${redirectPage}`);
                 })
             }
-
             else if(accountType === "company") {
                 // Insert company into database
-                const companyPromise = addCompany(accountData);
-                companyPromise.then(() => {
+                const companyAddedPromise = addCompany(accountData);
+                companyAddedPromise.then(() => {
                     props.history.push(`/notify-me-RST/${redirectPage}`);
                 })
             }

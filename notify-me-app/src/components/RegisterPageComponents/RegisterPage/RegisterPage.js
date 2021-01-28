@@ -5,6 +5,7 @@ import CompanyFormContainer from "../CompanyRegisterForm/CompanyFormContainer"
 import { Box } from '@material-ui/core';
 import { makeStyles } from "@material-ui/core/styles";
 import { AuthContext } from "../../../firebase/auth";
+import { IsUserLogin } from "../../../helpers/queryManager";
 
 const useStyles = makeStyles({
     centerFormContainer: {
@@ -18,8 +19,19 @@ function RegisterPage(props) {
     const { currentUser } = useContext(AuthContext);
 
     if(currentUser) {
-        // TODO: check account type to redirect
-        props.history.push("/notify-me-RST/user-page");
+        // Check account type for redirection
+        const isUser = IsUserLogin(currentUser.email);
+            isUser.then((snapshot) => {
+                let redirectPage = "";
+                if(snapshot.docs.length > 0) {
+                    // User logs in
+                    redirectPage = "user-page";
+                }
+                else {
+                    redirectPage = "company-page";
+                }
+                props.history.push(`/notify-me-RST/${redirectPage}`);
+            })
     }
 
     const classes = useStyles();

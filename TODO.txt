@@ -1,6 +1,6 @@
 * Design user homepage UI: (high-priority)
-	> No posts page []
-	> Search companies page [] (dummy data)
+	> No posts page [x]
+	> Search companies page [x] (dummy data)
 
 * Design company page UI: (low-priority)
 	> Add post button []

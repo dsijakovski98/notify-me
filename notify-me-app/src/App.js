@@ -5,6 +5,7 @@ import RegisterPage from "./components/RegisterPageComponents/RegisterPage/Regis
 import { Switch, Route, withRouter } from "react-router-dom";
 import UserHomepageContainer from "./components/UserHomepageComponents/UserHomepage/UserHomepageContainer";
 import CompanyHomepageContainer from "./components/CompanyHomepageComponents/CompanyHomepageContainer"
+import SubscribePageContainer from "./components/UserHomepageComponents/SubscribePage/SubscribePageContainer";
 
 function App(props) {
 
@@ -40,6 +41,7 @@ function App(props) {
           {/* TODO: Add more page routes */}
             <Route path={`${rootPage}/user-page`} exact component={UserHomepageContainer} />
             <Route path={`${rootPage}/company-page`} exact component={CompanyHomepageContainer} />
+            <Route path={`${rootPage}/subscribe/:type`} exact component={SubscribePageContainer} />
       </div>
 
   );  

@@ -20,6 +20,127 @@
   align-items: center;
 }
 
+.no-subscribtions-container {
+  width: 80%;
+  height: 80vh;
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+
+  // .no-subscribtions-icon {
+  // }
+
+  .no-subscribtions-message {
+    span {
+      font-weight: bold;
+      font-size: 1.5rem;
+      text-decoration: underline;
+    }
+  }
+
+  .no-subscribtions-btn button {
+    font-size: 1.5rem;
+    padding: 0.5em 1.8em;
+    border-radius: 1.5em;
+    margin: 0 1em;
+  }
+}
+
+.subscribe-page-container {
+  width: 80%;
+  margin: 0 auto;
+  height: 85vh;
+  // background: red;
+
+  display: flex;
+  justify-content: space-between;
+
+  .subscribe-page-search-form {
+    // background: green;
+    width: 40%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    // background: green;
+
+    padding: 0 3em;
+
+    .subscribe-page-search-form-inputs,
+    .subscribe-page-search-form-buttons {
+      // background: yellow;
+      height: 30%;
+      width: 100%;
+
+      display: flex;
+      flex-direction: column;
+    }
+
+    .subscribe-page-search-form-inputs {
+      justify-content: space-around;
+      input {
+        color: whitesmoke;
+      }
+    }
+
+    .subscribe-page-search-form-buttons {
+      justify-content: space-evenly;
+
+      button {
+        padding: 0.8em 0;
+      }
+    }
+  }
+
+  .subscribe-page-companies-list-container {
+    // background: yellow;
+    width: 55%;
+    padding: 2em;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    overflow-y: scroll;
+    // scroll-behavior: smooth;
+  }
+
+  .subscribe-page-company {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+    width: 30%;
+    margin: 0.5em;
+    margin-bottom: 1.2em;
+
+    img {
+      border-radius: 4px;
+      display: block;
+      width: 100%;
+      height: 80%;
+      object-fit: cover;
+      margin-bottom: 0.5em;
+    }
+
+    .subscribe-page-company-buttons {
+      display: flex;
+      align-items: center;
+
+      button {
+        font-size: 0.8rem;
+        margin-right: 0.5em;
+        padding: 0.5em;
+      }
+    }
+  }
+}
+
+// ==============================================================
 @media (max-width: $small_bp) {
   .post-links-container-grid {
     margin-top: 5em;

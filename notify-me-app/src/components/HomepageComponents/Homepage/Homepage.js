@@ -31,7 +31,7 @@ function Homepage({history}) {
     }
 
     return (
-        <div className="homepage-wrapper">
+        !currentUser && <div className="homepage-wrapper">
             <div className="homepage-container-grid" >
                 <div className="homepage-banner-col" >
                     <Banner />

@@ -22,6 +22,156 @@
           align-items: center;
 }
 
+.no-subscribtions-container {
+  width: 80%;
+  height: 80vh;
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+.no-subscribtions-container .no-subscribtions-message span {
+  font-weight: bold;
+  font-size: 1.5rem;
+  text-decoration: underline;
+}
+
+.no-subscribtions-container .no-subscribtions-btn button {
+  font-size: 1.5rem;
+  padding: 0.5em 1.8em;
+  border-radius: 1.5em;
+  margin: 0 1em;
+}
+
+.subscribe-page-container {
+  width: 80%;
+  margin: 0 auto;
+  height: 85vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.subscribe-page-container .subscribe-page-search-form {
+  width: 40%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0 3em;
+}
+
+.subscribe-page-container .subscribe-page-search-form .subscribe-page-search-form-inputs,
+.subscribe-page-container .subscribe-page-search-form .subscribe-page-search-form-buttons {
+  height: 30%;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.subscribe-page-container .subscribe-page-search-form .subscribe-page-search-form-inputs {
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.subscribe-page-container .subscribe-page-search-form .subscribe-page-search-form-inputs input {
+  color: whitesmoke;
+}
+
+.subscribe-page-container .subscribe-page-search-form .subscribe-page-search-form-buttons {
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+.subscribe-page-container .subscribe-page-search-form .subscribe-page-search-form-buttons button {
+  padding: 0.8em 0;
+}
+
+.subscribe-page-container .subscribe-page-companies-list-container {
+  width: 55%;
+  padding: 2em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  overflow-y: scroll;
+}
+
+.subscribe-page-container .subscribe-page-company {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  width: 30%;
+  margin: 0.5em;
+  margin-bottom: 1.2em;
+}
+
+.subscribe-page-container .subscribe-page-company img {
+  border-radius: 4px;
+  display: block;
+  width: 100%;
+  height: 80%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  margin-bottom: 0.5em;
+}
+
+.subscribe-page-container .subscribe-page-company .subscribe-page-company-buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.subscribe-page-container .subscribe-page-company .subscribe-page-company-buttons button {
+  font-size: 0.8rem;
+  margin-right: 0.5em;
+  padding: 0.5em;
+}
+
 @media (max-width: 700px) {
   .post-links-container-grid {
     margin-top: 5em;

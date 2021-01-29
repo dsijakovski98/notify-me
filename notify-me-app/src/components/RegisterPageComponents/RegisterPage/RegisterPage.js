@@ -16,25 +16,29 @@ const useStyles = makeStyles({
 });
 
 function RegisterPage(props) {
-    const { currentUser } = useContext(AuthContext);
-
-    if(currentUser) {
-        // Check account type for redirection
-        const isUser = IsUserLogin(currentUser.email);
-            isUser.then((snapshot) => {
-                let redirectPage = "";
-                if(snapshot.docs.length > 0) {
-                    // User logs in
-                    redirectPage = "user-page";
-                }
-                else {
-                    redirectPage = "company-page";
-                }
-                props.history.push(`/notify-me-RST/${redirectPage}`);
-            })
-    }
 
     const classes = useStyles();
+    const { currentUser } = useContext(AuthContext);
+
+    const checkRedirect = async () => {
+        // Check account type for redirection
+        const isUser = await IsUserLogin(currentUser.email);
+        let redirectPage = "";
+        
+        if(isUser) {
+            redirectPage = "user-page";
+        }
+        else {
+            redirectPage = "company-page";
+
+        }
+
+        props.history.push(`/notify-me-RST/${redirectPage}`);
+    }
+
+    if(currentUser) {
+        checkRedirect();
+    }
 
     const registerType = props.match.params.type;
     const form = registerType === "user" 
@@ -42,6 +46,7 @@ function RegisterPage(props) {
             : <CompanyFormContainer />
 
     return (
+        !currentUser &&
         <Box className={classes.centerFormContainer}>
             {form}
         </Box>

@@ -1,6 +1,10 @@
 * Design user homepage UI: (high-priority)
 	> No posts page [x]
 	> Search companies page [x] (dummy data)
+* Bedazzle scrollbar on subscribe page []
+
+* Connect search form to database [x]
+* Add subscribtions to user []
 
 * Design company page UI: (low-priority)
 	> Add post button []

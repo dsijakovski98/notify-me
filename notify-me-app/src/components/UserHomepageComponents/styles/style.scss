@@ -107,14 +107,26 @@
 
     overflow-y: scroll;
     // scroll-behavior: smooth;
+    .subscribe-page-companies-list-no-results {
+      align-self: center;
+      // background: #000;
+      display: block;
+      width: 80%;
+      margin: 0 auto;
+      text-align: center;
+
+      color: whitesmoke;
+      font-size: 2rem;
+    }
   }
 
   .subscribe-page-company {
+    width: 30%;
+    height: 250px;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-
-    width: 30%;
+    // background: #000;
     margin: 0.5em;
     margin-bottom: 1.2em;
 
@@ -122,18 +134,19 @@
       border-radius: 4px;
       display: block;
       width: 100%;
-      height: 80%;
-      object-fit: cover;
+      height: 70%;
+      // object-fit: contain;
       margin-bottom: 0.5em;
     }
 
     .subscribe-page-company-buttons {
       display: flex;
       align-items: center;
+      justify-content: space-evenly;
 
       button {
         font-size: 0.8rem;
-        margin-right: 0.5em;
+        // margin-right: 0.2em;
         padding: 0.5em;
       }
     }

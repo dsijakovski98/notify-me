@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link, withRouter } from "react-router-dom";
 import { Grid, Typography, Avatar, IconButton, Menu, MenuItem } from "@material-ui/core"
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import { makeStyles } from "@material-ui/core/styles";
@@ -27,7 +28,10 @@ const options = [
     'Log out'
 ];
 
-function UserDataAvatar({displayName, profilePicture}) {
+function UserDataAvatar(props) {
+    const displayName = props.displayName;
+    const profilePicture = props.profilePicture;
+    const history = props.history;
     const classes = useStyle();
    
     const [anchorElement, setAnchorElement] = useState(null);
@@ -40,20 +44,32 @@ function UserDataAvatar({displayName, profilePicture}) {
         setAnchorElement(null);
     }
 
+    const handleLogout = () => {
+        const promise = logoutUser();
+        promise.then(() => {
+            history.push("/notify-me-RST/");
+        })
+    }
+
+
     return (
         <>
             <Grid container alignItems="center" justify="flex-end">
             <Typography className={classes.displayName} variant="subtitle1">{displayName}</Typography>
-            <Avatar
-                className={classes.avatar}
-                classes={{img: classes.avatarImg}}
-                src={profilePicture} />
+            
+            <Link to={"/notify-me-RST/user-page"}>
+                <Avatar
+                    className={classes.avatar}
+                    classes={{img: classes.avatarImg}}
+                    src={profilePicture}
+                />
+            </Link>
             <div>
                 <IconButton
                  aria-label="more"
                  aria-controls="long-menu"
                  aria-haspopup="true"
-                 onClick={handleClick}>
+                 onClick={(e) => handleClick(e)}>
                      <MoreVertIcon className={classes.menuButton} />
                 </IconButton >
                 <Menu
@@ -61,14 +77,14 @@ function UserDataAvatar({displayName, profilePicture}) {
                     anchorEl={anchorElement}
                     keepMounted
                     open={anchorElement ? true : false}
-                    onClose={handleClose}
+                    onClose={(e) => handleClose(e)}
                     color="disabled"
                     
                 >
                     {
                         options.map(option => {
                             return (
-                                <MenuItem key={option} onClick={logoutUser}>
+                                <MenuItem key={option} onClick={() => handleLogout()}>
                                     {option}
                                 </MenuItem>
                             )
@@ -81,4 +97,4 @@ function UserDataAvatar({displayName, profilePicture}) {
     )
 }
 
-export default UserDataAvatar
+export default withRouter(UserDataAvatar)

@@ -1,7 +1,7 @@
 import { auth } from "../firebase/config";
 
 const logoutUser = () => {
-    auth.signOut();
+    return auth.signOut();
 }
 
 const login = async (email, password) => {

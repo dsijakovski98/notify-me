@@ -1,13 +1,16 @@
 import React from 'react'
 import PostsListPresenter from './PostsListPresenter'
+import { withRouter } from "react-router-dom";
 
-function PostsListContainer({postsPage, setPostsPage}) {
-    // Get the list here
+function PostsListContainer(props) {
+    const serviceType = props.match.params.type;
+
+    // Get the list of posts from companies user has subscribed to here
     const list = null;
 
     return (
-        <PostsListPresenter postsPage={postsPage} setPostsPage={setPostsPage} list={list}/>
+        <PostsListPresenter serviceType={serviceType} list={list}/>
     )
 }
 
-export default PostsListContainer
+export default withRouter(PostsListContainer)

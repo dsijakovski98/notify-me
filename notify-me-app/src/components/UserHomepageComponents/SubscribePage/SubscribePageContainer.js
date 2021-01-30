@@ -1,24 +1,32 @@
-import React, { useContext } from 'react'
-import SubscribePagePresenter from "./SubscribePagePresenter"
+import React, { useContext, useState } from 'react'
+import SubscribePagePresenter from "./SubscribePagePresenter";
 import { AuthContext } from "../../../firebase/auth";
-import { withRouter } from "react-router-dom"
+import { withRouter } from "react-router-dom";
+import { useCompaniesList } from "../../../customHooks/useCompaniesList";
 
 function SubscribePageContainer(props) {
-    // Get all {serviceType} companies here
-    const companiesList = [1, 2, 3, 4 ,5, 6, 7, 8];
-
+    // Data for subscribe page
     const serviceType = props.match.params.type;
-    const { currentUser } = useContext(AuthContext);
+    const [companyType, setCompanyType] = useState(serviceType);
+    const [companyName, setCompanyName] = useState("");
 
-    if(!currentUser) {
-        props.history.push('/notify-me-RST/');
-    }
+    // Get all {serviceType} companies here
+    const companiesList = useCompaniesList(companyName, companyType);
+    
+
+
+    const searchFormData = {
+        companyType,
+        setCompanyType,
+        companyName,
+        setCompanyName
+    };
 
     return (
-        currentUser && 
         <SubscribePagePresenter 
             serviceType={serviceType}
             companiesList={companiesList}
+            searchFormData={searchFormData}
         />
     )
 }

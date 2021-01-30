@@ -1,13 +1,14 @@
 import React from 'react'
 import { Button, IconButton, Typography } from '@material-ui/core'
 import InfoIcon from '@material-ui/icons/Info';
+import img from "../../../images/default-company-pic.png"
 
 function CompanySubscribe({name}) {
     return (
         <div className="subscribe-page-company">
             <Typography variant="body1" style={{color: 'whitesmoke'}} >{name}</Typography>
             <img
-            src="https://source.unsplash.com/random/200" alt="something" />
+            src={img} alt="something" />
             
             <div className="subscribe-page-company-buttons">
                 <Button variant="contained" color="primary" fullWidth>

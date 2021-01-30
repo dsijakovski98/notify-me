@@ -1,11 +1,11 @@
 import React from 'react'
 import NoSubscribtions from "./NoSubscribtions";
 
-function PostsListPresenter({postsPage, setPostsPage,list}) {
+function PostsListPresenter({serviceType, list}) {
     return (
         list 
-        ? <div>{postsPage} posts list...</div>
-        : <NoSubscribtions serviceType={postsPage} setPostsPage={setPostsPage}/>
+        ? <div> Posts list...</div>
+        : <NoSubscribtions serviceType={serviceType} />
     )
 }
 

@@ -10,18 +10,20 @@ const useStyles = makeStyles({
     }
 })
 
-function PostLink({displayIcon, serviceType, setPostsPage}) {
+function PostLink({displayIcon, serviceType}) {
     const classes = useStyles();
 
     const tooltipTitle = <h1 className={classes.tooltipTitle}>{serviceType}</h1>
     
     return (
-            <div onClick={() => setPostsPage(serviceType)} className="post-icon">
-                    <Tooltip className={classes.tooltipSize}
-                    title={tooltipTitle} TransitionComponent={Zoom}>
-                        {displayIcon}
-                    </Tooltip>
-            </div>
+           <Link to={`/notify-me-RST/user-page/posts/${serviceType}`}>
+            <div className="post-icon">
+                        <Tooltip className={classes.tooltipSize}
+                        title={tooltipTitle} TransitionComponent={Zoom}>
+                            {displayIcon}
+                        </Tooltip>
+                </div>
+            </Link>
     )
 }
 

@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from "react-router-dom"
 import { TextField, Select, MenuItem, Button, Typography } from "@material-ui/core"
 
 const typesOfServices = [
@@ -7,7 +8,13 @@ const typesOfServices = [
     "ISP"
 ]
 
-function CompanySearchFormPresenter({companyType, setCompanyType}) {
+function CompanySearchFormPresenter({companyType, helperFormData, updateData}) {
+    const {
+        name,
+        setName,
+        type,
+        setType
+    } = helperFormData;
 
     return (
         <div className="subscribe-page-search-form">
@@ -21,17 +28,22 @@ function CompanySearchFormPresenter({companyType, setCompanyType}) {
                         variant="standard"
                         margin="normal"
                         fullWidth
+                        inputProps={{
+                            autoCapitalize: "on"
+                        }}
                         name="company_name"
                         label="Company Name"
                         type="text"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
                 />
                 <Select style={{color: '#f5f5f5'}}
                     margin="none"
                     fullWidth
                     variant="standard"
                     placeholder="Company Type"
-                    value={companyType}
-                    onChange={(e) => setCompanyType(e.target.value)}
+                    value={type}
+                    onChange={(e) => setType(e.target.value)}
                 >
                             {typesOfServices.map(service => {
                                 return (
@@ -44,13 +56,15 @@ function CompanySearchFormPresenter({companyType, setCompanyType}) {
             </div>
         
             <div className="subscribe-page-search-form-buttons">
-                <Button variant="contained" color="primary" fullWidth>
+                <Button onClick={() => updateData()} 
+                variant="contained" color="primary" fullWidth>
                     Search
                 </Button>
-
-                <Button variant="contained" color="info" fullWidth>
-                    Go back
-                </Button>
+                <Link to={`/notify-me-RST/user-page/posts/${companyType}`}>
+                    <Button variant="contained" color="default" fullWidth>
+                        Go back
+                    </Button>
+                </Link>
             </div>
         </div>
     )

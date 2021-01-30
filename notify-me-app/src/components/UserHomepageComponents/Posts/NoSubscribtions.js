@@ -4,7 +4,8 @@ import PanToolIcon from '@material-ui/icons/PanTool';
 import { Button, Typography } from "@material-ui/core";
 import { Link } from "react-router-dom";
 
-function NoSubscribtions({serviceType, setPostsPage}) {
+function NoSubscribtions({serviceType}) {
+
     return (
         <div className="no-subscribtions-container">
             <div className="no-subscribtions-icon">
@@ -24,10 +25,11 @@ function NoSubscribtions({serviceType, setPostsPage}) {
                         Subscribe
                     </Button>
                 </Link>
-                <Button onClick={() => setPostsPage("")}
-                variant="contained" color="info">
-                    Go Back
-                </Button>
+                <Link to={"/notify-me-RST/user-page"}>
+                    <Button variant="contained" color="default">
+                        Go Back
+                    </Button>
+                </Link>
             </div>
         </div>
     )

@@ -16,6 +16,21 @@ function UserAccountDetailsContainer({values, nextStep, prevStep}) {
         prevStep();
     }
 
+    const emailHasUpperCase = (email) => {
+        let hasUpperCase = false;
+
+        for(let i = 0; i < email.length; i++) {
+            const letter = email[i];
+
+            if(/^[A-Z]*$/.test(letter)) {
+                hasUpperCase = true;
+                break;
+            }
+        }
+
+        return hasUpperCase;
+    }
+
     const validateInputs = () => {
         // Clear previous errors
         values.setEmailErr("");
@@ -37,6 +52,9 @@ function UserAccountDetailsContainer({values, nextStep, prevStep}) {
         
         // Valid email format
         if(!emailPattern.test(values.userEmail)) emailError = "Email invalid format!";
+
+        // No uppercase letters in email
+        if(emailHasUpperCase(values.userEmail)) emailError = "No uppercase letters in email!";
 
         // Password length
         if(values.userPassword.length < 6)

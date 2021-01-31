@@ -1,4 +1,4 @@
-import { firestore } from "../firebase/config";
+import { firestore, firebase } from "../firebase/config";
 import { TABLE_NAMES } from "../firebase/tables";
 import { USERS_TABLE_COLUMNS } from "../firebase/tables";
 import { COMPANY_TABLE_COLUMNS } from "../firebase/tables";
@@ -15,6 +15,7 @@ const addUser = (user) => {
         [USERS_TABLE_COLUMNS.LAST_NAME]: user.lastName,
         [USERS_TABLE_COLUMNS.GENDER]: user.gender,
         [USERS_TABLE_COLUMNS.DATE_OF_BIRTH]: user.dateOfBirth,
+        [USERS_TABLE_COLUMNS.SUBSCRIBTIONS]: []
     })
     .catch(err => {
         console.log(err);
@@ -43,4 +44,18 @@ const addCompany = (company) => {
 
 }
 
-export { addUser, addCompany };
+const subscribeToCompany = (user, company) => {
+    const usersRef = firestore.collection(TABLE_NAMES.USERS_TABLE);
+
+    const newSubscribtion = {
+        type: company[COMPANY_TABLE_COLUMNS.SERVICE_TYPE],
+        id: company[COMPANY_TABLE_COLUMNS.COMPANY_ID]
+    };
+
+    return usersRef.doc(user.id).update({
+        [USERS_TABLE_COLUMNS.SUBSCRIBTIONS]: 
+            firebase.firestore.FieldValue.arrayUnion(newSubscribtion)
+    });
+}
+
+export { addUser, addCompany, subscribeToCompany };

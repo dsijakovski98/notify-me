@@ -3,6 +3,7 @@ import { TABLE_NAMES, USERS_TABLE_COLUMNS } from "../firebase/tables";
 
 const IsUserLogin = async (email) => {
     let isUser = false;
+
     const promise = firestore.collection(TABLE_NAMES.USERS_TABLE)
     .where(USERS_TABLE_COLUMNS.EMAIL, "==", email).limit(1)
     .get();

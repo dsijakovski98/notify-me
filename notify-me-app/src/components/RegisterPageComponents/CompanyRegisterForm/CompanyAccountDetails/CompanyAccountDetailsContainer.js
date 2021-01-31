@@ -4,6 +4,21 @@ import { emailPattern } from "../../../../helpers/validators";
 
 function CompanyAccountDetailsContainer({values, nextStep, prevStep}) {
 
+    const emailHasUpperCase = (email) => {
+        let hasUpperCase = false;
+
+        for(let i = 0; i < email.length; i++) {
+            const letter = email[i];
+
+            if(/^[A-Z]*$/.test(letter)) {
+                hasUpperCase = true;
+                break;
+            }
+        }
+
+        return hasUpperCase;
+    }
+
     const validateInputs = () => {
         // Clear input errors
         values.setCompanyEmailErr("");
@@ -30,6 +45,10 @@ function CompanyAccountDetailsContainer({values, nextStep, prevStep}) {
         // Email format validation
         if(!emailPattern.test(values.companyEmail))
             compEmailError = "Email invalid format!";
+
+        // No uppercase letters in email
+        if(emailHasUpperCase(values.companyEmail))
+            compEmailError = "No uppercase letters in email!";
 
         // Password length
         if(values.companyPassword.length < 6)

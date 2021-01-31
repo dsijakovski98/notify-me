@@ -1,10 +1,12 @@
-* Design user homepage UI: (high-priority)
-	> No posts page [x]
-	> Search companies page [x] (dummy data)
+* Add unsubscribe button [x]
+
 * Bedazzle scrollbar on subscribe page []
 
-* Connect search form to database [x]
-* Add subscribtions to user []
+* Add profilePic url to account entry []
+* Display profilePic in subscribePage []
+
+* PostList page: get only companies with appropriate serviceType []
+* Design userHomepage: posts list page []
 
 * Design company page UI: (low-priority)
 	> Add post button []

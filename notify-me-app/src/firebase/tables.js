@@ -9,7 +9,8 @@ const USERS_TABLE_COLUMNS = {
     FIRST_NAME: "first_name",
     LAST_NAME: "last_name",
     DATE_OF_BIRTH: "date_of_birth",
-    GENDER: "gender"
+    GENDER: "gender",
+    SUBSCRIBTIONS: "subscribtions"
 }
 
 const COMPANY_TABLE_COLUMNS = {

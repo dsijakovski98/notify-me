@@ -15,7 +15,8 @@ function Homepage({history}) {
         // TODO: check account type to redirect
         let redirectPage = "";
         const isUser = await IsUserLogin(currentUser.email);
-        
+        console.log("isUser: " + isUser);
+        console.log(currentUser);
         if(isUser) {
             redirectPage = "user-page";
         }

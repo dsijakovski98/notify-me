@@ -1,11 +1,16 @@
 import React from 'react'
 import NoSubscribtions from "./NoSubscribtions";
 
-function PostsListPresenter({serviceType, list}) {
+function PostsListPresenter({serviceType, userSubscribtions}) {
     return (
-        list 
-        ? <div> Posts list...</div>
-        : <NoSubscribtions serviceType={serviceType} />
+        userSubscribtions ?
+            userSubscribtions.length ? 
+                <div>
+                    You have subscribed to {userSubscribtions.length} companies.
+                    Here will be the list of all their posts
+                </div>
+            : <NoSubscribtions serviceType={serviceType} />
+        : null
     )
 }
 

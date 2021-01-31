@@ -4,9 +4,9 @@ import { TABLE_NAMES, COMPANY_TABLE_COLUMNS } from "../firebase/tables";
 
 const useCompaniesList = (companyName, companyType) => {
     const [companiesList, setCompaniesList] = useState([]);
-    const companiesRef = firestore.collection(TABLE_NAMES.COMPANIES_TABLE);
-
+    
     useEffect(() => {
+        const companiesRef = firestore.collection(TABLE_NAMES.COMPANIES_TABLE);
 
         let unsubscribe = null;
         // Find specific company, or company with matching 

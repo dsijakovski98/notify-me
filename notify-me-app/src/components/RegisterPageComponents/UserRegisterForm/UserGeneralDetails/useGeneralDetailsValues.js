@@ -39,10 +39,10 @@ const useGeneralDetails = () => {
     const generalDetailsParams = {
         "First Name": firstName,
         "Last Name": lastName,
-        "Date of Birth":
-            dateOfBirth ? 
-            `${dateOfBirth.getDate()}/${dateOfBirth.getMonth()}/${dateOfBirth.getFullYear()}`
-            : "",
+        // "Date of Birth":
+        //     dateOfBirth ? 
+        //     `${dateOfBirth.getDate()}/${dateOfBirth.getMonth()}/${dateOfBirth.getFullYear()}`
+        //     : "",
         "Gender": gender,
         "City": city,
     }

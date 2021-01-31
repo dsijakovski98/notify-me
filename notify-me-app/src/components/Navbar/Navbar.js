@@ -70,7 +70,7 @@ function Navbar() {
             </Grid>
 
             <Grid item>
-              <Link to={"/notify-me-RST"}>
+              <Link to={"/notify-me-RST/"}>
                 <Typography className={classes.toolbarTitle} variant="body2">
                   Notification app
                 </Typography>

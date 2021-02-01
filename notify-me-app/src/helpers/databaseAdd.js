@@ -15,7 +15,7 @@ const addUser = (user) => {
         [USERS_TABLE_COLUMNS.LAST_NAME]: user.lastName,
         [USERS_TABLE_COLUMNS.GENDER]: user.gender,
         [USERS_TABLE_COLUMNS.DATE_OF_BIRTH]: user.dateOfBirth,
-        [USERS_TABLE_COLUMNS.SUBSCRIBTIONS]: []
+        [USERS_TABLE_COLUMNS.SUBSCRIBTIONS]: [],
     })
     .catch(err => {
         console.log(err);
@@ -36,7 +36,8 @@ const addCompany = (company) => {
         [COMPANY_TABLE_COLUMNS.CEO_LAST_NAME]: company.ceoLastName,
         [COMPANY_TABLE_COLUMNS.HEADQUARTERS_CITY]: company.cityHeadquarters,
         [COMPANY_TABLE_COLUMNS.SERVICE_TYPE]: company.serviceType,
-        [COMPANY_TABLE_COLUMNS.BRANCHES]: company.branches
+        [COMPANY_TABLE_COLUMNS.BRANCHES]: company.branches,
+        [COMPANY_TABLE_COLUMNS.PROFILE_URL]: company.profileUrl
     })
     .catch(err => {
         console.log(err);

@@ -10,7 +10,7 @@ const USERS_TABLE_COLUMNS = {
     LAST_NAME: "last_name",
     DATE_OF_BIRTH: "date_of_birth",
     GENDER: "gender",
-    SUBSCRIBTIONS: "subscribtions"
+    SUBSCRIBTIONS: "subscribtions",
 }
 
 const COMPANY_TABLE_COLUMNS = {
@@ -22,7 +22,8 @@ const COMPANY_TABLE_COLUMNS = {
     CEO_LAST_NAME: "ceo_last",
     HEADQUARTERS_CITY: "city_head",
     SERVICE_TYPE: "service",
-    BRANCHES: "branches"
+    BRANCHES: "branches",
+    PROFILE_URL: "profile_url"
 }
 
 

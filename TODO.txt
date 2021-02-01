@@ -1,14 +1,17 @@
-* Add unsubscribe button [x]
 
-* Bedazzle scrollbar on subscribe page []
+* Bedazzle scrollbar on subscribe page (low-priority) []
 
-* Add profilePic url to account entry []
-* Display profilePic in subscribePage []
+* Add profilePic url to account entry [x]
+* Display profilePic in subscribePage [x]
+* Remove profile_url entry in users table [x]
+* Fix no results bug [x]
+* Refactor CompanySubscribe into container and presenter [x]
 
-* PostList page: get only companies with appropriate serviceType []
-* Design userHomepage: posts list page []
+* PostList page: get only companies with appropriate serviceType [x]
 
-* Design company page UI: (low-priority)
+* Design company page UI:
 	> Add post button []
 	> Post creation modal []
 	> Posts history list []
+
+* Design userHomepage: posts list page [x]

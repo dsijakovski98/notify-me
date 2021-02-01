@@ -3,7 +3,7 @@ import { firestore } from "../firebase/config";
 import { TABLE_NAMES, COMPANY_TABLE_COLUMNS } from "../firebase/tables";
 
 const useCompaniesList = (companyName, companyType) => {
-    const [companiesList, setCompaniesList] = useState([]);
+    const [companiesList, setCompaniesList] = useState(null);
     
     useEffect(() => {
         const companiesRef = firestore.collection(TABLE_NAMES.COMPANIES_TABLE);

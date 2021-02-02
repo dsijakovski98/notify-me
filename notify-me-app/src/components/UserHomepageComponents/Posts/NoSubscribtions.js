@@ -1,6 +1,6 @@
 import "../styles/style.css"
 import React from 'react'
-import PanToolIcon from '@material-ui/icons/PanTool';
+import PanToolRoundedIcon from '@material-ui/icons/PanToolRounded';
 import { Button, Typography } from "@material-ui/core";
 import { Link } from "react-router-dom";
 
@@ -9,7 +9,7 @@ function NoSubscribtions({serviceType}) {
     return (
         <div className="no-subscribtions-container">
             <div className="no-subscribtions-icon">
-                <PanToolIcon 
+                <PanToolRoundedIcon 
                 style={{width: 100, height: 100, color: "whitesmoke", marginRight: '2em'}} />
             </div>
 

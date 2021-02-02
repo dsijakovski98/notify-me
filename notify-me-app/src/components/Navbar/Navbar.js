@@ -82,6 +82,7 @@ function Navbar() {
           {
             currentUser &&
             <UserDataAvatar
+              userData={currentUser}
               displayName={displayName}
               profilePicture={profilePicture}
             />

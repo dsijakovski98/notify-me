@@ -5,7 +5,7 @@ import RegisterPage from "./components/RegisterPageComponents/RegisterPage/Regis
 import { Switch, Route, withRouter } from "react-router-dom";
 import UserHomepageContainer from "./components/UserHomepageComponents/UserHomepage/UserHomepageContainer";
 import PostsListPageContainer from "./components/UserHomepageComponents/Posts/PostsListPage/PostsListPageContainer"
-import CompanyHomepageContainer from "./components/CompanyHomepageComponents/CompanyHomepageContainer"
+import CompanyHomepageContainer from "./components/CompanyHomepageComponents/CompanyHomepage/CompanyHomepageContainer"
 import SubscribePageContainer from "./components/UserHomepageComponents/SubscribePage/SubscribePageContainer";
 
 function App(props) {

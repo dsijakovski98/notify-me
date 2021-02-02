@@ -7,7 +7,7 @@ function PostsListPresenter({serviceType, userSubscribtions, postsList}) {
             {
                 postsList.map(post => {
                     return (
-                        <Post key={post} />
+                        <Post key={post} post={post}/>
                     )
                 })
             }

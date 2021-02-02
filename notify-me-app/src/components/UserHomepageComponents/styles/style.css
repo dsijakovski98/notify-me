@@ -207,9 +207,6 @@
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
 }
 
 .posts-list-post-container {
@@ -221,11 +218,6 @@
   transition: -webkit-transform 0.3s ease-in-out;
   transition: transform 0.3s ease-in-out;
   transition: transform 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
-}
-
-.posts-list-post-container:hover {
-  -webkit-transform: scale(1.02);
-          transform: scale(1.02);
 }
 
 @media (max-width: 700px) {

@@ -11,25 +11,6 @@ import SubscribePageContainer from "./components/UserHomepageComponents/Subscrib
 function App(props) {
 
   const rootPage = "/notify-me-RST";
-  const location = props.location.pathname;
-  
-
-  // Set document title
-  useEffect(() => {
-
-    switch(location) {
-      case `${rootPage}/register/user`:
-      case `${rootPage}/register/company`:
-        document.title = "Notify Me - Register";
-        break;
-      case `${rootPage}`:
-        document.title = "Notify Me - Home";
-        break;
-      default:
-        return null;
-    }
-
-  }, [location]);
 
   return (
 

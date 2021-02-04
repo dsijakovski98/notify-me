@@ -1,6 +1,5 @@
 import React from 'react'
 import AddPostFormPresenter from "./AddPostFormPresenter";
-import usePostFormData from "./usePostFormData";
 
 // Dummy data, replace with call to database
 const defaultCities = [
@@ -13,31 +12,23 @@ const defaultCities = [
     "Gevgelija"
 ];
 
-function AddPostFormContainer({handleClose}) {
-    // NEW POST DATA HERE
-    const [formData] = usePostFormData();
-
-    // Create post and close dialog function here
-    const createPost = () => {
-        // Create post here
-
-        handleClose();
-    }
-
-    // Clear post and close dialog function here
-    const canclePost = () => {
-        // Clear inputs here
-
-        handleClose();
-    }
+function AddPostFormContainer({currentCompanyData, formData, createPost, cancelPost}) {
+    // console.log(currentCompanyData);
 
     const handleBranchAdd = (city) => {
+
         // Add to formData.citiesPostApplies
         const newList = [...formData.citiesPostApplies];
         
         // Capitalize first letter of entry
         const capitalizedCity = 
             city.slice(0, 1).toUpperCase() + city.slice(1);
+
+        // Check if city is in branches of company
+        if(!currentCompanyData.branches.includes(capitalizedCity)) {
+            formData.setCitiesPostAppliesErr("City must be in company's branches!");
+            return;
+        }
 
         // Check if valid input and not already in array
         if(defaultCities.includes(capitalizedCity) &&
@@ -60,7 +51,7 @@ function AddPostFormContainer({handleClose}) {
         handleBranchAdd={handleBranchAdd}
         handleBranchRemove={handleBranchRemove}
         createPost={createPost}
-        canclePost={canclePost} />
+        cancelPost={cancelPost} />
     )
 }
 

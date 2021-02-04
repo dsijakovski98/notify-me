@@ -1,8 +1,0 @@
-* Design company page UI:
-	> Add post button [x]
-	> Post creation modal [x]
-	> Posts history list [x]
-
-* Set correct page title []
-
-* Bedazzle scrollbar on subscribe page []

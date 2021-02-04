@@ -1,28 +1,29 @@
 import React from 'react';
 import { subscribeToCompany } from "../../../../helpers/databaseAdd";
-import { unsubscribeCompany } from "../../../../helpers/databaseRemove";
+import { unsubscribeFromCompany } from "../../../../helpers/databaseRemove";
 import CompanySubscribePresenter from "./CompanySubscribePresenter";
 import img from "../../../../images/default-company-pic.png";
 
-function CompanySubscribeContainer({companyData, userData}) {
+function CompanySubscribeContainer({companyData, userSubscribtions}) {
     
     const profilePic = companyData["profile_url"].length
     ?   companyData["profile_url"] 
     :   img;
 
-    const alreadySubscribed = userData
-    ?   userData.subscribtions.some((item) => item.id === companyData["company_id"])
+    // Check if user is subscribed to company
+    const alreadySubscribed = userSubscribtions
+    ?   userSubscribtions.subscribtions.some((item) => item.id === companyData["company_id"])
     :   null;
 
     const subscribe = () => {
-    const promise = subscribeToCompany(userData, companyData);
+    const promise = subscribeToCompany(userSubscribtions, companyData);
     promise.then(() => {
     // Successfull subscribtion
     })
     }
 
     const unsubscribe = () => {
-    const promise = unsubscribeCompany(userData, companyData);
+    const promise = unsubscribeFromCompany(userSubscribtions, companyData);
     promise.then(() => {
     // Successfull unsubscribtion
     })
@@ -31,7 +32,7 @@ function CompanySubscribeContainer({companyData, userData}) {
     return (
         <CompanySubscribePresenter 
         companyData={companyData}
-        userData={userData}
+        userSubscribtions={userSubscribtions}
         subscribe={subscribe}
         unsubscribe={unsubscribe}
         profilePic={profilePic}

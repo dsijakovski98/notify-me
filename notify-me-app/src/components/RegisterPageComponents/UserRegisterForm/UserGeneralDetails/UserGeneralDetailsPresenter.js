@@ -117,7 +117,7 @@ function UserGeneralDetailsPresenter({ values, continueRegistration, genders }) 
                     <br/>
                     <div className="login-form-submit">
                     <Grid container spacing={2} justify="center">
-                            <Grid item xs={12} sm={6}>
+                            <Grid item xs={12}>
                                 <Button
                                     variant="contained"
                                     fullWidth

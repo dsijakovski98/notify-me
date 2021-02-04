@@ -1,5 +1,5 @@
 import React from 'react'
-import { Grid, TextField, Button, Typography, TextareaAutosize  } from "@material-ui/core";
+import { Grid, TextField, Button, Typography } from "@material-ui/core";
 import ChipInput from 'material-ui-chip-input';
 import { FormControl, InputLabel, Select, MenuItem } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
@@ -10,22 +10,7 @@ const postTypes = [
     "Promo", // Promocija
 ];
 
-
 const useStyles = makeStyles({
-    textArea: {
-        width: '100%',
-        background: '#23242b',
-        borderColor: '#111',
-        borderWidth: '0.122em',
-        borderRadius: '.2em',
-        padding: '1em',
-        fontFamily: 'Roboto',
-        fontSize: '1rem',
-        color: 'whitesmoke',
-        '&:focus': {
-            outline: '#3fffb3'
-        }
-    },
     button: {
         padding: '.5em 0',
         fontSize: '1rem'
@@ -36,10 +21,11 @@ function AddPostFormPresenter(props) {
     const {
         formData,
         createPost,
-        canclePost,
+        cancelPost,
         handleBranchAdd,
         handleBranchRemove
     } = props;
+
     const classes = useStyles();
 
     return (
@@ -53,8 +39,9 @@ function AddPostFormPresenter(props) {
                             <Typography variant="h4">
                                 New post
                             </Typography>
-                        <br/>
+                            <br/>
                         </Grid>
+
                         {/* POST TYPES SELECT */}
                         <Grid item xs={8} sm={3}>
                             <FormControl>
@@ -84,7 +71,8 @@ function AddPostFormPresenter(props) {
                                 <ChipInput
                                     fullWidth
                                     allowDuplicates={false}
-                                    // dataSource={defaultCities}
+                                    error={formData.citiesPostAppliesErr.length ? true : false}
+                                    helperText={formData.citiesPostAppliesErr}
                                     value={formData.citiesPostApplies}
                                     placeholder="Cities post applies to  -  ⤵  to add"
                                     onAdd={(city) => handleBranchAdd(city)}
@@ -102,6 +90,8 @@ function AddPostFormPresenter(props) {
                                 variant="standard"
                                 required
                                 fullWidth
+                                error={formData.postTitleErr.length ? true : false}
+                                helperText={formData.postTitleErr}
                                 label="Title"
                                 type="text"
                                 value={formData.postTitle}
@@ -113,36 +103,45 @@ function AddPostFormPresenter(props) {
                         
                         {/* POST CONTENT */}
                         <Grid item xs={12} sm={12}>
-                                <TextareaAutosize className={classes.textArea}
+                                <TextField 
+                                variant="outlined"
                                 placeholder="Content"
+                                multiline
+                                fullWidth
+                                error={formData.postContentErr.length ? true : false}
+                                helperText={formData.postContentErr}
                                 value={formData.postContent}
                                 onChange={(e) => formData.setPostContent(e.target.value)}
-                                rowsMin={8} />
+                                rows={8}
+                                rowsMax={10}/>
                         </Grid>
 
                     </Grid>
+
                     <br/>
-                        <div className="login-form-submit">
-                            <Grid container spacing={2} justify="center">
-                               
-                                <Grid item xs={12} sm={6}>
-                                    <Button onClick={() => canclePost()}
-                                    variant="contained" fullWidth color="default"
-                                    className={classes.button}>
-                                        Cancel
-                                    </Button>
-                                </Grid>
-
-                                <Grid item xs={12} sm={6}>
-                                    <Button onClick={() => createPost()}
-                                    variant="contained" fullWidth color="primary"
-                                    className={classes.button}>
-                                        Create
-                                    </Button>
-                                </Grid>
-
+                    
+                    <div className="login-form-submit">
+                        <Grid container spacing={2} justify="center">
+                            
+                            <Grid item xs={12} sm={6}>
+                                <Button onClick={() => cancelPost()}
+                                variant="contained" fullWidth color="default"
+                                className={classes.button}>
+                                    Cancel
+                                </Button>
                             </Grid>
-                        </div>
+
+                            <Grid item xs={12} sm={6}>
+                                <Button onClick={() => createPost()}
+                                variant="contained" fullWidth color="primary"
+                                className={classes.button}>
+                                    Create
+                                </Button>
+                            </Grid>
+
+                        </Grid>
+                    </div>
+                
                 </div>
             </div>
         </div>

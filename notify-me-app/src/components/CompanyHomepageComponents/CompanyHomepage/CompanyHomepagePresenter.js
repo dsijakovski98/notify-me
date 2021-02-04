@@ -4,17 +4,21 @@ import { CircularProgress } from "@material-ui/core"
 import NoPostsPage from "../NoPostsPage"
 import CompanyPostsListContainer from "../CompanyPostsList/CompanyPostsListContainer"
 
-function CompanyHomepagePresenter({posts}) {
+function CompanyHomepagePresenter({companyPosts, currentCompanyData}) {
     return (
         <div className="company-homepage-container">
             {
-                posts
-                ?   posts.length
-                    ?   <CompanyPostsListContainer posts={posts}/>
-                    :   <NoPostsPage />
+                companyPosts
+                ?   companyPosts.length
+                    ?   <CompanyPostsListContainer 
+                            companyPosts={companyPosts}
+                            currentCompanyData={currentCompanyData}
+                        />
+                    :   <NoPostsPage currentCompanyData={currentCompanyData} />
+
                 :   <div className="company-homepage-progress-bar">
-                <CircularProgress style={{width: 120, height: 120}} />
-            </div>
+                        <CircularProgress style={{width: 120, height: 120}} />
+                    </div>
             }
 
             

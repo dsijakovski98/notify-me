@@ -1,9 +1,12 @@
 import React from 'react'
 import CompanyPostsListPresenter from './CompanyPostsListPresenter'
 
-function CompanyPostsListContainer({posts}) {
+function CompanyPostsListContainer({companyPosts, currentCompanyData}) {
     return (
-        <CompanyPostsListPresenter posts={posts} />
+        <CompanyPostsListPresenter 
+            companyPosts={companyPosts}
+            currentCompanyData={currentCompanyData}
+        />
     )
 }
 

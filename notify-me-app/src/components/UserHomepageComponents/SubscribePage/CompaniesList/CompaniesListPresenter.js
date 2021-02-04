@@ -2,7 +2,7 @@ import React from 'react'
 import { CircularProgress, Typography } from '@material-ui/core'
 import CompanySubscribeContainer from "../CompanySubscribe/CompanySubscribeContainer";
 
-function CompaniesListPresenter({companiesList, userData}) {
+function CompaniesListPresenter({companiesList, userSubscribtions}) {
     return (
         <div className="subscribe-page-companies-list-container">
             {
@@ -16,13 +16,13 @@ function CompaniesListPresenter({companiesList, userData}) {
                         margin: '0 auto'
                     }}  />
                 :
-                    companiesList.length > 0
+                    companiesList.length
                     ?
                         companiesList.map(company => {
                             return (
                                 <CompanySubscribeContainer key={company["company_id"]}
                                 companyData={company}
-                                userData={userData} />
+                                userSubscribtions={userSubscribtions} />
                             )
                         })
                     :

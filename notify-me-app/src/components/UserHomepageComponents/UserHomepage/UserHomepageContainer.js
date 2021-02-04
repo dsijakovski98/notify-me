@@ -11,8 +11,7 @@ function UserHomepageContainer({history}) {
     }
 
     return (
-        <UserHomepagePresenter 
-        />
+        currentUser && <UserHomepagePresenter />
     )
 }
 

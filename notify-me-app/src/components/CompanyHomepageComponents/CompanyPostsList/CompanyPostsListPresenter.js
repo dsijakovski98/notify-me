@@ -2,20 +2,20 @@ import React from 'react'
 import CompanyPost from './CompanyPost'
 import AddPost from "../CompanyAddPost/AddPost";
 
-function CompanyPostsListPresenter({posts}) {
+function CompanyPostsListPresenter({companyPosts, currentCompanyData}) {
     return (
         <>
             <div className="company-posts-list-container">
                 {
-                    posts.map(post => {
+                    companyPosts.map(post => {
                         return (
-                            <CompanyPost key={post} post={post}/>
+                            <CompanyPost key={post["post_id"]} post={post}/>
                         )
                     })
                 }
             </div>
 
-            <AddPost />
+            <AddPost currentCompanyData={currentCompanyData}/>
         </>
     )
 }

@@ -1,10 +1,10 @@
 import React from 'react';
 import CompaniesListPresenter from "./CompaniesListPresenter";
 
-function CompaniesListContainer({companiesList, userData}) {
+function CompaniesListContainer({companiesList, userSubscribtions}) {
 
     return (
-        <CompaniesListPresenter companiesList={companiesList} userData={userData} />
+        <CompaniesListPresenter companiesList={companiesList} userSubscribtions={userSubscribtions} />
     )
 }
 

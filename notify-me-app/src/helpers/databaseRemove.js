@@ -1,21 +1,46 @@
 import { firestore, firebase } from "../firebase/config";
-import { TABLE_NAMES } from "../firebase/tables";
-import { USERS_TABLE_COLUMNS } from "../firebase/tables";
-import { COMPANY_TABLE_COLUMNS } from "../firebase/tables";
+import { TABLE_NAMES, USER_SUBSCRIBE_TABLE_COLUMNS } from "../firebase/tables";
+import { COMPANY_TABLE_COLUMNS, USER_POSTS_TABLE_COLUMNS } from "../firebase/tables";
 
-const unsubscribeCompany = (user, company) => {
-    const usersRef = firestore.collection(TABLE_NAMES.USERS_TABLE);
+const deletePost = (postId) => {
+    const postsRef = firestore.collection(TABLE_NAMES.POSTS_TABLE);
+
+    postsRef.doc(postId).delete();
+}
+
+const unsubscribeFromCompany = (user, company) => {
+    const userSubscribtionsRef = firestore.collection(TABLE_NAMES.USER_SUBSCRIBE_TABLE);
 
     const targetSubscribtion = {
         type: company[COMPANY_TABLE_COLUMNS.SERVICE_TYPE],
         id: company[COMPANY_TABLE_COLUMNS.COMPANY_ID]
     };
 
-    return usersRef.doc(user.id).update({
-        [USERS_TABLE_COLUMNS.SUBSCRIBTIONS]: 
+    return userSubscribtionsRef.doc(user.id).update({
+        [USER_SUBSCRIBE_TABLE_COLUMNS.SUBSCRIBTIONS]: 
             firebase.firestore.FieldValue.arrayRemove(targetSubscribtion)
     });
 
 }
 
-export { unsubscribeCompany };
+const unreadPost = (userId, postId) => {
+    const userPostsRef = firestore.collection(TABLE_NAMES.USER_POSTS_TABLE);
+    
+    return userPostsRef.doc(userId)
+    .update({
+        [USER_POSTS_TABLE_COLUMNS.READ_POSTS]: 
+            firebase.firestore.FieldValue.arrayRemove(postId)
+    });
+};
+
+const unstarPost = (userId, postId) => {
+    const userPostsRef = firestore.collection(TABLE_NAMES.USER_POSTS_TABLE);
+    
+    return userPostsRef.doc(userId)
+    .update({
+        [USER_POSTS_TABLE_COLUMNS.STARRED_POSTS]: 
+            firebase.firestore.FieldValue.arrayRemove(postId)
+    });
+}
+
+export { deletePost, unsubscribeFromCompany, unreadPost, unstarPost };

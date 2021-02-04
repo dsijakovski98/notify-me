@@ -4,7 +4,7 @@ import { Typography } from "@material-ui/core"
 import PanToolRoundedIcon from '@material-ui/icons/PanToolRounded';
 
 
-function NoPostsPage() {
+function NoPostsPage({currentCompanyData}) {
     return (
         <>
             <div className="company-homepage-no-posts-container">
@@ -22,7 +22,7 @@ function NoPostsPage() {
                 </div>
             </div>
 
-            <AddPost />
+            <AddPost currentCompanyData={currentCompanyData}/>
         </>
     )
 }

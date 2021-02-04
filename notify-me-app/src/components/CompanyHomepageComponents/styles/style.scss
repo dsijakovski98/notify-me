@@ -43,9 +43,9 @@ company-homepage-container {
   box-shadow: 0px 2px 10px black;
   transition: transform 0.3s ease-in-out;
 
-  &:hover {
-    transform: scale(1.02);
-  }
+  // &:hover {
+  //   transform: scale(1.02);
+  // }
 }
 
 // CREATE POST FAB
@@ -81,7 +81,8 @@ company-homepage-container {
   width: 90%;
   margin: 0 auto;
 
-  input {
+  input,
+  textarea {
     color: $base_text;
   }
 }

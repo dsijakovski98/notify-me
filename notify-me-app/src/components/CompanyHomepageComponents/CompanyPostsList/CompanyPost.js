@@ -5,14 +5,24 @@ import DeleteRoundedIcon from '@material-ui/icons/DeleteRounded';
 import BorderColorRoundedIcon from '@material-ui/icons/BorderColorRounded';
 import { blue } from '@material-ui/core/colors';
 import { makeStyles } from '@material-ui/core/styles';
+import { deletePost } from "../../../helpers/databaseRemove";
 
 const useStyles = makeStyles(theme => ({
     root: {
         maxWidth: 345,
+        height: '100%',
+        borderRadius: '0'
     },
     actions: {
         justifyContent: 'space-between',
         padding: '0.3em 0.1em'
+    },
+    cardContent: {
+        minHeight: '4em',
+        height: '6em',
+        whiteSpace: 'wrap',
+        overflow: 'hidden',
+        textOverflow: 'ellipsis'
     },
     deleteButton: {
         width: 28,
@@ -37,29 +47,42 @@ const useStyles = makeStyles(theme => ({
 function CompanyPost({post}) {
     const classes = useStyles();
 
+    const postDate = new Date(post["created_on"].toDate());
+    const postTimestamp = postDate.toLocaleString();
+
+    const deleteCompanyPost = () => {
+        deletePost(post["post_id"]);
+    }
+
     return (
         <div className="posts-list-post-container">
             <Card className={classes.root}>
                 <CardHeader
-                    title={<Typography variant="body1" color="textPrimary"
-                    style={{fontSize: '1.2rem'}} >
-                    Post title
-                </Typography>
+                    title={
+                        <Typography
+                        variant="body1" color="textPrimary"
+                        style={{
+                            fontSize: '1.2rem',
+                            whiteSpace: 'wrap',
+                            overflow: 'hidden',
+                            textOverflow: 'ellipsis'
+                        }}>
+                                {post.title}
+                        </Typography>
                     }
                     subheader={<Typography 
                             style={{color: '#888', fontSize: '0.9rem'}} variant="subtitle2">
-                            Timestamp of post
+                            {postTimestamp}
                         </Typography>
                 }
                 />
 
-                <CardContent>
+                <CardContent className={classes.cardContent}>
                     <Typography variant="body2" color="textSecondary" component="p">
-                    Post content. Post content. Post content. Post content. Post content.
-                    Post content. Post content. Post content. Post content. Post content.
+                        {post.content}
                     </Typography>
                 </CardContent>
-                
+                <br/>                
                 <CardActions className={classes.actions}>
 
                     <Button size="small" color="primary" className={classes.detailsButton}>
@@ -73,7 +96,8 @@ function CompanyPost({post}) {
                             className={classes.editButton} />
                         </IconButton>
 
-                        <IconButton color="primary" 
+                        <IconButton color="primary"
+                        onClick={() => deleteCompanyPost()}
                         style={{padding: "0.1em"}}>
                             <DeleteRoundedIcon color="secondary" 
                                 className={classes.deleteButton}/>

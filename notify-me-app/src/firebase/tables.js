@@ -1,6 +1,9 @@
 const TABLE_NAMES = {
     USERS_TABLE: "users",
     COMPANIES_TABLE: "companies",
+    USER_POSTS_TABLE: "user_posts",
+    USER_SUBSCRIBE_TABLE: "user_subscribe",
+    POSTS_TABLE: "posts"
 };
 
 const USERS_TABLE_COLUMNS = {
@@ -10,8 +13,7 @@ const USERS_TABLE_COLUMNS = {
     LAST_NAME: "last_name",
     DATE_OF_BIRTH: "date_of_birth",
     GENDER: "gender",
-    SUBSCRIBTIONS: "subscribtions",
-}
+};
 
 const COMPANY_TABLE_COLUMNS = {
     COMPANY_ID: "company_id",
@@ -24,7 +26,35 @@ const COMPANY_TABLE_COLUMNS = {
     SERVICE_TYPE: "service",
     BRANCHES: "branches",
     PROFILE_URL: "profile_url"
-}
+};
+
+const USER_POSTS_TABLE_COLUMNS = {
+    READ_POSTS: "read_posts",
+    STARRED_POSTS: "starred_posts"
+};
+
+const USER_SUBSCRIBE_TABLE_COLUMNS = {
+    SUBSCRIBTIONS: "subscribtions"
+};
+
+const POSTS_TABLE_COLUMNS = {
+    POST_ID: "post_id",
+    CREATOR_ID: "creator_id",
+    CREATOR_NAME: "creator_name",
+    CREATOR_PROFILE_URL: "creator_profile_url",
+    POST_TYPE: "type",
+    POST_TITLE: "title",
+    POST_CONTENT: "content",
+    CITIES_POST_APPLIES_TO: "cities_affected",
+    TIMESTAMP: "created_on"
+};
 
 
-export { TABLE_NAMES, USERS_TABLE_COLUMNS, COMPANY_TABLE_COLUMNS }
+export { 
+    TABLE_NAMES,
+    USERS_TABLE_COLUMNS,
+    COMPANY_TABLE_COLUMNS,
+    USER_POSTS_TABLE_COLUMNS,
+    USER_SUBSCRIBE_TABLE_COLUMNS,
+    POSTS_TABLE_COLUMNS
+};

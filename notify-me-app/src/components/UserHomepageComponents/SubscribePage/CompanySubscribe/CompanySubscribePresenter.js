@@ -3,7 +3,7 @@ import { Button, IconButton, Typography } from '@material-ui/core';
 import InfoIcon from '@material-ui/icons/Info';
 
 function CompanySubscribePresenter({
-    companyData, userData, subscribe, unsubscribe, profilePic, alreadySubscribed}) {
+    companyData, userSubscribtions, subscribe, unsubscribe, profilePic, alreadySubscribed}) {
 
     const subscribeButton = (
         <Button onClick={() => subscribe()}  
@@ -21,7 +21,7 @@ function CompanySubscribePresenter({
     )
 
     return (
-        userData &&
+        userSubscribtions &&
         <div className="subscribe-page-company">
             <Typography variant="body1" style={{color: 'whitesmoke'}} >{companyData.name}</Typography>
             <img

@@ -1,0 +1,22 @@
+* Notes:
+	> Login with pressing ENTER [x]
+	> Search companies with pressing ENTER [x]
+	> Display post type in card [x]
+	> Avatar opens menu (Homepage, Edit Profile, Logout) [x]
+	> Add subscribe button in homepage [x]
+	> Add homepage title in user homepage [x]
+	> Case insensitive search [-] Firebase doesn't support it
+
+* Company edit post modal []
+* Company post details modal []
+* Company info details modal []
+* Edit Profile modal:
+	> User []
+	> Company []
+
+* Add company contact info section (optional inputs):
+	> Phone number []
+	> Website []
+
+* Company subscriber count []
+* Post reads count []

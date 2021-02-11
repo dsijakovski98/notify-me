@@ -2,15 +2,6 @@ import React from 'react'
 import AddPostFormPresenter from "./AddPostFormPresenter";
 
 // Dummy data, replace with call to database
-const defaultCities = [
-    "Skopje",
-    "Ohrid",
-    "Kumanovo",
-    "Struga",
-    "Veles",
-    "Bitola",
-    "Gevgelija"
-];
 
 function AddPostFormContainer({currentCompanyData, formData, createPost, cancelPost}) {
     // console.log(currentCompanyData);
@@ -30,9 +21,8 @@ function AddPostFormContainer({currentCompanyData, formData, createPost, cancelP
             return;
         }
 
-        // Check if valid input and not already in array
-        if(defaultCities.includes(capitalizedCity) &&
-         !formData.citiesPostApplies.includes(capitalizedCity)) {
+        // Check if already in array
+        if(!formData.citiesPostApplies.includes(capitalizedCity)) {
             newList.push(capitalizedCity);
             formData.setCitiesPostApplies(newList);
         }

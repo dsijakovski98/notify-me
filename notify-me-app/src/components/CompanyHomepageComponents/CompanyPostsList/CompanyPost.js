@@ -6,12 +6,14 @@ import BorderColorRoundedIcon from '@material-ui/icons/BorderColorRounded';
 import { blue } from '@material-ui/core/colors';
 import { makeStyles } from '@material-ui/core/styles';
 import { deletePost } from "../../../helpers/databaseRemove";
+import moment from "moment";
+import { dateTimeFormat } from "../../../helpers/validators";
 
 const useStyles = makeStyles(theme => ({
     root: {
         maxWidth: 345,
         height: '100%',
-        borderRadius: '0'
+        borderRadius: '0.2em'
     },
     actions: {
         justifyContent: 'space-between',
@@ -42,33 +44,57 @@ const useStyles = makeStyles(theme => ({
         width: 50,
         height: 50
     },
-}))
+}));
 
 function CompanyPost({post}) {
     const classes = useStyles();
 
     const postDate = new Date(post["created_on"].toDate());
-    const postTimestamp = postDate.toLocaleString();
+    const postTimestamp = moment(postDate).format(dateTimeFormat);
 
     const deleteCompanyPost = () => {
         deletePost(post["post_id"]);
     }
 
+    const postTypeColor = (type) => {
+        switch (type) {
+            case "Warning":
+                return "#F50057"
+            case "Info":
+                return "#2F303A"
+            case "Promo":
+                return "#3f51b5"
+            default:
+                return 'black'
+        }
+    }
+
     return (
         <div className="posts-list-post-container">
             <Card className={classes.root}>
+                
                 <CardHeader
                     title={
-                        <Typography
+                        <>
+                    <Typography variant="body1" 
+                        style={{
+                            color: postTypeColor(post.type),
+                            fontSize: '1.1rem',
+                            fontWeight: '700'}}>
+                        {post.type}
+                    </Typography>
+                    <Typography 
                         variant="body1" color="textPrimary"
                         style={{
-                            fontSize: '1.2rem',
+                            fontSize: '1.25rem',
+                            fontWeight: '500',
                             whiteSpace: 'wrap',
                             overflow: 'hidden',
                             textOverflow: 'ellipsis'
                         }}>
-                                {post.title}
-                        </Typography>
+                        {post.title}
+                    </Typography>
+                    </>
                     }
                     subheader={<Typography 
                             style={{color: '#888', fontSize: '0.9rem'}} variant="subtitle2">
@@ -78,6 +104,7 @@ function CompanyPost({post}) {
                 />
 
                 <CardContent className={classes.cardContent}>
+                
                     <Typography variant="body2" color="textSecondary" component="p">
                         {post.content}
                     </Typography>

@@ -46,9 +46,9 @@ function UserAccountDetailsContainer({values, nextStep, prevStep}) {
             cPasswordError = "Passwords don't match!";
         
         // Empty fields
-        if(values.userEmail === "") emailError = "Enter an email!";
-        if(values.userPassword === "") passwordError = "Enter a password!";
-        if(values.passwordConfirm === "") cPasswordError = "Confirm your password!";
+        if(values.userEmail.trim() === "") emailError = "Enter an email!";
+        if(values.userPassword.trim() === "") passwordError = "Enter a password!";
+        if(values.passwordConfirm.trim() === "") cPasswordError = "Confirm your password!";
         
         // Valid email format
         if(!emailPattern.test(values.userEmail)) emailError = "Email invalid format!";

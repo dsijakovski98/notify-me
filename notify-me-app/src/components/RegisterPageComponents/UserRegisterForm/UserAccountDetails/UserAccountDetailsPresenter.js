@@ -1,7 +1,11 @@
 import React from 'react'
 import "../../style/style.css";
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import InputAdornment from '@material-ui/core/InputAdornment';
 import { Typography, TextField, Button, Avatar, Grid } from '@material-ui/core';
+import AlternateEmailRoundedIcon from '@material-ui/icons/AlternateEmailRounded';
+import VpnKeyRoundedIcon from '@material-ui/icons/VpnKeyRounded';
+
 
 function UserAccountDetailsPresenter({values, continueRegistration, goBackRegistration}) {
     return (
@@ -26,10 +30,17 @@ function UserAccountDetailsPresenter({values, continueRegistration, goBackRegist
                         <Grid item xs={12}>
                             <TextField
                                 margin="normal"
-                                variant="outlined"
+                                variant="standard"
                                 required
-                                fullWidth
                                 autoFocus
+                                fullWidth
+                                InputProps={{
+                                    startAdornment: (
+                                      <InputAdornment position="start">
+                                        <AlternateEmailRoundedIcon style={{color: 'whitesmoke'}} />
+                                      </InputAdornment>
+                                    ),
+                                  }}
                                 label="Email"
                                 type="email"
                                 error={values.emailErr ? true : false}
@@ -43,11 +54,18 @@ function UserAccountDetailsPresenter({values, continueRegistration, goBackRegist
                         <Grid item xs={12} sm={6}>
                             <TextField
                                 margin="normal"
-                                variant="outlined"
+                                variant="standard"
                                 required
                                 fullWidth
-                                label="Password"
+                                InputProps={{
+                                    startAdornment: (
+                                      <InputAdornment position="start">
+                                        <VpnKeyRoundedIcon style={{color: 'whitesmoke'}} />
+                                      </InputAdornment>
+                                    ),
+                                  }}
                                 type="password"
+                                label="Password"
                                 error={values.passwordErr ? true : false}
                                 helperText={values.passwordErr}
                                 value={values.userPassword}
@@ -59,11 +77,18 @@ function UserAccountDetailsPresenter({values, continueRegistration, goBackRegist
                         <Grid item xs={12} sm={6}>
                             <TextField
                                 margin="normal"
-                                variant="outlined"
+                                variant="standard"
                                 required
                                 fullWidth
-                                label="Confirm password"
+                                InputProps={{
+                                    startAdornment: (
+                                      <InputAdornment position="start">
+                                        <VpnKeyRoundedIcon style={{color: 'whitesmoke'}} />
+                                      </InputAdornment>
+                                    ),
+                                  }}
                                 type="password"
+                                label="Confirm password"
                                 error={values.confirmPasswordErr ? true : false}
                                 helperText={values.confirmPasswordErr}
                                 value={values.passwordConfirm}

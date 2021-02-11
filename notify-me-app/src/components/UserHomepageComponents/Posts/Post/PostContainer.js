@@ -3,12 +3,14 @@ import PostPresenter from './PostPresenter'
 import { POSTS_TABLE_COLUMNS } from "../../../../firebase/tables"
 import { readPost, starPost } from "../../../../helpers/databaseAdd";
 import { unreadPost, unstarPost } from "../../../../helpers/databaseRemove";
+import moment from "moment";
+import { dateTimeFormat } from "../../../../helpers/validators"
 
 function PostContainer({post}) {
 
     const postDate = new Date(post["created_on"].toDate());
 
-    const postTimestamp = postDate.toLocaleString();
+    const postTimestamp = moment(postDate).format(dateTimeFormat);
     const postCreator = post[POSTS_TABLE_COLUMNS.CREATOR_NAME];
     const postCreatorProfileUrl = post[POSTS_TABLE_COLUMNS.CREATOR_PROFILE_URL];
 

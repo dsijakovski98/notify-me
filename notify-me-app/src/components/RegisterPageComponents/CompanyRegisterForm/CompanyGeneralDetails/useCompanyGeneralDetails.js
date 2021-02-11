@@ -1,4 +1,6 @@
 import { useState } from "react";
+import moment from "moment";
+import { dateFormat } from "../../../../helpers/validators";
 
 const useCompanyGeneralDetails = () => {
     // Company General Details
@@ -34,10 +36,10 @@ const useCompanyGeneralDetails = () => {
 
     const generalDetailsParams = {
         "Company Name": companyName,
-        // "Date of Incorporation":
-        //     companyStartDate ? 
-        //     `${companyStartDate.getDate()}/${companyStartDate.getMonth()}/${companyStartDate.getFullYear()}`
-        //     : "",
+        "Date of Incorporation":
+            companyStartDate ? 
+            moment(companyStartDate).format(dateFormat)
+            : "",
         "Founder Name": `${companyFounderFirstName} ${companyFounderLastName}`,
     }
 

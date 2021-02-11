@@ -12,7 +12,7 @@ const useStyles = makeStyles(theme => ({
     root: {
         maxWidth: 345,
         height: '100%',
-        borderRadius: '0'
+        borderRadius: '0.2em'
     },
     actions: {
         justifyContent: 'space-between',
@@ -62,6 +62,19 @@ function PostPresenter(props) {
         toggleStarPost
     } = props;
 
+    const postTypeColor = (type) => {
+        switch (type) {
+            case "Warning":
+                return "#F50057"
+            case "Info":
+                return "#2F303A"
+            case "Promo":
+                return "#3f51b5"
+            default:
+                return 'black'
+        }
+    }
+
     const defaultAvatar = (
         <Avatar aria-label="recipe" className={classes.avatar}>
             {postCreator[0]}
@@ -104,6 +117,14 @@ function PostPresenter(props) {
                 />
 
                 <CardContent className={classes.cardContent}>
+                <Typography variant="body1" 
+                        style={{
+                            color: postTypeColor(post.type),
+                            fontSize: '.9rem',
+                            fontWeight: post.read ? 'normal' : 'bold',
+                            cursor: 'default'}}>
+                        {post.type}
+                    </Typography>
                     <Typography variant="body1" color="textPrimary"
                         style={{fontWeight: post.read ? 'normal' : 'bold', fontSize: '1.2rem'}} >
                         {post.title.slice(0, 40)}

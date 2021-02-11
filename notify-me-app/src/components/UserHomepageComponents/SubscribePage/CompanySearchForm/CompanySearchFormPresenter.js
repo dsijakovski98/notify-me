@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from "react-router-dom"
+import { Link, withRouter } from "react-router-dom"
 import { TextField, Select, MenuItem, Button, Typography } from "@material-ui/core"
 
 const typesOfServices = [
@@ -8,7 +8,7 @@ const typesOfServices = [
     "ISP"
 ]
 
-function CompanySearchFormPresenter({companyType, helperFormData, updateData}) {
+function CompanySearchFormPresenter({companyType, helperFormData, updateData, history}) {
     const {
         name,
         setName,
@@ -16,8 +16,12 @@ function CompanySearchFormPresenter({companyType, helperFormData, updateData}) {
         setType
     } = helperFormData;
 
+    const goBack = () => {
+        history.goBack()
+    }
+
     return (
-        <div className="subscribe-page-search-form">
+        <form className="subscribe-page-search-form" onSubmit={e => e.preventDefault()} method="POST">
             
             <Typography variant="h4" style={{alignSelf: "start"}}>
                 Search for companies
@@ -57,17 +61,16 @@ function CompanySearchFormPresenter({companyType, helperFormData, updateData}) {
         
             <div className="subscribe-page-search-form-buttons">
                 <Button onClick={() => updateData()} 
-                variant="contained" color="primary" fullWidth>
+                variant="contained" color="primary" fullWidth type="submit">
                     Search
                 </Button>
-                <Link to={`/notify-me-RST/user-page/posts/${companyType}`}>
-                    <Button variant="contained" color="default" fullWidth>
+                    <Button onClick={() => goBack()}
+                    variant="contained" color="default" fullWidth>
                         Go back
                     </Button>
-                </Link>
             </div>
-        </div>
+        </form>
     )
 }
 
-export default CompanySearchFormPresenter
+export default withRouter(CompanySearchFormPresenter)

@@ -17,6 +17,13 @@ const useCompaniesList = (companyName, companyType) => {
 
             // .startAt("[a-zA-Z0-9]*")
             // .endAt(searchString)
+
+
+            // .startAt(companyName.toUpperCase()).endAt(companyName.toLowerCase() + "\uf8ff")
+            
+            
+            // .where(COMPANY_TABLE_COLUMNS.COMPANY_NAME, '>=', companyName)
+            // .where(COMPANY_TABLE_COLUMNS.COMPANY_NAME, '<=', companyName + "\uf8ff")
             
             companiesRef.orderBy(COMPANY_TABLE_COLUMNS.COMPANY_NAME)
             .startAt(companyName).endAt(companyName + "\uf8ff")

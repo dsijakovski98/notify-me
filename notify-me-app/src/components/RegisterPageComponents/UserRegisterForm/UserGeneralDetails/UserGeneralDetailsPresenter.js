@@ -2,10 +2,14 @@ import React from 'react'
 import "../../style/style.css";
 import 'date-fns';
 import DateFnsUtils from '@date-io/date-fns';
+import { Link } from "react-router-dom";
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import InputAdornment from '@material-ui/core/InputAdornment';
 import { Typography, TextField, Button, Avatar, Grid, Select, MenuItem, InputLabel, FormControl }
  from '@material-ui/core';
 import { KeyboardDatePicker, MuiPickersUtilsProvider } from '@material-ui/pickers';
+import FaceRoundedIcon from '@material-ui/icons/FaceRounded';
+import LocationOnRoundedIcon from '@material-ui/icons/LocationOnRounded';
 
 
 function UserGeneralDetailsPresenter({ values, continueRegistration, genders }) {
@@ -29,12 +33,19 @@ function UserGeneralDetailsPresenter({ values, continueRegistration, genders }) 
                         <Grid item xs={12} sm={6}>
                             <TextField
                                 margin="dense"
-                                variant="outlined"
+                                variant="standard"
                                 required
-                                fullWidth
-                                label="First Name"
                                 autoFocus
+                                fullWidth
+                                InputProps={{
+                                    startAdornment: (
+                                      <InputAdornment position="start">
+                                        <FaceRoundedIcon style={{color: 'whitesmoke'}} />
+                                      </InputAdornment>
+                                    ),
+                                  }}
                                 type="text"
+                                label="First Name"
                                 error={values.firstNameErr ? true : false}
                                 helperText={values.firstNameErr}
                                 value={values.firstName}
@@ -45,11 +56,18 @@ function UserGeneralDetailsPresenter({ values, continueRegistration, genders }) 
                         <Grid item xs={12} sm={6}>
                             <TextField
                                 margin="dense"
-                                variant="outlined"
+                                variant="standard"
                                 required
                                 fullWidth
-                                label="Last Name"
+                                InputProps={{
+                                    startAdornment: (
+                                      <InputAdornment position="start">
+                                        <FaceRoundedIcon style={{color: 'whitesmoke'}} />
+                                      </InputAdornment>
+                                    ),
+                                  }}
                                 type="text"
+                                label="Last Name"
                                 error={values.lastNameErr ? true : false}
                                 helperText={values.lastNameErr}
                                 value={values.lastName}
@@ -60,7 +78,6 @@ function UserGeneralDetailsPresenter({ values, continueRegistration, genders }) 
                         <Grid item xs={12}>
                             <MuiPickersUtilsProvider utils={DateFnsUtils}>
                                 <KeyboardDatePicker
-                                    disableToolbar
                                     fullWidth
                                     variant="dialog"
                                     format="dd/MM/yyyy"
@@ -77,11 +94,18 @@ function UserGeneralDetailsPresenter({ values, continueRegistration, genders }) 
                         <Grid item xs={12} sm={6}>
                             <TextField
                                 margin="dense"
-                                variant="outlined"
+                                variant="standard"
                                 required
                                 fullWidth
-                                label="City"
+                                InputProps={{
+                                    startAdornment: (
+                                      <InputAdornment position="start">
+                                        <LocationOnRoundedIcon style={{color: 'whitesmoke'}} />
+                                      </InputAdornment>
+                                    ),
+                                  }}
                                 type="text"
+                                label="City"
                                 error={values.cityErr ? true : false}
                                 helperText={values.cityErr}
                                 value={values.city}
@@ -117,16 +141,26 @@ function UserGeneralDetailsPresenter({ values, continueRegistration, genders }) 
                     <br/>
                     <div className="login-form-submit">
                     <Grid container spacing={2} justify="center">
-                            <Grid item xs={12}>
+                            <Grid item xs={12} sm={6}>
+                                <Link to={"/notify-me-RST/"}>
+                                    <Button
+                                        variant="contained"
+                                        fullWidth
+                                        color="default">
+                                        Back
+                                    </Button>
+                                </Link>
+                            </Grid>
+                            <Grid item xs={12} sm={6}>
                                 <Button
                                     variant="contained"
                                     fullWidth
                                     color="primary"
-                                    onClick={e => continueRegistration(e)}
-                                >
+                                    onClick={e => continueRegistration(e)}>
                                     Continue
                                 </Button>
                             </Grid>
+                            
                         </Grid>
                     </div>
                 </div>

@@ -1,14 +1,30 @@
 @import "../../../style/helper_styles/breakpoints";
 @import "../../../style//helper_styles/colors";
 
+.user-homepage-container {
+  // background: green;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  // justify-content: space-evenly;
+}
+
+.user-homepage-title {
+  // background: #000;
+  padding-top: 2em;
+  height: 45%;
+  width: 70%;
+  margin: 0 auto;
+  text-align: center;
+}
+
 .post-links-container-grid {
   width: 80%;
   // height: 100%;
   margin: 0 auto;
-  margin-top: 12em;
   display: grid;
   place-items: center;
-  //   background: green;
+  // background: green;
 }
 
 .post-links-container-flex {
@@ -109,7 +125,7 @@
 
   .subscribe-page-companies-list-container {
     // background: yellow;
-    width: 55%;
+    width: 60%;
     padding: 2em;
 
     display: flex;
@@ -150,7 +166,7 @@
     justify-content: space-evenly;
     // background: #000;
     margin: 0.5em;
-    margin-bottom: 1.2em;
+    margin-bottom: 1.5em;
 
     img {
       border-radius: 4px;

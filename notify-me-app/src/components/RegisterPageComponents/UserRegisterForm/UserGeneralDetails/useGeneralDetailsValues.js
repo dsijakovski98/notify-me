@@ -1,4 +1,7 @@
 import { useState } from 'react';
+import moment from 'moment'
+import { dateFormat } from "../../../../helpers/validators"
+
 
 // User General Details
 const useGeneralDetails = () => {
@@ -39,10 +42,10 @@ const useGeneralDetails = () => {
     const generalDetailsParams = {
         "First Name": firstName,
         "Last Name": lastName,
-        // "Date of Birth":
-        //     dateOfBirth ? 
-        //     `${dateOfBirth.getDate()}/${dateOfBirth.getMonth()}/${dateOfBirth.getFullYear()}`
-        //     : "",
+        "Date of Birth":
+            dateOfBirth ? 
+            moment(dateOfBirth).format(dateFormat)
+            : "",
         "Gender": gender,
         "City": city,
     }

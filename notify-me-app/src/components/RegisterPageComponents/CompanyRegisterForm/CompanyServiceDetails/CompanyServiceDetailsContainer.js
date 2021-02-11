@@ -8,15 +8,15 @@ const typesOfServices = [
 ]
 
 // Dummy data, replace with call to database
-const defaultCities = [
-    "Skopje",
-    "Ohrid",
-    "Kumanovo",
-    "Struga",
-    "Veles",
-    "Bitola",
-    "Gevgelija"
-]
+// const defaultCities = [
+//     "Skopje",
+//     "Ohrid",
+//     "Kumanovo",
+//     "Struga",
+//     "Veles",
+//     "Bitola",
+//     "Gevgelija"
+// ]
 
 function CompanyServiceDetailsContainer({values, nextStep, prevStep}) {
 
@@ -28,7 +28,7 @@ function CompanyServiceDetailsContainer({values, nextStep, prevStep}) {
 
 
         // Empty fields
-        if(values.headCity === "") cityError = "Enter headquarters city!";
+        if(values.headCity.trim() === "") cityError = "Enter headquarters city!";
 
         const headCityCapitalized = 
             values.headCity.slice(0, 1).toUpperCase() + values.headCity.slice(1);
@@ -70,8 +70,8 @@ function CompanyServiceDetailsContainer({values, nextStep, prevStep}) {
         const capitalizedCity = 
             city.slice(0, 1).toUpperCase() + city.slice(1);
 
-        // Check if valid input and not already in array
-        if(defaultCities.includes(capitalizedCity) && !values.branches.includes(capitalizedCity)) {
+        // Check if already in array
+        if(!values.branches.includes(capitalizedCity) && capitalizedCity.trim() !== "") {
             newBranchesList.push(capitalizedCity);
             values.setBranches(newBranchesList);
         }
@@ -91,7 +91,6 @@ function CompanyServiceDetailsContainer({values, nextStep, prevStep}) {
                 continueRegistration={continueRegistration}
                 goBackRegistration={goBackRegistration}
                 typesOfServices={typesOfServices}
-                defaultCities={defaultCities}
                 handleBranchAdd={handleBranchAdd}
                 handleBranchRemove={handleBranchRemove}
             />

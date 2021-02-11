@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Navbar from "./components/Navbar/Navbar";
 import Homepage from "./components/HomepageComponents/Homepage/Homepage";
 import RegisterPage from "./components/RegisterPageComponents/RegisterPage/RegisterPage";

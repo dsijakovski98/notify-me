@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
 import { withRouter } from "react-router-dom";
 import { Grid, Typography, Avatar, IconButton, Menu, MenuItem } from "@material-ui/core"
-import MoreVertIcon from '@material-ui/icons/MoreVert';
+import PersonRoundedIcon from '@material-ui/icons/PersonRounded';
+import EditRoundedIcon from '@material-ui/icons/EditRounded';
+import PowerSettingsNewRoundedIcon from '@material-ui/icons/PowerSettingsNewRounded';
 import { makeStyles } from "@material-ui/core/styles";
 import { blue } from '@material-ui/core/colors';
 import { logoutUser } from "../../helpers/currentUserManager";
@@ -22,11 +24,24 @@ const useStyle = makeStyles({
       },
       menuButton: {
           color: 'whitesmoke'
+      },
+      menuItem: {
+        '&:hover': {
+            backgroundColor: '#aaa'
+        },
+        padding: '.7em'
+      },
+      menuItemIcon: {
+          marginRight: '0.3em',
+          color: '#2F303A',
       }
 });
 
+
 const options = [
-    'Log out'
+    "Dashboard",
+    "Edit Profile",
+    "Log Out"
 ];
 
 function UserDataAvatar(props) {
@@ -47,6 +62,7 @@ function UserDataAvatar(props) {
     }
 
     const handleLogout = () => {
+        handleClose();
         const promise = logoutUser();
         promise.then(() => {
             history.push("/notify-me-RST/");
@@ -54,6 +70,7 @@ function UserDataAvatar(props) {
     }
 
     const checkRedirect = async () => {
+        handleClose();
         // Check account type for redirection
         const isUser = await IsUserLogin(userData.email);
         let redirectPage = "";
@@ -69,41 +86,82 @@ function UserDataAvatar(props) {
         history.push(`/notify-me-RST/${redirectPage}`);
     }
 
+    const handleOptionsClick = (option) => {
+        switch (option) {
+            case options[0]:
+                checkRedirect();
+                break;
+            case options[1]:
+                // TODO: Open edit profile modal
+                break;
+            case options[2]:
+                handleLogout();
+                break;
+            default:
+                break;
+        }
+    }
+
+    
+
+    const setMenuIcon = (option) => {
+        const homepageIcon = <PersonRoundedIcon className={classes.menuItemIcon} />
+        const editProfileIcon = <EditRoundedIcon className={classes.menuItemIcon} />
+        const logoutIcon = <PowerSettingsNewRoundedIcon className={classes.menuItemIcon} />
+
+        switch (option) {
+            case options[0]:
+                return homepageIcon
+            case options[1]:
+                return editProfileIcon
+            case options[2]:
+                return logoutIcon
+            default:
+                break;
+        }
+    }
+
 
     return (
         <>
             <Grid container alignItems="center" justify="flex-end">
             <Typography className={classes.displayName} variant="subtitle1">{displayName}</Typography>
-            
-                <IconButton onClick={() => checkRedirect()}
-                style={{marginLeft: '0.2em'}}>
-                    <Avatar
-                        className={classes.avatar}
-                        classes={{img: classes.avatarImg}}
-                        src={profilePicture}
-                    />
-                </IconButton>
             <div>
                 <IconButton
                  aria-label="more"
                  aria-controls="long-menu"
                  aria-haspopup="true"
                  onClick={(e) => handleClick(e)}>
-                     <MoreVertIcon className={classes.menuButton} />
+                     {/* <MoreVertIcon className={classes.menuButton} />s */}
+                     <Avatar
+                        className={classes.avatar}
+                        classes={{img: classes.avatarImg}}
+                        src={profilePicture}
+                    />
                 </IconButton >
                 <Menu
                     id="long-menu"
                     anchorEl={anchorElement}
+                    getContentAnchorEl={null}
                     keepMounted
                     open={anchorElement ? true : false}
                     onClose={(e) => handleClose(e)}
                     color="disabled"
-                    
+                    anchorOrigin={{
+                        vertical: 'bottom',
+                        horizontal: 'center',
+                      }}
+                      transformOrigin={{
+                        vertical: 'top',
+                        horizontal: 'center',
+                      }}
                 >
                     {
                         options.map(option => {
                             return (
-                                <MenuItem key={option} onClick={() => handleLogout()}>
+                                <MenuItem className={classes.menuItem}
+                                key={option} onClick={() => handleOptionsClick(option)}>
+                                    {setMenuIcon(option)}
                                     {option}
                                 </MenuItem>
                             )

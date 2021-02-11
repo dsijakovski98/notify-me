@@ -1,7 +1,11 @@
 import React from 'react';
 import "../../style/style.css";
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import InputAdornment from '@material-ui/core/InputAdornment';
 import { Typography, TextField, Button, Avatar, Grid } from '@material-ui/core';
+import EmailRoundedIcon from '@material-ui/icons/EmailRounded';
+import VpnKeyRoundedIcon from '@material-ui/icons/VpnKeyRounded';
+import LanguageRoundedIcon from '@material-ui/icons/LanguageRounded';
 
 
 function CompanyAccountDetailsPresenter({values, continueRegistration, goBackRegistration}) {
@@ -20,17 +24,23 @@ function CompanyAccountDetailsPresenter({values, continueRegistration, goBackReg
                     
                     <Typography component="h1" variant="h5" >Sign up</Typography>
                     <br/>
-                    <br/>
                     <Grid container spacing={2}>
                 
                         {/* Email input */}
                         <Grid item xs={12}>
                             <TextField
                                 margin="normal"
-                                variant="outlined"
+                                variant="standard"
                                 required
                                 fullWidth
                                 autoFocus
+                                InputProps={{
+                                    startAdornment: (
+                                      <InputAdornment position="start">
+                                        <EmailRoundedIcon style={{color: 'whitesmoke'}} />
+                                      </InputAdornment>
+                                    ),
+                                  }}
                                 label="Company Email"
                                 type="email"
                                 error={values.companyEmailErr ? true : false}
@@ -44,9 +54,16 @@ function CompanyAccountDetailsPresenter({values, continueRegistration, goBackReg
                         <Grid item xs={12} sm={6}>
                             <TextField
                                 margin="normal"
-                                variant="outlined"
+                                variant="standard"
                                 required
                                 fullWidth
+                                InputProps={{
+                                    startAdornment: (
+                                      <InputAdornment position="start">
+                                        <VpnKeyRoundedIcon style={{color: 'whitesmoke'}} />
+                                      </InputAdornment>
+                                    ),
+                                  }}
                                 label="Password"
                                 type="password"
                                 error={values.companyPasswordErr ? true : false}
@@ -60,9 +77,16 @@ function CompanyAccountDetailsPresenter({values, continueRegistration, goBackReg
                         <Grid item xs={12} sm={6}>
                             <TextField
                                 margin="normal"
-                                variant="outlined"
+                                variant="standard"
                                 required
                                 fullWidth
+                                InputProps={{
+                                    startAdornment: (
+                                      <InputAdornment position="start">
+                                        <VpnKeyRoundedIcon style={{color: 'whitesmoke'}} />
+                                      </InputAdornment>
+                                    ),
+                                  }}
                                 label="Confirm password"
                                 type="password"
                                 error={values.companyConfirmPasswordErr ? true : false}
@@ -70,10 +94,32 @@ function CompanyAccountDetailsPresenter({values, continueRegistration, goBackReg
                                 value={values.companyConfirmPassword}
                                 onChange={(e) => values.setCompanyConfirmPassword(e.target.value)}
                             />
-                        </Grid>            
+                        </Grid> 
+
+                        {/* Website input */}
+                        <Grid item xs={12}>
+                            <TextField
+                                margin="normal"
+                                variant="standard"
+                                required
+                                fullWidth
+                                InputProps={{
+                                    startAdornment: (
+                                      <InputAdornment position="start">
+                                        <LanguageRoundedIcon style={{color: 'whitesmoke'}} />
+                                      </InputAdornment>
+                                    ),
+                                  }}
+                                label="Company website"
+                                type="url"
+                                // error={values.companyConfirmPasswordErr ? true : false}
+                                // helperText={values.companyConfirmPasswordErr}
+                                // value={values.companyConfirmPassword}
+                                // onChange={(e) => values.setCompanyConfirmPassword(e.target.value)}
+                            />
+                        </Grid>                        
 
                     </Grid>
-                    <br/>
                     <br/>
                     <br/>
                     <br/>

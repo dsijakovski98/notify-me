@@ -1,6 +1,7 @@
 import React from 'react';
 import UserGeneralDetailsPresenter from "./UserGeneralDetailsPresenter";
 
+
 const genders = ["Male", "Female", "Other"];
 
 function UserGeneralDetailsContainer({values, nextStep}) {
@@ -27,9 +28,9 @@ function UserGeneralDetailsContainer({values, nextStep}) {
         if(isNaN(values.dateOfBirth.getTime()))  return false;
 
         // Empty fields
-        if(values.firstName === "") fNameError = "Enter first name!";
-        if(values.lastName === "") lNameError = "Enter last name!";
-        if(values.city === "") cityError = "Enter city name!";
+        if(values.firstName.trim() === "") fNameError = "Enter first name!";
+        if(values.lastName.trim() === "") lNameError = "Enter last name!";
+        if(values.city.trim() === "") cityError = "Enter city name!";
         
 
         if(fNameError.length || lNameError.length || cityError.length) {

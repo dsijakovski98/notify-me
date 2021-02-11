@@ -1,7 +1,25 @@
+.user-homepage-container {
+  height: 80vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.user-homepage-title {
+  padding-top: 2em;
+  height: 45%;
+  width: 70%;
+  margin: 0 auto;
+  text-align: center;
+}
+
 .post-links-container-grid {
   width: 80%;
   margin: 0 auto;
-  margin-top: 12em;
   display: -ms-grid;
   display: grid;
   place-items: center;
@@ -124,7 +142,7 @@
 }
 
 .subscribe-page-container .subscribe-page-companies-list-container {
-  width: 55%;
+  width: 60%;
   padding: 2em;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -176,7 +194,7 @@
       -ms-flex-pack: space-evenly;
           justify-content: space-evenly;
   margin: 0.5em;
-  margin-bottom: 1.2em;
+  margin-bottom: 1.5em;
 }
 
 .subscribe-page-container .subscribe-page-company img {

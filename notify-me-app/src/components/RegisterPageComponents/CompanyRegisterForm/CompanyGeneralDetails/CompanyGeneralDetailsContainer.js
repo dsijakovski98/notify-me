@@ -17,10 +17,10 @@ function CompanyGeneralDetailsContainer({values, nextStep}) {
         if(isNaN(values.companyStartDate.getTime()))  return false;
 
         // Empty Fields
-        if(values.companyName === "") compNameError = "Enter company's name!";
-        if(values.companyFounderFirstName === "")
+        if(values.companyName.trim() === "") compNameError = "Enter company's name!";
+        if(values.companyFounderFirstName.trim() === "")
             compFounderFirstNameError = "Enter CEO's first name!";
-        if(values.companyFounderLastName === "")
+        if(values.companyFounderLastName.trim() === "")
             compFounderLastNameError = "Enter CEO's last name!";
 
 

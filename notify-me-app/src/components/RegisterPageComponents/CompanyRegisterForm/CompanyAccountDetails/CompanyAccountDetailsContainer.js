@@ -34,11 +34,11 @@ function CompanyAccountDetailsContainer({values, nextStep, prevStep}) {
             compConfirmPwdError = "Passwords don't match!";
 
         // Empty fields
-        if(values.companyEmail === "")
+        if(values.companyEmail.trim() === "")
             compEmailError = "Enter company's email!";
-        if(values.companyPassword === "")
+        if(values.companyPassword.trim() === "")
             compPwdError = "Enter password!";
-        if(values.companyConfirmPassword === "")
+        if(values.companyConfirmPassword.trim() === "")
             compConfirmPwdError = "Confirm password!";
         
         

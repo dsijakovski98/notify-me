@@ -57,6 +57,11 @@ function AddPost({currentCompanyData}) {
         formData.setPostTitle("");
         formData.setPostContent("");
 
+        // Clear errors
+        formData.setPostTitleErr("");
+        formData.setPostContentErr("");
+        formData.setCitiesPostAppliesErr("");
+
         handleClose();
     }
 

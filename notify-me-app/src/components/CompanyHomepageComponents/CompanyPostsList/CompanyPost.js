@@ -1,5 +1,5 @@
-import React from 'react'
-import { Card, CardHeader, CardContent, CardActions } from "@material-ui/core"
+import React, { useState } from 'react'
+import { Card, CardHeader, CardContent, CardActions, Modal } from "@material-ui/core"
 import { Typography, Button, IconButton } from "@material-ui/core"
 import DeleteRoundedIcon from '@material-ui/icons/DeleteRounded';
 import BorderColorRoundedIcon from '@material-ui/icons/BorderColorRounded';
@@ -11,6 +11,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import { deletePost } from "../../../helpers/databaseRemove";
 import moment from "moment";
 import { dateTimeFormat } from "../../../helpers/validators";
+import CompanyPostDetailsModalContainer from "./CompanyPostDetailsModal/CompanyPostDetailsModalContainer";
+import CompanyPostEditContainer from "./CompanyPostEditModal/CompanyPostEditContainer";
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -52,8 +54,17 @@ const useStyles = makeStyles(theme => ({
 const maxContentLength = 180;
 
 
-function CompanyPost({post}) {
+function CompanyPost({post, companyBranches}) {
     const classes = useStyles();
+
+    const [openDetails, setOpenDetails] = useState(false);
+    const handleOpenDetails = () => setOpenDetails(true);
+    const handleCloseDetails = () => setOpenDetails(false);
+
+    const [openEdit, setOpenEdit] = useState(false);
+    const handleOpenEdit = () => setOpenEdit(true);
+    const handleCloseEdit = () => setOpenEdit(false);
+
 
     const postDate = new Date(post["created_on"].toDate());
     const postTimestamp = moment(postDate).format(dateTimeFormat);
@@ -82,94 +93,128 @@ function CompanyPost({post}) {
             case "Info":
                 return <InfoRoundedIcon style={{color: "#2F303A", marginRight: '.1em'}} />
             case "Promo":
-                return <CakeRoundedIcon style={{color: "#3f51b5", marginRight: '.1em'}} />
+                return <CakeRoundedIcon style={{color: "#3f51b5", marginRight: '.1em',  transform: 'translateY(-2px)'}} />
             default:
                 return null
         }
     }
 
+    const modalBodyDetails = (
+                            <>
+                                <CompanyPostDetailsModalContainer 
+                                post={post}
+                                postTimestamp={postTimestamp}
+                                handleClose={handleCloseDetails}/>
+                            </>
+                        );
+
+    const modalBodyEdit = (
+                            <>
+                                <CompanyPostEditContainer 
+                                post={post}
+                                handleClose={handleCloseEdit}
+                                companyBranches={companyBranches}/>
+                            </>
+                        );
+
     return (
-        <div className="posts-list-post-container">
-            <Card className={classes.root}>
-                
-                <CardHeader
-                    title={
-                        <>
-                    <Typography variant="body1"
-                        
-                        style={{
-                            color: postTypeColor(post.type),
-                            fontSize: '1.1rem',
-                            fontWeight: '700',
-                            display: 'flex',
-                            alignItems: 'flex-start',
-                            justifyContent: 'flex-start',
-                            marginBottom: '.5em'}}>
-                        {postTypeIcon(post.type)}
-                        {post.type}
-                    </Typography>
-                    <div style={{
-                        width: '10em',
-                    }}>
-
-                        <Typography 
-                            variant="body1" color="textPrimary"
-                            maxLines="1"
+        <>
+            <div className="posts-list-post-container">
+                <Card className={classes.root}>
+                    
+                    <CardHeader
+                        title={
+                            <>
+                        <Typography variant="body1"
+                            
                             style={{
-                                fontSize: '1.25rem',
-                                fontWeight: '500',
-                                overflow: 'hidden',
-                                textOverflow: 'ellipsis',
-                                whiteSpace: 'nowrap',
-                            }}>
-                            {post.title}
+                                color: postTypeColor(post.type),
+                                fontSize: '1.1rem',
+                                fontWeight: '700',
+                                display: 'flex',
+                                alignItems: 'flex-start',
+                                justifyContent: 'flex-start',
+                                marginBottom: '.5em'}}>
+                            {postTypeIcon(post.type)}
+                            {post.type}
                         </Typography>
-                    </div>
+                        <div style={{
+                            width: '10em',
+                        }}>
 
-                    </>
-                    }
-                    subheader={<Typography variant="subtitle2"
-                            style={{color: '#888', fontSize: '0.9rem', fontWeight: 'normal'}}>
-                            {postTimestamp}
-                            <hr/>
-                        </Typography>
-                }
-                />
+                            <Typography 
+                                variant="body1" color="textPrimary"
+                                style={{
+                                    fontSize: '1.25rem',
+                                    fontWeight: '500',
+                                    overflow: 'hidden',
+                                    textOverflow: 'ellipsis',
+                                    whiteSpace: 'nowrap',
+                                }}>
+                                {post.title}
+                            </Typography>
+                        </div>
 
-                <CardContent className={classes.cardContent}>
-                
-                    <Typography variant="body2" color="textSecondary" component="p">
-                        {
-                            post.content.slice(0, maxContentLength) + 
-                            (post.content.length > maxContentLength ? "..." : "")
+                        </>
                         }
-                    </Typography>
-                </CardContent>
-                <hr/>
-                <CardActions className={classes.actions} >
+                        subheader={<Typography variant="subtitle2"
+                                style={{color: '#888', fontSize: '0.9rem', fontWeight: 'normal'}}>
+                                {postTimestamp}
+                                <hr/>
+                            </Typography>
+                    }
+                    />
 
-                    <Button size="small" color="primary" className={classes.detailsButton}>
-                        Details
-                    </Button>
+                    <CardContent className={classes.cardContent}>
+                    
+                        <Typography variant="body2" color="textSecondary" component="p">
+                            {
+                                post.content.slice(0, maxContentLength) + 
+                                (post.content.length > maxContentLength ? "..." : "")
+                            }
+                        </Typography>
+                    </CardContent>
+                    <hr/>
+                    <CardActions className={classes.actions} >
 
-                    <div style={{padding: '.3em'}}>
-                        <IconButton color="primary" 
-                        style={{padding: "0.2em"}}>
-                            <BorderColorRoundedIcon
-                            className={classes.editButton} />
-                        </IconButton>
+                        <Button onClick={() => handleOpenDetails()}
+                        size="small" color="primary" className={classes.detailsButton}>
+                            Details
+                        </Button>
 
-                        <IconButton color="primary"
-                        onClick={() => deleteCompanyPost()}
-                        style={{padding: "0.2em"}}>
-                            <DeleteRoundedIcon color="secondary" 
-                                className={classes.deleteButton}/>
-                        </IconButton>
-                    </div>
+                        <div style={{padding: '.3em'}}>
+                            <IconButton color="primary" 
+                            onClick={() => handleOpenEdit()}
+                            style={{padding: "0.2em"}}>
+                                <BorderColorRoundedIcon
+                                className={classes.editButton} />
+                            </IconButton>
 
-                </CardActions>
-            </Card>
-        </div>
+                            <IconButton color="primary"
+                            onClick={() => deleteCompanyPost()}
+                            style={{padding: "0.2em"}}>
+                                <DeleteRoundedIcon color="secondary" 
+                                    className={classes.deleteButton}/>
+                            </IconButton>
+                        </div>
+
+                    </CardActions>
+                </Card>
+            </div>
+
+            <Modal disableScrollLock={true} open={openDetails} onClose={() => handleCloseDetails()}>
+                {
+                    modalBodyDetails
+                }
+            </Modal>
+
+            <Modal disableScrollLock={true} open={openEdit} onClose={() => handleCloseEdit()}>
+                {
+                    modalBodyEdit
+                }
+            </Modal>
+
+        </>    
     )
 }
 

@@ -1,5 +1,5 @@
-import React from 'react'
-import { Card, CardHeader, CardContent, CardActions } from "@material-ui/core"
+import React, { useState } from 'react'
+import { Card, CardHeader, CardContent, CardActions, Modal } from "@material-ui/core"
 import { Avatar, Typography, Button, IconButton } from "@material-ui/core"
 import BookmarkIcon from '@material-ui/icons/Bookmark';
 import BookmarkBorderIcon from '@material-ui/icons/BookmarkBorder';
@@ -10,6 +10,7 @@ import CakeRoundedIcon from '@material-ui/icons/CakeRounded';
 import InfoRoundedIcon from '@material-ui/icons/InfoRounded';
 import { blue } from '@material-ui/core/colors';
 import { makeStyles } from '@material-ui/core/styles';
+import PostDetailsContainer from "./PostDetails/PostDetailsContainer";
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -56,6 +57,11 @@ const maxContentLength = 180;
 function PostPresenter(props) {
     const classes = useStyles();
 
+    const [open, setOpen] = useState(false);
+
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
+
     const {
         post,
         postTimestamp,
@@ -88,15 +94,16 @@ function PostPresenter(props) {
                 style={{color: "#2F303A", marginRight: '.1em', width: 20, height: 20}} />
             case "Promo":
                 return <CakeRoundedIcon 
-                style={{color: "#3f51b5", marginRight: '.1em', width: 20, height: 20}} />
+                style={{color: "#3f51b5", marginRight: '.1em', width: 20, height: 20,  transform: 'translateY(-2px)'}} />
             default:
                 return null
         }
     }
 
+
     const defaultAvatar = (
         <Avatar aria-label="recipe" className={classes.avatar}>
-            {postCreator[0]}
+            {postCreator}
         </Avatar>
     );
 
@@ -106,106 +113,123 @@ function PostPresenter(props) {
             classes={{img: classes.avatarImg}}
             src={postCreatorProfileUrl}
         />
-    )
+    );
+
+    const modalBody = (
+                        <>
+                            <PostDetailsContainer
+                                post={post}
+                                postTimestamp={postTimestamp}
+                                postCreator={postCreator}
+                                postCreatorProfileUrl={postCreatorProfileUrl}
+                                handleClose={handleClose}
+                            />
+                        </>
+                    );
+
 
     return (
-        <div className="posts-list-post-container">
-            <Card className={classes.root}>
-                <CardHeader
-                    avatar={
-                        postCreatorProfileUrl.length
-                        ?   profilePicAvatar
-                        :   defaultAvatar
-                    }
-                    // SETTINGS BUTTON
-                    // action={
-                    //   <IconButton aria-label="settings">
-                    //     <MoreVertIcon />
-                    //   </IconButton>
-                    // }
-                    title={
-                        <Typography style={{fontWeight:'bold'}} variant="body1">
-                            {postCreator}
-                        </Typography>
-                    }
-                    subheader={<Typography 
-                            style={{fontWeight: 'normal', color: '#888'}} variant="subtitle2">
-                            {postTimestamp}
-                             <hr/>
-                        </Typography>
-                }
-                />
-                <CardContent className={classes.cardContent}>
-                    <Typography variant="body1" 
-                            style={{
-                                color: postTypeColor(post.type),
-                                fontSize: '.95rem',
-                                fontWeight: post.read ? 'normal' : 'bold',
-                                cursor: 'default',
-                                display: 'flex'}}>
-
-                            {postTypeIcon(post.type)}
-                            {post.type}
-
-                    </Typography>
-
-                    <div style={{width: '15em'}}>
-                        <Typography variant="body1" color="textPrimary"
-                            style={{
-                                fontWeight: post.read ? 'normal' : 'bold',
-                                fontSize: '1.2rem',
-                                lineHeight: '1.5em',
-                                marginBottom: '.5em',
-                                overflow: 'hidden',
-                                textOverflow: 'ellipsis',
-                                whiteSpace: 'nowrap',}} >
-
-                            {post.title}
-
-                        </Typography>
-                    </div>
-                
-                    <Typography variant="body2" color="textSecondary" component="p"
-                    style={{fontWeight: post.read ? 'normal' : 'bold'}} >
-                        {
-                            post.content.slice(0, maxContentLength) + 
-                            (post.content.length > maxContentLength ? "..." : "")
+        <>
+            <div className="posts-list-post-container">
+                <Card className={classes.root}>
+                    <CardHeader
+                        avatar={
+                            postCreatorProfileUrl.length
+                            ?   profilePicAvatar
+                            :   defaultAvatar
                         }
-                    </Typography>
-                </CardContent>
-                
-                <hr/>
+                        title={
+                            <Typography style={{fontWeight:'bold'}} variant="body1">
+                                {postCreator}
+                            </Typography>
+                        }
+                        subheader={<Typography 
+                                style={{fontWeight: 'normal', color: '#888'}} variant="subtitle2">
+                                {postTimestamp}
+                                <hr/>
+                            </Typography>
+                    }
+                    />
+                    <CardContent className={classes.cardContent}>
+                        <Typography variant="body1" 
+                                style={{
+                                    color: postTypeColor(post.type),
+                                    fontSize: '.95rem',
+                                    fontWeight: post.read ? 'normal' : 'bold',
+                                    cursor: 'default',
+                                    display: 'flex'}}>
 
-                <CardActions className={classes.actions}>
-                    <div>
-                        <IconButton onClick={() => toggleReadPost() } color="primary" 
-                        style={{padding: "0.1em", margin: '0.5em'}}>
-                            {
-                                post.read
-                                ? <BookmarkBorderIcon className={classes.readButton}/>
-                                : <BookmarkIcon className={classes.readButton}/>
-                            }
-                        </IconButton>
+                                {postTypeIcon(post.type)}
+                                {post.type}
 
-                        <IconButton onClick={() => toggleStarPost() } color="primary" 
-                        style={{padding: "0.1em"}}>
-                            {
-                                post.starred
-                                ? <StarRoundedIcon className={classes.starButton}/>
-                                : <StarOutlineRoundedIcon className={classes.starButton}/>
-                            }
-                        </IconButton>
-                    </div>
+                        </Typography>
 
-                    <Button size="small" color="primary" className={classes.detailsButton}>
-                        Details
-                    </Button>
+                        <div style={{width: '15em'}}>
+                            <Typography variant="body1" color="textPrimary"
+                                style={{
+                                    fontWeight: post.read ? 'normal' : 'bold',
+                                    fontSize: '1.2rem',
+                                    lineHeight: '1.5em',
+                                    marginBottom: '.5em',
+                                    overflow: 'hidden',
+                                    textOverflow: 'ellipsis',
+                                    whiteSpace: 'nowrap',}} >
 
+                                {post.title}
+
+                            </Typography>
+                        </div>
                     
+                        <Typography variant="body2" color="textSecondary" component="p"
+                        style={{fontWeight: post.read ? 'normal' : 'bold'}} >
+                            {
+                                post.content.slice(0, maxContentLength) + 
+                                (post.content.length > maxContentLength ? "..." : "")
+                            }
+                        </Typography>
+                    </CardContent>
+                    
+                    <hr/>
 
-                </CardActions>
-            </Card>
-        </div>
+                    <CardActions className={classes.actions}>
+                        <div>
+                            <IconButton onClick={() => toggleReadPost() } color="primary" 
+                            style={{padding: "0.1em", margin: '0.5em'}}>
+                                {
+                                    post.read
+                                    ? <BookmarkBorderIcon className={classes.readButton}/>
+                                    : <BookmarkIcon className={classes.readButton}/>
+                                }
+                            </IconButton>
+
+                            <IconButton onClick={() => toggleStarPost() } color="primary" 
+                            style={{padding: "0.1em"}}>
+                                {
+                                    post.starred
+                                    ? <StarRoundedIcon className={classes.starButton}/>
+                                    : <StarOutlineRoundedIcon className={classes.starButton}/>
+                                }
+                            </IconButton>
+                        </div>
+
+                        <Button onClick={() => handleOpen()}
+                        size="small" color="primary" className={classes.detailsButton}>
+                            Details
+                        </Button>
+
+                        
+
+                    </CardActions>
+                </Card>
+            </div>
+            
+            <Modal disableScrollLock={true} open={open} onClose={() => handleClose()}>
+                {
+                    modalBody
+                }
+            </Modal>
+
+        </>
     )
 }
 

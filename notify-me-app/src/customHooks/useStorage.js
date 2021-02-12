@@ -10,6 +10,8 @@ const useStorageUpload = (file, accountType) => {
 
         if(!file) return;
         
+        // TODO: Set structured filename
+        // TODO: Return that filename, add it to database for profileUpdate
         const storageRef = storage.ref(file.name);
         // const collectionRef = storage.ref("images");
 
@@ -23,12 +25,6 @@ const useStorageUpload = (file, accountType) => {
         },
         async () => {
             const url = await storageRef.getDownloadURL();
-            // const createdAt = timestamp();
-            // await collectionRef.add({
-            //     url,
-            //     created_at: createdAt,
-            //     type: accountType
-            // });
             setUrl(url);
         }
         );

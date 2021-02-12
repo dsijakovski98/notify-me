@@ -8,9 +8,14 @@
 	> Case insensitive search [-] Firebase doesn't support it
 
 * Update database for companies PHONE NUMBER and WEBSITE [x]
-* Company edit post modal []
-* Company post details modal []
-* Company info details modal []
+* 1. Company post details modal [x]
+* 2. User post details modal [x]
+* 3. Company edit post modal [x]
+
+* Posts filtering:
+	> Only read posts []
+	> Only starred posts []
+	> Search by company name []
 
 * Edit Profile modal:
 	> User []

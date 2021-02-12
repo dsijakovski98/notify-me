@@ -9,7 +9,10 @@ function CompanyPostsListPresenter({companyPosts, currentCompanyData}) {
                 {
                     companyPosts.map(post => {
                         return (
-                            <CompanyPost key={post["post_id"]} post={post}/>
+                            <CompanyPost 
+                                key={post["post_id"]}
+                                post={post}
+                                companyBranches={currentCompanyData.branches} />
                         )
                     })
                 }

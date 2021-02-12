@@ -55,18 +55,23 @@ company-homepage-container {
   right: 5em;
 }
 
-.add-post-form-container {
+.add-post-form-container,
+.details-post-container,
+.edit-post-container {
   width: 100%;
-  height: 100%;
+  height: 100vh;
   margin: 0 auto;
   // background: #000;
   pointer-events: none;
 
-  display: grid;
-  place-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.add-post-form-dialog {
+.add-post-form-dialog,
+.details-post-dialog,
+.edit-post-dialog {
   width: 55%;
   margin: 0 auto;
   padding: 1.5em 1em;
@@ -74,10 +79,12 @@ company-homepage-container {
 
   pointer-events: all;
 
-  border-radius: 1em;
+  border-radius: 0.3em;
 }
 
-.add-post-form-dialog-container {
+.add-post-form-dialog-container,
+.details-post-dialog-container,
+.edit-post-dialog-container {
   width: 90%;
   margin: 0 auto;
 
@@ -85,4 +92,12 @@ company-homepage-container {
   textarea {
     color: $base_text;
   }
+}
+
+.edit-post-progress-bar {
+  position: relative;
+  left: calc(50% - 30px);
+  right: 50%;
+  top: 50%;
+  margin: 1em auto;
 }

@@ -3,6 +3,9 @@ import { Card, CardHeader, CardContent, CardActions } from "@material-ui/core"
 import { Typography, Button, IconButton } from "@material-ui/core"
 import DeleteRoundedIcon from '@material-ui/icons/DeleteRounded';
 import BorderColorRoundedIcon from '@material-ui/icons/BorderColorRounded';
+import WarningRoundedIcon from '@material-ui/icons/WarningRounded';
+import CakeRoundedIcon from '@material-ui/icons/CakeRounded';
+import InfoRoundedIcon from '@material-ui/icons/InfoRounded';
 import { blue } from '@material-ui/core/colors';
 import { makeStyles } from '@material-ui/core/styles';
 import { deletePost } from "../../../helpers/databaseRemove";
@@ -21,7 +24,7 @@ const useStyles = makeStyles(theme => ({
     },
     cardContent: {
         minHeight: '4em',
-        height: '6em',
+        height: '10em',
         whiteSpace: 'wrap',
         overflow: 'hidden',
         textOverflow: 'ellipsis'
@@ -46,6 +49,9 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
+const maxContentLength = 180;
+
+
 function CompanyPost({post}) {
     const classes = useStyles();
 
@@ -69,6 +75,19 @@ function CompanyPost({post}) {
         }
     }
 
+    const postTypeIcon = (type) => {
+        switch (type) {
+            case "Warning":
+                return <WarningRoundedIcon style={{color: "#F50057", marginRight: '.1em'}} />
+            case "Info":
+                return <InfoRoundedIcon style={{color: "#2F303A", marginRight: '.1em'}} />
+            case "Promo":
+                return <CakeRoundedIcon style={{color: "#3f51b5", marginRight: '.1em'}} />
+            default:
+                return null
+        }
+    }
+
     return (
         <div className="posts-list-post-container">
             <Card className={classes.root}>
@@ -76,29 +95,43 @@ function CompanyPost({post}) {
                 <CardHeader
                     title={
                         <>
-                    <Typography variant="body1" 
+                    <Typography variant="body1"
+                        
                         style={{
                             color: postTypeColor(post.type),
                             fontSize: '1.1rem',
-                            fontWeight: '700'}}>
+                            fontWeight: '700',
+                            display: 'flex',
+                            alignItems: 'flex-start',
+                            justifyContent: 'flex-start',
+                            marginBottom: '.5em'}}>
+                        {postTypeIcon(post.type)}
                         {post.type}
                     </Typography>
-                    <Typography 
-                        variant="body1" color="textPrimary"
-                        style={{
-                            fontSize: '1.25rem',
-                            fontWeight: '500',
-                            whiteSpace: 'wrap',
-                            overflow: 'hidden',
-                            textOverflow: 'ellipsis'
-                        }}>
-                        {post.title}
-                    </Typography>
+                    <div style={{
+                        width: '10em',
+                    }}>
+
+                        <Typography 
+                            variant="body1" color="textPrimary"
+                            maxLines="1"
+                            style={{
+                                fontSize: '1.25rem',
+                                fontWeight: '500',
+                                overflow: 'hidden',
+                                textOverflow: 'ellipsis',
+                                whiteSpace: 'nowrap',
+                            }}>
+                            {post.title}
+                        </Typography>
+                    </div>
+
                     </>
                     }
-                    subheader={<Typography 
-                            style={{color: '#888', fontSize: '0.9rem'}} variant="subtitle2">
+                    subheader={<Typography variant="subtitle2"
+                            style={{color: '#888', fontSize: '0.9rem', fontWeight: 'normal'}}>
                             {postTimestamp}
+                            <hr/>
                         </Typography>
                 }
                 />
@@ -106,26 +139,29 @@ function CompanyPost({post}) {
                 <CardContent className={classes.cardContent}>
                 
                     <Typography variant="body2" color="textSecondary" component="p">
-                        {post.content}
+                        {
+                            post.content.slice(0, maxContentLength) + 
+                            (post.content.length > maxContentLength ? "..." : "")
+                        }
                     </Typography>
                 </CardContent>
-                <br/>                
-                <CardActions className={classes.actions}>
+                <hr/>
+                <CardActions className={classes.actions} >
 
                     <Button size="small" color="primary" className={classes.detailsButton}>
                         Details
                     </Button>
 
-                    <div style={{padding: '.6em'}}>
+                    <div style={{padding: '.3em'}}>
                         <IconButton color="primary" 
-                        style={{padding: "0.1em"}}>
+                        style={{padding: "0.2em"}}>
                             <BorderColorRoundedIcon
                             className={classes.editButton} />
                         </IconButton>
 
                         <IconButton color="primary"
                         onClick={() => deleteCompanyPost()}
-                        style={{padding: "0.1em"}}>
+                        style={{padding: "0.2em"}}>
                             <DeleteRoundedIcon color="secondary" 
                                 className={classes.deleteButton}/>
                         </IconButton>

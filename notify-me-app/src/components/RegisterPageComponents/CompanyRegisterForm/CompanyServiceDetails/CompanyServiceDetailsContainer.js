@@ -1,35 +1,30 @@
 import React from 'react'
 import CompanyServiceDetailsPresenter from "./CompanyServiceDetailsPresenter";
+import { PhoneNumberUtil } from "google-libphonenumber"; 
 
 const typesOfServices = [
     "Electricity",
     "Plumbing",
     "ISP"
-]
+];
 
-// Dummy data, replace with call to database
-// const defaultCities = [
-//     "Skopje",
-//     "Ohrid",
-//     "Kumanovo",
-//     "Struga",
-//     "Veles",
-//     "Bitola",
-//     "Gevgelija"
-// ]
+const phoneUtil = PhoneNumberUtil.getInstance();
 
 function CompanyServiceDetailsContainer({values, nextStep, prevStep}) {
 
     const validateInputs = () => {
         // Clear inputs
         values.setHeadCityErr("");
+        values.setPhoneNumberErr("");
 
         let cityError = "";
-
+        let numberError = "";
 
         // Empty fields
         if(values.headCity.trim() === "") cityError = "Enter headquarters city!";
+        // if(values.phoneNumber.trim() === "+389") numberError = "Enter a phone number!";
 
+        // City validation
         const headCityCapitalized = 
             values.headCity.slice(0, 1).toUpperCase() + values.headCity.slice(1);
         values.setHeadCity(headCityCapitalized);
@@ -38,21 +33,36 @@ function CompanyServiceDetailsContainer({values, nextStep, prevStep}) {
         if(!values.branches.includes(headCityCapitalized)) {
             handleBranchAdd(headCityCapitalized);
         }
+
+
+        // Phone number validation
+        if(values.phoneNumber.trim() !== "+389") {
+            // If a number is entered
+            const number = phoneUtil.parse(values.phoneNumber, 'MK');
+                if(!phoneUtil.isValidNumberForRegion(number, 'MK')) {
+                    numberError = "Invalid number entered for MK region!";
+                }
+        }
         
-        if(cityError.length) {
+        if(cityError.length || numberError.length) {
             values.setHeadCityErr(cityError);
+            values.setPhoneNumberErr(numberError);
             return false;
         }
 
-        
+
 
         return true;
     }
 
-
+    const handlePhoneNumberChange = (number) => {
+        if(number.slice(0, 4) === "+389")
+            values.setPhoneNumber(number);
+    }
 
     const continueRegistration = (e) => {
         e.preventDefault();
+
         if(validateInputs()) {
             nextStep();
         }
@@ -93,6 +103,7 @@ function CompanyServiceDetailsContainer({values, nextStep, prevStep}) {
                 typesOfServices={typesOfServices}
                 handleBranchAdd={handleBranchAdd}
                 handleBranchRemove={handleBranchRemove}
+                handlePhoneNumberChange={handlePhoneNumberChange}
             />
         </>
     )

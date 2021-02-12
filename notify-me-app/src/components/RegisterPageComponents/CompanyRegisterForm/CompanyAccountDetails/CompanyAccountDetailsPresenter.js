@@ -101,7 +101,6 @@ function CompanyAccountDetailsPresenter({values, continueRegistration, goBackReg
                             <TextField
                                 margin="normal"
                                 variant="standard"
-                                required
                                 fullWidth
                                 InputProps={{
                                     startAdornment: (
@@ -110,12 +109,12 @@ function CompanyAccountDetailsPresenter({values, continueRegistration, goBackReg
                                       </InputAdornment>
                                     ),
                                   }}
-                                label="Company website"
+                                label="Company website (optional)"
                                 type="url"
-                                // error={values.companyConfirmPasswordErr ? true : false}
-                                // helperText={values.companyConfirmPasswordErr}
-                                // value={values.companyConfirmPassword}
-                                // onChange={(e) => values.setCompanyConfirmPassword(e.target.value)}
+                                error={values.companyWebsiteErr ? true : false}
+                                helperText={values.companyWebsiteErr}
+                                value={values.companyWebsite}
+                                onChange={(e) => values.setCompanyWebsite(e.target.value)}
                             />
                         </Grid>                        
 

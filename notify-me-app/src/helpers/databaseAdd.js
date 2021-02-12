@@ -50,7 +50,9 @@ const addCompany = (company) => {
         [COMPANY_TABLE_COLUMNS.HEADQUARTERS_CITY]: company.cityHeadquarters,
         [COMPANY_TABLE_COLUMNS.SERVICE_TYPE]: company.serviceType,
         [COMPANY_TABLE_COLUMNS.BRANCHES]: company.branches,
-        [COMPANY_TABLE_COLUMNS.PROFILE_URL]: company.profileUrl
+        [COMPANY_TABLE_COLUMNS.PROFILE_URL]: company.profileUrl,
+        [COMPANY_TABLE_COLUMNS.PHONE_NUMBER]: company.phoneNumber,
+        [COMPANY_TABLE_COLUMNS.WEBSITE]: company.website
     })
     .catch(err => {
         console.log(err);

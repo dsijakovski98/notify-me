@@ -25,7 +25,9 @@ const COMPANY_TABLE_COLUMNS = {
     HEADQUARTERS_CITY: "city_head",
     SERVICE_TYPE: "service",
     BRANCHES: "branches",
-    PROFILE_URL: "profile_url"
+    PROFILE_URL: "profile_url",
+    PHONE_NUMBER: "phone_number",
+    WEBSITE: "website"
 };
 
 const USER_POSTS_TABLE_COLUMNS = {

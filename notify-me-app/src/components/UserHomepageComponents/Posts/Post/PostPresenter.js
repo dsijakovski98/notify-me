@@ -5,6 +5,9 @@ import BookmarkIcon from '@material-ui/icons/Bookmark';
 import BookmarkBorderIcon from '@material-ui/icons/BookmarkBorder';
 import StarRoundedIcon from '@material-ui/icons/StarRounded';
 import StarOutlineRoundedIcon from '@material-ui/icons/StarOutlineRounded';
+import WarningRoundedIcon from '@material-ui/icons/WarningRounded';
+import CakeRoundedIcon from '@material-ui/icons/CakeRounded';
+import InfoRoundedIcon from '@material-ui/icons/InfoRounded';
 import { blue } from '@material-ui/core/colors';
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -12,17 +15,17 @@ const useStyles = makeStyles(theme => ({
     root: {
         maxWidth: 345,
         height: '100%',
-        borderRadius: '0.2em'
+        borderRadius: '0.2em',
     },
     actions: {
         justifyContent: 'space-between',
         padding: '0.3em 0.1em'
     },
     cardContent: {
-        height: '10em',
+        height: '14em',
         whiteSpace: 'wrap',
         overflow: 'hidden',
-        textOverflow: 'ellipsis'
+        textOverflow: 'ellipsis',
     },
     readButton: {
         width: 28,
@@ -48,7 +51,7 @@ const useStyles = makeStyles(theme => ({
       },
 }));
 
-const maxContentLength = 150;
+const maxContentLength = 180;
 
 function PostPresenter(props) {
     const classes = useStyles();
@@ -72,6 +75,22 @@ function PostPresenter(props) {
                 return "#3f51b5"
             default:
                 return 'black'
+        }
+    }
+
+    const postTypeIcon = (type) => {
+        switch (type) {
+            case "Warning":
+                return <WarningRoundedIcon 
+                style={{color: "#F50057", marginRight: '.1em', width: 20, height: 20}} />
+            case "Info":
+                return <InfoRoundedIcon 
+                style={{color: "#2F303A", marginRight: '.1em', width: 20, height: 20}} />
+            case "Promo":
+                return <CakeRoundedIcon 
+                style={{color: "#3f51b5", marginRight: '.1em', width: 20, height: 20}} />
+            default:
+                return null
         }
     }
 
@@ -105,35 +124,49 @@ function PostPresenter(props) {
                     //   </IconButton>
                     // }
                     title={
-                        <Typography style={{fontWeight: post.read ? 'normal' : 'bold'}} variant="body1">
+                        <Typography style={{fontWeight:'bold'}} variant="body1">
                             {postCreator}
                         </Typography>
                     }
                     subheader={<Typography 
-                            style={{fontWeight: post.read ? 'normal' : 'bold', color: '#888'}} variant="subtitle2">
+                            style={{fontWeight: 'normal', color: '#888'}} variant="subtitle2">
                             {postTimestamp}
+                             <hr/>
                         </Typography>
                 }
                 />
-
                 <CardContent className={classes.cardContent}>
-                <Typography variant="body1" 
-                        style={{
-                            color: postTypeColor(post.type),
-                            fontSize: '.9rem',
-                            fontWeight: post.read ? 'normal' : 'bold',
-                            cursor: 'default'}}>
-                        {post.type}
+                    <Typography variant="body1" 
+                            style={{
+                                color: postTypeColor(post.type),
+                                fontSize: '.95rem',
+                                fontWeight: post.read ? 'normal' : 'bold',
+                                cursor: 'default',
+                                display: 'flex'}}>
+
+                            {postTypeIcon(post.type)}
+                            {post.type}
+
                     </Typography>
-                    <Typography variant="body1" color="textPrimary"
-                        style={{fontWeight: post.read ? 'normal' : 'bold', fontSize: '1.2rem'}} >
-                        {post.title.slice(0, 40)}
-                    </Typography>
-                    
+
+                    <div style={{width: '15em'}}>
+                        <Typography variant="body1" color="textPrimary"
+                            style={{
+                                fontWeight: post.read ? 'normal' : 'bold',
+                                fontSize: '1.2rem',
+                                lineHeight: '1.5em',
+                                marginBottom: '.5em',
+                                overflow: 'hidden',
+                                textOverflow: 'ellipsis',
+                                whiteSpace: 'nowrap',}} >
+
+                            {post.title}
+
+                        </Typography>
+                    </div>
+                
                     <Typography variant="body2" color="textSecondary" component="p"
-                    style={{
-                            fontWeight: post.read ? 'normal' : 'bold',
-                        }} >
+                    style={{fontWeight: post.read ? 'normal' : 'bold'}} >
                         {
                             post.content.slice(0, maxContentLength) + 
                             (post.content.length > maxContentLength ? "..." : "")
@@ -141,11 +174,12 @@ function PostPresenter(props) {
                     </Typography>
                 </CardContent>
                 
-                <CardActions className={classes.actions}>
+                <hr/>
 
-                    <div style={{padding: '.6em'}}>
+                <CardActions className={classes.actions}>
+                    <div>
                         <IconButton onClick={() => toggleReadPost() } color="primary" 
-                        style={{padding: "0.1em"}}>
+                        style={{padding: "0.1em", margin: '0.5em'}}>
                             {
                                 post.read
                                 ? <BookmarkBorderIcon className={classes.readButton}/>

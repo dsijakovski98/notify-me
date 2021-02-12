@@ -55,11 +55,12 @@ function ConfirmDetailsContainer(props) {
                 })
             }
             else if(accountType === "company") {
+
                 // Insert company into database
                 const companyAddedPromise = addCompany(accountData);
                 companyAddedPromise.then(() => {
                     props.history.push(`/notify-me-RST/${redirectPage}`);
-                })
+                });
             }
     }
 
@@ -105,7 +106,10 @@ function ConfirmDetailsContainer(props) {
             ceoLastName: values.companyFounderLastName,
             cityHeadquarters: values.headCity,
             serviceType: values.serviceType,
-            branches: values.branches
+            branches: values.branches,
+            
+            phoneNumber: values.phoneNumber.trim() !== "+389" ? values.phoneNumber : "Not Provided",
+            website: values.companyWebsite.trim().length ? values.companyWebsite : "Not Provided"
         }
     }
 

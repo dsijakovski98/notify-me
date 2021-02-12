@@ -10,7 +10,7 @@ import { Typography, TextField, Button, Avatar, Grid, MenuItem, Select }
 
 function CompanyServiceDetailsPresenter
 ({values, continueRegistration, goBackRegistration, typesOfServices,
-    handleBranchAdd, handleBranchRemove
+    handleBranchAdd, handleBranchRemove, handlePhoneNumberChange
 }) {
     return (
         <div className="form-container-flex">
@@ -47,7 +47,7 @@ function CompanyServiceDetailsPresenter
                                   }}
                                 label="City Headquarters"
                                 type="text"
-                                error={values.headCityErr ? true : false}
+                                error={values.headCityErr.length ? true : false}
                                 helperText={values.headCityErr}
                                 value={values.headCity}
                                 onChange={(e) => values.setHeadCity(e.target.value)}
@@ -77,7 +77,6 @@ function CompanyServiceDetailsPresenter
                         <Grid item xs={12}>
                             <>
                             <ChipInput
-                                margin="normal"
                                 fullWidth
                                 allowDuplicates={false}
                                 value={values.branches}
@@ -95,9 +94,7 @@ function CompanyServiceDetailsPresenter
                                 <TextField
                                     margin="normal"
                                     variant="standard"
-                                    required
                                     fullWidth
-                                    autoFocus
                                     InputProps={{
                                         startAdornment: (
                                         <InputAdornment position="start">
@@ -105,12 +102,12 @@ function CompanyServiceDetailsPresenter
                                         </InputAdornment>
                                         ),
                                     }}
-                                    label="Telephone"
+                                    label="Telephone (optional)"
                                     type="tel"
-                                    // error={values.companyEmailErr ? true : false}
-                                    // helperText={values.companyEmailErr}
-                                    // value={values.companyEmail}
-                                    // onChange={(e) => values.setCompanyEmail(e.target.value)}
+                                    error={values.phoneNumberErr.length ? true : false}
+                                    helperText={values.phoneNumberErr}
+                                    value={values.phoneNumber}
+                                    onChange={(e) => handlePhoneNumberChange(e.target.value)}
                                 />
                             </Grid>              
 

@@ -7,16 +7,16 @@
 	> Add homepage title in user homepage [x]
 	> Case insensitive search [-] Firebase doesn't support it
 
+* Update database for companies PHONE NUMBER and WEBSITE [x]
 * Company edit post modal []
 * Company post details modal []
 * Company info details modal []
+
 * Edit Profile modal:
 	> User []
 	> Company []
 
-* Add company contact info section (optional inputs):
-	> Phone number []
-	> Website []
 
+==============================================
 * Company subscriber count []
 * Post reads count []

@@ -1,6 +1,6 @@
 import React from 'react'
 import CompanyAccountDetailsPresenter from "./CompanyAccountDetailsPresenter";
-import { emailPattern } from "../../../../helpers/validators";
+import { emailPattern, websitePattern } from "../../../../helpers/validators";
 
 function CompanyAccountDetailsContainer({values, nextStep, prevStep}) {
 
@@ -24,10 +24,12 @@ function CompanyAccountDetailsContainer({values, nextStep, prevStep}) {
         values.setCompanyEmailErr("");
         values.setCompanyPasswordErr("");
         values.setCompanyConfirmPasswordErr("");
+        values.setCompanyWebsiteErr("");
 
         let compEmailError = "";
         let compPwdError = "";
         let compConfirmPwdError = "";
+        let compWebsiteError = "";
 
         // Passwords Mismatsh
         if(values.companyPassword !== values.companyConfirmPassword)
@@ -54,11 +56,18 @@ function CompanyAccountDetailsContainer({values, nextStep, prevStep}) {
         if(values.companyPassword.length < 6)
             compPwdError = "Password must be at least 6 characters!";
 
+        // Website validation
+        if(values.companyWebsite.trim() !== "") {
+            if(!websitePattern.test(values.companyWebsite))
+                compWebsiteError = "Invalid website URL!";
+        }
+
         if(compEmailError.length || compPwdError.length ||
-            compConfirmPwdError.length) {
+            compConfirmPwdError.length || compWebsiteError.length) {
                 values.setCompanyEmailErr(compEmailError);
                 values.setCompanyPasswordErr(compPwdError);
                 values.setCompanyConfirmPasswordErr(compConfirmPwdError);
+                values.setCompanyWebsiteErr(compWebsiteError);
                 return false;
             }
 

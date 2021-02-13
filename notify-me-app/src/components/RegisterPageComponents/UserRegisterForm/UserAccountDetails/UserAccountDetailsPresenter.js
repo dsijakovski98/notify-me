@@ -2,12 +2,12 @@ import React from 'react'
 import "../../style/style.css";
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import InputAdornment from '@material-ui/core/InputAdornment';
-import { Typography, TextField, Button, Avatar, Grid } from '@material-ui/core';
+import { Typography, TextField, Button, Avatar, Grid, CircularProgress } from '@material-ui/core';
 import AlternateEmailRoundedIcon from '@material-ui/icons/AlternateEmailRounded';
 import VpnKeyRoundedIcon from '@material-ui/icons/VpnKeyRounded';
 
 
-function UserAccountDetailsPresenter({values, continueRegistration, goBackRegistration}) {
+function UserAccountDetailsPresenter({values, continueRegistration, goBackRegistration, progressBar}) {
     return (
         <div className="form-container-flex">
             <div className="form-explanation-container">
@@ -15,6 +15,14 @@ function UserAccountDetailsPresenter({values, continueRegistration, goBackRegist
                     Enter account details
                 </Typography>
             </div>
+            
+            {
+                progressBar && 
+                <div>
+                    <CircularProgress  style={{width: 60, height: 60, marginRight: '2em'}}/>
+                </div>
+            }
+            
             <div className="form-inputs-container">
                 <div className="login-form-inputs">
                     <Avatar style={{backgroundColor: '#3f51b5'}}>

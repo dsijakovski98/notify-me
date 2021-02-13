@@ -49,10 +49,16 @@ function CompanyProfilePicturePresenter
                             <span>+</span>
                         </label>
                     </div>
-                        {values.fileErr 
-                            ? <Typography variant="body1" color="error">
-                                {values.fileErr}
-                            </Typography> : null}
+                        
+                        {
+                            values.fileErr 
+                            ?   <Typography variant="body1" color="error">
+                                    {values.fileErr}
+                                </Typography>
+                            :   null
+                        }
+                    <br/>
+
                     <div className="login-form-submit">
                     <Grid container spacing={2}>
                             <Grid item xs={12} sm={6}>
@@ -71,7 +77,7 @@ function CompanyProfilePicturePresenter
                                     color="primary"
                                     onClick={e => continueRegistration(e)}
                                 >
-                                    {values.file ? "Continue" : "Skip"}
+                                    {values.imageSource ? "Continue" : "Skip"}
                                 </Button>
                             </Grid>
                         </Grid>

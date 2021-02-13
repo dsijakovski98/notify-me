@@ -11,6 +11,11 @@
 * 1. Company post details modal [x]
 * 2. User post details modal [x]
 * 3. Company edit post modal [x]
+* 4. Check unique email:
+	> User registration [x]
+	> Company registration [x]
+* 5. Skip button bug on company registration profile picture [x]
+* 5. Company info modal (subscribe page) []
 
 * Posts filtering:
 	> Only read posts []

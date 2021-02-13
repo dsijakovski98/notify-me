@@ -32,13 +32,12 @@
   }
 }
 
-// .form-explanation-container {
-//   // background: red;
-//   //   padding: 3em;
-// }
+.form-explanation-container {
+  width: 42%;
+}
 
 .form-inputs-container {
-  width: 45%;
+  width: 40%;
   background: $form_background;
   border: 2px solid $primary;
   border-radius: 1em;

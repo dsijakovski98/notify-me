@@ -1,12 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import UserAccountDetailsPresenter from "./UserAccountDetailsPresenter";
 import { emailPattern } from "../../../../helpers/validators";
+import { checkUniqueUserEmail } from "../../../../helpers/queryManager";
 
 function UserAccountDetailsContainer({values, nextStep, prevStep}) {
 
-    const continueRegistration = (e) => {
+    const [progressBar, setProgressBar] = useState(false);
+
+    const continueRegistration = async (e) => {
         e.preventDefault();
-        if(validateInputs()) {
+        if(await validateInputs()) {
+            // Set progress bar invisible here
             nextStep();
         }
     }
@@ -31,7 +35,10 @@ function UserAccountDetailsContainer({values, nextStep, prevStep}) {
         return hasUpperCase;
     }
 
-    const validateInputs = () => {
+    const validateInputs = async () => {
+        // TODO: SET PROGRESS BAR VISIBLE HERE
+        setProgressBar(true);
+
         // Clear previous errors
         values.setEmailErr("");
         values.setPasswordErr("");
@@ -64,10 +71,19 @@ function UserAccountDetailsContainer({values, nextStep, prevStep}) {
             values.setEmailErr(emailError);
             values.setPasswordErr(passwordError);
             values.setConfirmPasswordErr(cPasswordError);
+            setProgressBar(false);
+            return false;
+        }
+
+        const uniqueEmail = await checkUniqueUserEmail(values.userEmail);
+        if(!uniqueEmail) {
+            values.setEmailErr("Email is already in use!");
+            setProgressBar(false);
             return false;
         }
         
         // If the code reaches this point, there are no errors
+        setProgressBar(false);
         return true;
     }
 
@@ -77,6 +93,7 @@ function UserAccountDetailsContainer({values, nextStep, prevStep}) {
                 values={values}
                 continueRegistration={continueRegistration}
                 goBackRegistration={goBackRegistration}
+                progressBar={progressBar}
             />
         </>
     )

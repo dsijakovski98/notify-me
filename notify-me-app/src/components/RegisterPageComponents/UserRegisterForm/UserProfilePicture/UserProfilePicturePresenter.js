@@ -31,10 +31,13 @@ function UserProfilePicturePresenter
                     <div className="upload-container-img">
                         <div className="profile-pic-container">
 
-                            {values.imageSource && 
+                            {
+                                values.imageSource 
+                                && 
                                 <img alt="profile" src={values.imageSource}>
                                 </img>
                             }
+
                             <ProgressBar
                                 file={values.file}
                                 setFile={values.setFile}
@@ -51,10 +54,15 @@ function UserProfilePicturePresenter
                             <span>+</span>
                         </label>
                     </div>
-                        {values.fileErr 
-                            ? <Typography variant="body1" color="error">
-                                {values.fileErr}
-                            </Typography> : null}
+
+                        {
+                            values.fileErr 
+                            ?   <Typography variant="body1" color="error">
+                                    {values.fileErr}
+                                </Typography>
+                            :   null
+                        }
+
                     <div className="login-form-submit">
                     <Grid container spacing={2}>
                             <Grid item xs={12} sm={6}>

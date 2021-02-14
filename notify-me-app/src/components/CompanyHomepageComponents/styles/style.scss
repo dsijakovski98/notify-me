@@ -5,6 +5,15 @@ company-homepage-container {
   //   background: red;
 }
 
+.company-homepage-title {
+  // background: #000;
+  padding-top: 2em;
+  height: 45%;
+  width: 70%;
+  margin: 0 auto;
+  text-align: center;
+}
+
 .company-homepage-progress-bar {
   width: 80%;
   height: 80vh;
@@ -57,6 +66,7 @@ company-homepage-container {
 
 .add-post-form-container,
 .details-post-container,
+.details-company-container,
 .edit-post-container {
   width: 100%;
   height: 100vh;
@@ -71,6 +81,7 @@ company-homepage-container {
 
 .add-post-form-dialog,
 .details-post-dialog,
+.detals-company-dialog,
 .edit-post-dialog {
   width: 55%;
   margin: 0 auto;
@@ -84,6 +95,7 @@ company-homepage-container {
 
 .add-post-form-dialog-container,
 .details-post-dialog-container,
+.details-company-dialog-container,
 .edit-post-dialog-container {
   width: 90%;
   margin: 0 auto;

@@ -43,13 +43,13 @@ function Navbar() {
     const { currentUser } = useContext(AuthContext);
     let profilePicture = defaultPic;
     let displayName = "Unknown";
+    const classes = useStyles();
 
     if(currentUser) {
       profilePicture = currentUser.photoURL;
       displayName = currentUser.displayName;
-    } 
+    }
 
-    const classes = useStyles();
 
     return (
         <AppBar className={classes.root} position="sticky">
@@ -62,19 +62,19 @@ function Navbar() {
             className={classes.toolbarTitleGrid}>
             
             <Grid item>
-            <Link to={"/notify-me-RST"}>
+            {/* <Link to={"/notify-me-RST"}> */}
               <Typography variant="h4" className={classes.toolbarTitle}>
                 Notify-Me
               </Typography>
-            </Link>
+            {/* </Link> */}
             </Grid>
 
             <Grid item>
-              <Link to={"/notify-me-RST/"}>
+              {/* <Link to={"/notify-me-RST/"}> */}
                 <Typography className={classes.toolbarTitle} variant="body2">
                   Notification app
                 </Typography>
-              </Link>
+              {/* </Link> */}
             </Grid>
 
 

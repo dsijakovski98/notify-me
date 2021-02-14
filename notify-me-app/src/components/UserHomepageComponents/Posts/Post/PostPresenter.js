@@ -103,7 +103,9 @@ function PostPresenter(props) {
 
     const defaultAvatar = (
         <Avatar aria-label="recipe" className={classes.avatar}>
-            {postCreator}
+            <Typography variant="h4">
+                {postCreator[0]}
+            </Typography>
         </Avatar>
     );
 

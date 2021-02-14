@@ -1,6 +1,14 @@
 @import "../../../style/helper_styles/colors";
 @import "../../../style/helper_styles/breakpoints";
 
+.chip-input {
+  .MuiFormHelperText-root {
+    color: #7b7b7f;
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
+}
+
 .form-container-flex {
   width: 85%;
   margin: 0 auto;

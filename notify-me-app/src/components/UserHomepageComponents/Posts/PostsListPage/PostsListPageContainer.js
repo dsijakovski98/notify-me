@@ -10,11 +10,18 @@ function PostsListPageContainer(props) {
     const { currentUser } = useContext(AuthContext);
     const userSubscribtionData = useUserSubscribtionsData(currentUser);
 
+    const filterPosts = () => {
+        if(serviceType === "All") {
+            return userSubscribtionData.subscribtions.sort()
+        }
+        else return userSubscribtionData.subscribtions.filter(item => item.type === serviceType).sort()
+    }
+
     // Get the list of posts from companies user has subscribed to here
     const userSubscribtions = userSubscribtionData 
     ?   
         userSubscribtionData.subscribtions.length
-        ?   userSubscribtionData.subscribtions.filter(item => item.type === serviceType) 
+        ?   filterPosts()
         :   []
 
     :   null;

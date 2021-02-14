@@ -69,12 +69,17 @@ function AddPostFormPresenter(props) {
                         <Grid item xs={8} sm={6}>
                             <>
                                 <ChipInput
+                                    className="chip-input"
                                     fullWidth
                                     allowDuplicates={false}
                                     error={formData.citiesPostAppliesErr.length ? true : false}
-                                    helperText={formData.citiesPostAppliesErr}
+                                    helperText={
+                                        formData.citiesPostAppliesErr.length
+                                        ?   formData.citiesPostAppliesErr
+                                        :   "Press ENTER to add city (from company branches)"
+                                    }
                                     value={formData.citiesPostApplies}
-                                    placeholder="Cities post applies to  -  ⤵  to add"
+                                    placeholder="Cities affected by this post"
                                     onAdd={(city) => handleBranchAdd(city)}
                                     onDelete={
                                         (city, index) => handleBranchRemove(city, index)

@@ -1,0 +1,38 @@
+@import "../../../style/helper_styles/colors";
+
+.edit-profile-container {
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 2em;
+  margin-bottom: 10em;
+  //   background: #000;
+}
+
+.edit-profile-form {
+  width: 70%;
+  background: $form_background;
+  border-radius: 0.5em;
+  display: flex;
+  flex-direction: column;
+  padding: 2em 4em;
+  border: 2px solid $primary;
+
+  input {
+    color: $base_text;
+  }
+
+  label {
+    color: $base_text;
+  }
+}
+
+.edit-profile-avatar-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  //   background: black;
+}

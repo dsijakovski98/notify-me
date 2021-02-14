@@ -74,9 +74,12 @@ const useStyles = makeStyles({
 function PostDetailsPresenter({post, postCreator, postTimestamp, postCreatorProfileUrl, handleClose}) {
     const classes = useStyles();
 
+
     const defaultAvatar = (
         <Avatar aria-label="recipe" className={classes.avatar}>
-            {postCreator}
+            <Typography variant="h2">
+                {postCreator[0]}
+            </Typography>
         </Avatar>
     );
 

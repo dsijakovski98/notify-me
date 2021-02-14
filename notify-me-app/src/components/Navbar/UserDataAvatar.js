@@ -38,18 +38,24 @@ const useStyle = makeStyles({
 });
 
 
-const options = [
-    "Dashboard",
-    "Edit Profile",
-    "Log Out"
-];
-
 function UserDataAvatar(props) {
     const displayName = props.displayName;
     const profilePicture = props.profilePicture;
-    const history = props.history;
     const userData = props.userData;
+    const uid = userData.uid;
+
+    const history = props.history;
+    const pathname = history.location.pathname;
+    const homepage = pathname.includes("company") ? "My Posts" : "Dashboard";
+    
     const classes = useStyle();
+
+    const options = [
+        homepage,
+        "Edit Profile",
+        "Log Out"
+    ];
+
    
     const [anchorElement, setAnchorElement] = useState(null);
 
@@ -61,6 +67,15 @@ function UserDataAvatar(props) {
         setAnchorElement(null);
     }
 
+    const checkRedirect = async () => {
+        handleClose();
+        // Check account type for redirection
+        const isUser = await IsUserLogin(userData.email);
+        const redirectPage = isUser ? "user-page" : "company-page";
+
+        history.push(`/notify-me-RST/${redirectPage}`);
+    }
+
     const handleLogout = () => {
         handleClose();
         const promise = logoutUser();
@@ -69,21 +84,13 @@ function UserDataAvatar(props) {
         })
     }
 
-    const checkRedirect = async () => {
+    const goToEditProfile = async () => {
         handleClose();
         // Check account type for redirection
         const isUser = await IsUserLogin(userData.email);
-        let redirectPage = "";
-        
-        if(isUser) {
-            redirectPage = "user-page";
-        }
-        else {
-            redirectPage = "company-page";
+        const redirectPage = isUser ? "user" : "company";
 
-        }
-
-        history.push(`/notify-me-RST/${redirectPage}`);
+        history.push(`/notify-me-RST/edit/${redirectPage}/${uid}`);
     }
 
     const handleOptionsClick = (option) => {
@@ -93,6 +100,7 @@ function UserDataAvatar(props) {
                 break;
             case options[1]:
                 // TODO: Open edit profile modal
+                goToEditProfile();
                 break;
             case options[2]:
                 handleLogout();
@@ -101,8 +109,6 @@ function UserDataAvatar(props) {
                 break;
         }
     }
-
-    
 
     const setMenuIcon = (option) => {
         const homepageIcon = <PersonRoundedIcon className={classes.menuItemIcon} />
@@ -121,6 +127,7 @@ function UserDataAvatar(props) {
         }
     }
 
+    if(!userData) return null;
 
     return (
         <>

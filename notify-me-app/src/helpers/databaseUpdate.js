@@ -1,4 +1,4 @@
-import { firestore, firebase } from "../firebase/config";
+import { firestore } from "../firebase/config";
 import { TABLE_NAMES } from "../firebase/tables";
 // import { USERS_TABLE_COLUMNS } from "../firebase/tables";
 // import { COMPANY_TABLE_COLUMNS } from "../firebase/tables";

@@ -77,10 +77,14 @@ function CompanyServiceDetailsPresenter
                         <Grid item xs={12}>
                             <>
                             <ChipInput
+                                className="chip-input"
                                 fullWidth
+                                aria-autocomplete={'none'}
+                                label="Branch cities"
                                 allowDuplicates={false}
                                 value={values.branches}
-                                placeholder="Branch cities  -  ⤵  to add"
+                                placeholder="Branch cities"
+                                helperText="Press ENTER to add city"
                                 onAdd={(city) => handleBranchAdd(city)}
                                 onDelete={
                                     (city, index) => handleBranchRemove(city, index)

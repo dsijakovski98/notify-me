@@ -191,6 +191,40 @@
   }
 }
 
+// COMPANY DETAILS MODAL
+.details-company-container {
+  width: 100%;
+  height: 100vh;
+  margin: 0 auto;
+  // background: #000;
+  pointer-events: none;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.details-company-dialog {
+  width: 55%;
+  margin: 0 auto;
+  padding: 1.5em 1em;
+  background: $form_background;
+
+  pointer-events: all;
+
+  border-radius: 0.3em;
+}
+
+.details-company-dialog-container {
+  width: 90%;
+  margin: 0 auto;
+
+  input,
+  textarea {
+    color: $base_text;
+  }
+}
+
 // POSTS PAGE
 .posts-list-container {
   // background: red;

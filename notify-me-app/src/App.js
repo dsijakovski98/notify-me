@@ -7,8 +7,10 @@ import UserHomepageContainer from "./components/UserHomepageComponents/UserHomep
 import PostsListPageContainer from "./components/UserHomepageComponents/Posts/PostsListPage/PostsListPageContainer"
 import CompanyHomepageContainer from "./components/CompanyHomepageComponents/CompanyHomepage/CompanyHomepageContainer"
 import SubscribePageContainer from "./components/UserHomepageComponents/SubscribePage/SubscribePageContainer";
+import UserEditProfileContainer from "./components/EditProfilePage/UserEditProfile/UserEditProfileContainer";
+import CompanyEditProfileContainer from "./components/EditProfilePage/CompanyEditProfile/CompanyEditProfileContainer";
 
-function App(props) {
+function App() {
 
   const rootPage = "/notify-me-RST";
 
@@ -25,6 +27,8 @@ function App(props) {
             <Route path={`${rootPage}/user-page/posts/:type`} exact component={PostsListPageContainer} />
             <Route path={`${rootPage}/company-page`} exact component={CompanyHomepageContainer} />
             <Route path={`${rootPage}/subscribe/:type`} exact component={SubscribePageContainer} />
+            <Route path={`${rootPage}/edit/user/:id`} exact component={UserEditProfileContainer} />
+            <Route path={`${rootPage}/edit/company/:id`} exact component={CompanyEditProfileContainer} />
       </div>
 
   );  

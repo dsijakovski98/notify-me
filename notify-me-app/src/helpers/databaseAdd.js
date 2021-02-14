@@ -20,6 +20,7 @@ const addUser = async (user) => {
         [USERS_TABLE_COLUMNS.LAST_NAME]: user.lastName,
         [USERS_TABLE_COLUMNS.GENDER]: user.gender,
         [USERS_TABLE_COLUMNS.DATE_OF_BIRTH]: user.dateOfBirth,
+        [USERS_TABLE_COLUMNS.PROFILE_URL]: user.profileUrl
     });
 
     // Add user info to "user_posts" collection

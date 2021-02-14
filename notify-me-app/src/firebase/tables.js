@@ -13,6 +13,7 @@ const USERS_TABLE_COLUMNS = {
     LAST_NAME: "last_name",
     DATE_OF_BIRTH: "date_of_birth",
     GENDER: "gender",
+    PROFILE_URL: "profile_url"
 };
 
 const COMPANY_TABLE_COLUMNS = {

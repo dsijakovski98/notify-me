@@ -14,8 +14,8 @@ function NoPosts({serviceType}) {
             </div>
 
             <div className="posts-list-no-posts-message">
-                <Typography variant="h3">
-                   No posts yet 😞
+                <Typography variant="h4" style={{textAlign: 'center'}}>
+                   Sorry, the companies you've subcribed to have no posts yet 😞
                 </Typography>
             </div>
 

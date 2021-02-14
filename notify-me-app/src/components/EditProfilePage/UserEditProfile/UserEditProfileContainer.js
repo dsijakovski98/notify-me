@@ -15,7 +15,6 @@ const validImageTypes = ["image/png", "image/jpg", "image/jpeg"];
 function UserEditProfileContainer(props) {
     const { currentUser } = useContext(AuthContext);
     const userData = useUserData(currentUser);
-    
     const formData = useUserFormData(userData);
 
     const [progressBar, setProgressBar] = useState(false);
@@ -27,6 +26,7 @@ function UserEditProfileContainer(props) {
     }
 
     const editProfile = () => {
+
         setProgressBar(true);
         if(validateUserUpdate(formData)) {
             const updateUserPromise = updateUser(formData, currentUser.uid);
@@ -44,6 +44,7 @@ function UserEditProfileContainer(props) {
                 });
             });
         }
+        else setProgressBar(false);
     }
 
     const uploadPicture = (e) => {
@@ -64,7 +65,6 @@ function UserEditProfileContainer(props) {
         else {
             formData.setFile(null);
         }
-
     }
 
     return (

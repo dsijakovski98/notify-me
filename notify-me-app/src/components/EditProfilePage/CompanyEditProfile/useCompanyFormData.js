@@ -14,10 +14,11 @@ const useCompanyFormData = (companyData) => {
     const [website, setWebsite] = useState("");
     const [profileUrl, setProfileUrl] = useState("");
 
+    const [file, setFile] = useState(null);
+
     const [ceoFirstErr, setCeoFirstErr] = useState("");
     const [ceoLastErr, setCeoLastErr] = useState("");
     const [companyNameErr, setCompanyNameErr] = useState("");
-    const [cityHeadErr, setCityHeadErr] = useState("");
     const [phoneNumberErr, setPhoneNumberErr] = useState("");
     const [websiteErr, setWebsiteErr] = useState("");
     const [profileUrlErr, setProfileUrlErr] = useState("");
@@ -61,8 +62,6 @@ const useCompanyFormData = (companyData) => {
         
                     cityHead,
                     setCityHead,
-                    cityHeadErr,
-                    setCityHeadErr,
         
                     dateOfCreation,
                     setDateOfCreation,
@@ -86,7 +85,10 @@ const useCompanyFormData = (companyData) => {
                     profileUrl,
                     setProfileUrl,
                     profileUrlErr,
-                    setProfileUrlErr
+                    setProfileUrlErr,
+
+                    file,
+                    setFile
                 }
             :   null;
 

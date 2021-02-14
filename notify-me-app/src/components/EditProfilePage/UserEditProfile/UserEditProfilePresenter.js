@@ -1,15 +1,19 @@
+import 'date-fns';
 import "../styles/style.css";
 import React, { useEffect } from 'react';
 import { withRouter } from "react-router-dom";
-import { useStorageUpload, storageRemove } from "../../../customHooks/useStorage"
-import 'date-fns';
+import { useStorageUpload } from "../../../customHooks/useStorage"
 import DateFnsUtils from '@date-io/date-fns';
 import { KeyboardDatePicker, MuiPickersUtilsProvider } from '@material-ui/pickers';
+import InputAdornment from '@material-ui/core/InputAdornment';
 import { Typography, Button, Avatar, InputLabel, FormControl } from "@material-ui/core";
 import { Select, MenuItem, IconButton, CircularProgress } from "@material-ui/core";
 import { TextField, Grid } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { blue } from '@material-ui/core/colors';
+
+import FaceRoundedIcon from '@material-ui/icons/FaceRounded';
+
 const genders = ["Male", "Female", "Other"];
 
 const useStyle = makeStyles({
@@ -23,11 +27,19 @@ const useStyle = makeStyles({
       },
 });
 
-function UserEditProfilePresenter
-({formData, editProfile, progressBar, uploadPicture, setProgressBar, goBack}) {
+function UserEditProfilePresenter(props) {
     const classes = useStyle();
 
-    const { url } = useStorageUpload(formData.file, "");
+    const {
+        formData,
+        editProfile,
+        progressBar,
+        setProgressBar,
+        uploadPicture,
+        goBack
+    } = props;
+
+    const { url } = useStorageUpload(formData.file);
 
     useEffect(() => {
         formData.setProfileUrl("");
@@ -36,7 +48,7 @@ function UserEditProfilePresenter
             formData.setFile(null);
             setProgressBar(false);
         }
-    }, [url, formData.setFile, formData.setImageSource])
+    }, [url, formData.setFile, formData.setProfileUrl])
 
     const profilePicture = formData.profileUrl.length
                             ?   formData.profileUrl
@@ -132,13 +144,13 @@ function UserEditProfilePresenter
                         variant="standard"
                         required
                         fullWidth
-                        // InputProps={{
-                        //     startAdornment: (
-                        //       <InputAdornment position="start">
-                        //         <VpnKeyRoundedIcon style={{color: 'whitesmoke'}} />
-                        //       </InputAdornment>
-                        //     ),
-                        //   }}
+                        InputProps={{
+                            startAdornment: (
+                              <InputAdornment position="start">
+                                <FaceRoundedIcon style={{color: 'whitesmoke'}} />
+                              </InputAdornment>
+                            ),
+                          }}
                         type="text"
                         label="First Name"
                         error={formData.firstNameErr ? true : false}
@@ -155,6 +167,13 @@ function UserEditProfilePresenter
                         variant="standard"
                         required
                         fullWidth
+                        InputProps={{
+                            startAdornment: (
+                              <InputAdornment position="start">
+                                <FaceRoundedIcon style={{color: 'whitesmoke'}} />
+                              </InputAdornment>
+                            ),
+                          }}
                         type="text"
                         label="Last Name"
                         error={formData.lastNameErr ? true : false}

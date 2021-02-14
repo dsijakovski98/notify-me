@@ -3,8 +3,8 @@ import "../style/upload_style/style.css";
 import { useStorageUpload } from '../../../customHooks/useStorage';
 import { motion } from "framer-motion";
 
-function ProgressBar({file, setFile, accountType, setImageSource}) {
-    const {progress, url, err} = useStorageUpload(file, accountType);
+function ProgressBar({file, setFile, setImageSource}) {
+    const {progress, url, err} = useStorageUpload(file);
 
     useEffect(() => {
         setImageSource("");

@@ -37,7 +37,6 @@ function CompanyProfilePicturePresenter
                             <ProgressBar
                                 file={values.file}
                                 setFile={values.setFile}
-                                accountType={"user"}
                                 setImageSource={values.setImageSource}
                             />
                         </div>

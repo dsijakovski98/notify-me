@@ -44,8 +44,6 @@ function UserDataAvatar(props) {
     const userData = props.userData;
     const uid = userData.uid;
 
-    console.log(profilePicture);
-
     const history = props.history;
     const pathname = history.location.pathname;
     const homepage = pathname.includes("company") ? "My Posts" : "Dashboard";

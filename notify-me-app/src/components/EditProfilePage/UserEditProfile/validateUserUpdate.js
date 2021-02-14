@@ -8,6 +8,9 @@ const validateUserUpdate = (user) => {
     let firstErr = "";
     let lastErr = "";
 
+    // Check date validity
+    if(isNaN(user.dateOfBirth.getTime()))  return false;
+
     // Empty fields
     if(user.firstName.trim() === "") firstErr = "Enter your first name!";
     if(user.lastName.trim() === "") lastErr = "Enter your last name!";

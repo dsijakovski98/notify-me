@@ -5,8 +5,8 @@
 		- Set up form data handlers [x]
 		- Design page [x]
 		- Connect inputs to form data [x]
-		- Validate input data []
-		- Update user function []
+		- Validate input data [x]
+		- Update user function [x]
 	> Company:
 		- Set up form data handlers [x]
 		- Design page [x]

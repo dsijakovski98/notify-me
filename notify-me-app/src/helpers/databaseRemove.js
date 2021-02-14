@@ -1,4 +1,4 @@
-import { firestore, firebase, storage } from "../firebase/config";
+import { firestore, firebase } from "../firebase/config";
 import { TABLE_NAMES, USER_SUBSCRIBE_TABLE_COLUMNS } from "../firebase/tables";
 import { COMPANY_TABLE_COLUMNS, USER_POSTS_TABLE_COLUMNS } from "../firebase/tables";
 
@@ -43,8 +43,4 @@ const unstarPost = (userId, postId) => {
     });
 }
 
-const deletePicture = (url) => {
-    // const picRef = storage.refFromURL(url);
-}
-
-export { deletePost, unsubscribeFromCompany, unreadPost, unstarPost, deletePicture };
+export { deletePost, unsubscribeFromCompany, unreadPost, unstarPost };

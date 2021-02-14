@@ -1,10 +1,12 @@
 import "../styles/style.css";
-import React from 'react';
+import React, { useEffect } from 'react';
 import { withRouter } from "react-router-dom";
+import { useStorageUpload, storageRemove } from "../../../customHooks/useStorage"
 import 'date-fns';
 import DateFnsUtils from '@date-io/date-fns';
 import { KeyboardDatePicker, MuiPickersUtilsProvider } from '@material-ui/pickers';
-import { Typography, Button, Avatar, InputLabel, FormControl, Select, MenuItem, IconButton } from "@material-ui/core";
+import { Typography, Button, Avatar, InputLabel, FormControl } from "@material-ui/core";
+import { Select, MenuItem, IconButton, CircularProgress } from "@material-ui/core";
 import { TextField, Grid } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { blue } from '@material-ui/core/colors';
@@ -21,16 +23,26 @@ const useStyle = makeStyles({
       },
 });
 
-function UserEditProfilePresenter({formData, editProfile, history}) {
+function UserEditProfilePresenter
+({formData, editProfile, progressBar, uploadPicture, setProgressBar, goBack}) {
     const classes = useStyle();
+
+    const { url } = useStorageUpload(formData.file, "");
+
+    useEffect(() => {
+        formData.setProfileUrl("");
+        if(url) {
+            formData.setProfileUrl(url);
+            formData.setFile(null);
+            setProgressBar(false);
+        }
+    }, [url, formData.setFile, formData.setImageSource])
 
     const profilePicture = formData.profileUrl.length
                             ?   formData.profileUrl
                             :   null;
 
-    const goBack = () => {
-        history.goBack();
-    }
+
 
     return (
         <div className="edit-profile-container">
@@ -39,19 +51,33 @@ function UserEditProfilePresenter({formData, editProfile, history}) {
             <div className="edit-profile-form">
             <Grid container spacing={2} alignItems="flex-end">
                 
-                <Grid item xs={12} sm={4} className="edit-profile-avatar-container">
-                    <IconButton
-                    aria-haspopup="true">
-                        <Avatar
-                            className={classes.avatar}
-                            classes={{img: classes.avatarImg}}
-                            src={profilePicture}
-                        />
-                    </IconButton >
+                <Grid item xs={12} sm={5} className="edit-profile-avatar-container">
+                        <IconButton
+                        aria-haspopup="true">
+                            <label htmlFor="file-input">
+                                <Avatar
+                                    style={{cursor: 'pointer'}}
+                                    className={classes.avatar}
+                                    classes={{img: classes.avatarImg}}
+                                    src={profilePicture}
+                                />
+                                <input onChange={(e) => uploadPicture(e)}
+                                accept="image/*" type="file" style={{display:'none'}} id="file-input"/>
+                            </label>
+                        </IconButton >
+
+                        {
+                            formData.profileUrlErr
+                            ?   <Typography variant="body2" color="error" style={{textAlign: 'center'}}>
+                                {formData.profileUrlErr}
+                                </Typography>
+                            :   null
+                        }
+                
                 </Grid>
 
                 {/* Date of birth input */}
-                <Grid item xs={12} sm={6}>
+                <Grid item xs={12} sm={5}>
                     <MuiPickersUtilsProvider utils={DateFnsUtils}>
                         <KeyboardDatePicker
                             fullWidth
@@ -61,8 +87,8 @@ function UserEditProfilePresenter({formData, editProfile, history}) {
                             margin="normal"
                             label="Date of Birth"
                             maxDate={new Date()}
-                            value={formData.dateOfCreation}
-                            onChange={date => formData.setDateOfCreation(date)}
+                            value={formData.dateOfBirth}
+                            onChange={date => formData.setDateOfBirth(date)}
                         />
                     </MuiPickersUtilsProvider>
                 </Grid> 
@@ -90,6 +116,13 @@ function UserEditProfilePresenter({formData, editProfile, history}) {
                         </Select>
                     </FormControl>
                 </Grid>            
+
+                {
+                    progressBar && 
+                    <Grid item xs={12} style={{display: 'flex', justifyContent: 'center'}}>
+                        <CircularProgress/>
+                    </Grid>
+                }
 
 
                 {/* First name input */}

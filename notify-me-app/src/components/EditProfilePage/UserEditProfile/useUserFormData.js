@@ -9,6 +9,8 @@ const useUserFormData = (userData) => {
     const [gender, setGender] = useState("");
     const [profileUrl, setProfileUrl] = useState("");
 
+    const [file, setFile] = useState(null);
+
     const [firstNameErr, setFirstNameErr] = useState("");
     const [lastNameErr, setLastNameErr] = useState("");
     const [profileUrlErr, setProfileUrlErr] = useState("");
@@ -45,7 +47,10 @@ const useUserFormData = (userData) => {
                         profileUrl,
                         setProfileUrl,
                         profileUrlErr,
-                        setProfileUrlErr
+                        setProfileUrlErr,
+
+                        file,
+                        setFile
                     } 
                 :   null;
 }

@@ -20,8 +20,8 @@ function CompanyEditProfileContainer(props) {
     const [progressBar, setProgressBar] = useState(false);
 
     const goBack = () => {
-        if(formData.profileUrl)
-            storageRemove(formData.profileUrl)
+        // if(formData.profileUrl)
+        //     storageRemove(formData.profileUrl)
         props.history.goBack();
     }
 

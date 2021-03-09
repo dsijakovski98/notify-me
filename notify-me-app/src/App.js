@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import Navbar from "./components/Navbar/Navbar";
 import Homepage from "./components/HomepageComponents/Homepage/Homepage";
 import RegisterPage from "./components/RegisterPageComponents/RegisterPage/RegisterPage";
@@ -9,16 +9,16 @@ import CompanyHomepageContainer from "./components/CompanyHomepageComponents/Com
 import SubscribePageContainer from "./components/UserHomepageComponents/SubscribePage/SubscribePageContainer";
 import UserEditProfileContainer from "./components/EditProfilePage/UserEditProfile/UserEditProfileContainer";
 import CompanyEditProfileContainer from "./components/EditProfilePage/CompanyEditProfile/CompanyEditProfileContainer";
-import { AuthContext } from "./firebase/auth";
 
 function App() {
-  const { currentUser } = useContext(AuthContext);
 
   return (
 
       <div className="main-wrapper">
-            {currentUser ? <Navbar /> : <Route path={'/'} exact component={Homepage} />}
-
+          <Switch>
+            <Route path={'/'} exact component={Homepage} />
+            <Navbar />
+          </Switch>
             <Route path={'/register/:type'} exact component={RegisterPage} />
           {/* TODO: Add more page routes */}
             <Route path={'/user-page'} exact component={UserHomepageContainer} />

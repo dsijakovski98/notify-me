@@ -16,7 +16,7 @@ function PostLink({displayIcon, serviceType}) {
     const tooltipTitle = <h1 className={classes.tooltipTitle}>{serviceType}</h1>
     
     return (
-           <Link to={`/notify-me-RST/user-page/posts/${serviceType}`}>
+           <Link to={`/user-page/posts/${serviceType}`}>
             <div className="post-icon">
                         <Tooltip className={classes.tooltipSize}
                         title={tooltipTitle} TransitionComponent={Zoom}>

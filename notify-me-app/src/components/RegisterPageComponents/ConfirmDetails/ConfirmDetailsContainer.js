@@ -51,7 +51,7 @@ function ConfirmDetailsContainer(props) {
                 // Insert user into database
                 const userAddedPromise = addUser(accountData);
                 userAddedPromise.then(() => {
-                    props.history.push(`/notify-me-RST/${redirectPage}`);
+                    props.history.push(`/${redirectPage}`);
                 })
             }
             else if(accountType === "company") {
@@ -59,7 +59,7 @@ function ConfirmDetailsContainer(props) {
                 // Insert company into database
                 const companyAddedPromise = addCompany(accountData);
                 companyAddedPromise.then(() => {
-                    props.history.push(`/notify-me-RST/${redirectPage}`);
+                    props.history.push(`/${redirectPage}`);
                 });
             }
     }

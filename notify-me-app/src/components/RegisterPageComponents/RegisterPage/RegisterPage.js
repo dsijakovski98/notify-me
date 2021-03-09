@@ -33,7 +33,7 @@ function RegisterPage(props) {
 
         }
 
-        props.history.push(`/notify-me-RST/${redirectPage}`);
+        props.history.push(`/${redirectPage}`);
     }
 
     if(currentUser) {

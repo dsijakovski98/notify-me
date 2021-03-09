@@ -15,17 +15,16 @@ const styles = {
   };
 
 function JoinUs() {
-    const rootPage = "/notify-me-RST";
 
     return (
         <div className="join-us-wrapper">
-                <Link to={`${rootPage}/register/user`}>
+                <Link to={'/register/user'}>
                     <Button variant="contained" color="primary"
                     startIcon={<PersonIcon style={styles.mediumIcon} />} >
                         Join as User
                     </Button>
                 </Link>
-                <Link to={`${rootPage}/register/company`}>
+                <Link to={'/register/company'}>
                     <Button variant="contained" color="primary"
                     startIcon={<BusinessIcon style={styles.mediumIcon} />} >
                         Join as Company

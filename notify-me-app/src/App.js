@@ -12,23 +12,22 @@ import CompanyEditProfileContainer from "./components/EditProfilePage/CompanyEdi
 
 function App() {
 
-  const rootPage = "/notify-me-RST";
 
   return (
 
       <div className="main-wrapper">
           <Switch>
-            <Route path={`${rootPage}`} exact component={Homepage} />
+            <Route path={'/'} exact component={Homepage} />
             <Navbar />
           </Switch>
-            <Route path={`${rootPage}/register/:type`} exact component={RegisterPage} />
+            <Route path={'/register/:type'} exact component={RegisterPage} />
           {/* TODO: Add more page routes */}
-            <Route path={`${rootPage}/user-page`} exact component={UserHomepageContainer} />
-            <Route path={`${rootPage}/user-page/posts/:type`} exact component={PostsListPageContainer} />
-            <Route path={`${rootPage}/company-page`} exact component={CompanyHomepageContainer} />
-            <Route path={`${rootPage}/subscribe/:type`} exact component={SubscribePageContainer} />
-            <Route path={`${rootPage}/edit/user/:id`} exact component={UserEditProfileContainer} />
-            <Route path={`${rootPage}/edit/company/:id`} exact component={CompanyEditProfileContainer} />
+            <Route path={'/user-page'} exact component={UserHomepageContainer} />
+            <Route path={'/user-page/posts/:type'} exact component={PostsListPageContainer} />
+            <Route path={'/company-page'} exact component={CompanyHomepageContainer} />
+            <Route path={'/subscribe/:type'} exact component={SubscribePageContainer} />
+            <Route path={'/edit/user/:id'} exact component={UserEditProfileContainer} />
+            <Route path={'/edit/company/:id'} exact component={CompanyEditProfileContainer} />
       </div>
 
   );  

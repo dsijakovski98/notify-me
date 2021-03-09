@@ -54,7 +54,7 @@ function Navbar() {
     return (
         <AppBar className={classes.root} position="sticky">
         <Toolbar>
-          <Link to={"/notify-me-RST"}>
+          <Link to={"/"}>
               <NotificationsActiveIcon color="primary" edge="start" className={classes.navBarIcon}/>
           </Link>
 
@@ -62,19 +62,15 @@ function Navbar() {
             className={classes.toolbarTitleGrid}>
             
             <Grid item>
-            {/* <Link to={"/notify-me-RST"}> */}
               <Typography variant="h4" className={classes.toolbarTitle}>
                 Notify-Me
               </Typography>
-            {/* </Link> */}
             </Grid>
 
             <Grid item>
-              {/* <Link to={"/notify-me-RST/"}> */}
                 <Typography className={classes.toolbarTitle} variant="body2">
                   Notification app
                 </Typography>
-              {/* </Link> */}
             </Grid>
 
 

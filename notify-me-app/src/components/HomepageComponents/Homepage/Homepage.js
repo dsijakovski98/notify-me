@@ -24,7 +24,7 @@ function Homepage({history}) {
             redirectPage = "company-page";
         }
 
-        history.push(`/notify-me-RST/${redirectPage}`);
+        history.push(`/${redirectPage}`);
     }
 
     if(currentUser) {

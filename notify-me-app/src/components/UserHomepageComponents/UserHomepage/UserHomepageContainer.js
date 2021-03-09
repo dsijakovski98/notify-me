@@ -7,7 +7,7 @@ function UserHomepageContainer({history}) {
     const { currentUser } = useContext(AuthContext);
 
     if(currentUser === null) {
-        history.push("/notify-me-RST/")
+        history.push("/")
     }
 
     return (

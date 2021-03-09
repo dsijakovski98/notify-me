@@ -18,7 +18,7 @@ function PostsListPresenter({serviceType, postsList}) {
             }
 
             <div className="posts-list-add-subscribtion">
-                <Link to={"/notify-me-RST/subscribe/" + serviceType}>
+                <Link to={"/subscribe/" + serviceType}>
                     <Fab color="primary" size="large" style={{padding: '2.8em'}}>
                         <AddRoundedIcon style={{width: 35, height: 35}} />
                     </Fab>

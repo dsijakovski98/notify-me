@@ -142,7 +142,7 @@ function UserGeneralDetailsPresenter({ values, continueRegistration, genders }) 
                     <div className="login-form-submit">
                     <Grid container spacing={2} justify="center">
                             <Grid item xs={12} sm={6}>
-                                <Link to={"/notify-me-RST/"}>
+                                <Link to={"/"}>
                                     <Button
                                         variant="contained"
                                         fullWidth

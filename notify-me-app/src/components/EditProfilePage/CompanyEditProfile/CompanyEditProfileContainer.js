@@ -63,7 +63,7 @@ function CompanyEditProfileContainer(props) {
                     auth.updateCurrentUser(currentUser)
                     .then(() => {
                         setProgressBar(false);
-                        props.history.push("/notify-me-RST/company-page");
+                        props.history.push("/company-page");
                     });
                 });
             });

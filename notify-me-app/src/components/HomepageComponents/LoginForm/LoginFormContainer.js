@@ -27,7 +27,7 @@ function LoginFormContainer(props) {
                 redirectPage = "company-page";
             }
 
-            props.history.push(`/notify-me-RST/${redirectPage}`);
+            props.history.push(`/${redirectPage}`);
         }
     }
 

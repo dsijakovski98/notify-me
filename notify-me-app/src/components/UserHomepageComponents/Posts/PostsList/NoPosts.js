@@ -20,13 +20,13 @@ function NoPosts({serviceType}) {
             </div>
 
             <div className="posts-list-no-posts-buttons">
-                <Link to={"/notify-me-RST/user-page"}>
+                <Link to={"/user-page"}>
                     <Button variant="contained" color="default">
                         Go back
                     </Button>
                 </Link>
 
-                <Link to={`/notify-me-RST/subscribe/${serviceType}`}>
+                <Link to={`/subscribe/${serviceType}`}>
                     <Button variant="contained" color="primary">
                         Subscribe
                     </Button>

@@ -59,7 +59,7 @@ function UserHomepagePresenter() {
         </div>
     
             <div className="posts-list-add-subscribtion">
-                <Link to={"/notify-me-RST/subscribe/" + defaultServiceType}>
+                <Link to={"/subscribe/" + defaultServiceType}>
                     <Fab color="primary" size="large" style={{padding: '2.8em'}}>
                         <AddRoundedIcon style={{width: 35, height: 35}} />
                     </Fab>

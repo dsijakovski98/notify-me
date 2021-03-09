@@ -11,7 +11,7 @@ function CompanyHomepageContainer({history}) {
     const { currentUser } = useContext(AuthContext);
 
     if(currentUser === null) {
-        history.push("/notify-me-RST/")
+        history.push("/")
     }
 
     // TODO: Get company posts here

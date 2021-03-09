@@ -39,7 +39,7 @@ function UserEditProfileContainer(props) {
                     auth.updateCurrentUser(currentUser)
                     .then(() => {
                         setProgressBar(false);
-                        props.history.push("/notify-me-RST/user-page");
+                        props.history.push("/user-page");
                     });
                 });
             });

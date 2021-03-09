@@ -73,14 +73,14 @@ function UserDataAvatar(props) {
         const isUser = await IsUserLogin(userData.email);
         const redirectPage = isUser ? "user-page" : "company-page";
 
-        history.push(`/notify-me-RST/${redirectPage}`);
+        history.push(`/${redirectPage}`);
     }
 
     const handleLogout = () => {
         handleClose();
         const promise = logoutUser();
         promise.then(() => {
-            history.push("/notify-me-RST/");
+            history.push("/");
         })
     }
 
@@ -90,7 +90,7 @@ function UserDataAvatar(props) {
         const isUser = await IsUserLogin(userData.email);
         const redirectPage = isUser ? "user" : "company";
 
-        history.push(`/notify-me-RST/edit/${redirectPage}/${uid}`);
+        history.push(`/edit/${redirectPage}/${uid}`);
     }
 
     const handleOptionsClick = (option) => {

@@ -93,12 +93,12 @@ function CompanyPostEditContainer({post, handleClose, companyBranches}) {
         if(formData.citiesPostApplies.length === 0)
             citiesAppliesErr = 
             `Must provide at least one city! (ex. ${companyBranches[companyBranches.length - 1]})`;
-        if(formData.postTitle.length === 0)
+        if(formData.postTitle.trim() === "")
             titleErr = "Enter the post title!";
-        if(formData.postContent.length === 0)
+        if(formData.postContent.trim() === "")
             contentErr = "Enter the post content!";
 
-        if(citiesAppliesErr.length || titleErr.length) {
+        if(citiesAppliesErr.length || titleErr.length || contentErr) {
             formData.setCitiesPostAppliesErr(citiesAppliesErr);
             formData.setPostTitleErr(titleErr)
             formData.setPostContentErr(contentErr);

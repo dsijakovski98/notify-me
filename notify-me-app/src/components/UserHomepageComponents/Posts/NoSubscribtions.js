@@ -20,12 +20,12 @@ function NoSubscribtions({serviceType}) {
             </div>
             
             <div className="no-subscribtions-btn">
-                <Link to={"/notify-me-RST/user-page"}>
+                <Link to={"/user-page"}>
                     <Button variant="contained" color="default">
                         Go Back
                     </Button>
                 </Link>
-                <Link to={"/notify-me-RST/subscribe/" + serviceType}>
+                <Link to={"/subscribe/" + serviceType}>
                     <Button variant="contained" color="primary">
                         Subscribe
                     </Button>

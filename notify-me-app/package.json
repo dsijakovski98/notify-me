@@ -1,6 +1,5 @@
 {
   "name": "notify-me-app",
-  "homepage": "http://dsijakovski98.github.io/notify-me",
   "version": "0.1.0",
   "dependencies": {
     "@date-io/date-fns": "^1.3.13",

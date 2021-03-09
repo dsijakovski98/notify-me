@@ -17,10 +17,8 @@ function App() {
   return (
 
       <div className="main-wrapper">
-          <Switch>
-            {!currentUser && <Route path={'/'} exact component={Homepage} />}
-            <Navbar />
-          </Switch>
+            {currentUser ? <Route path={'/'} exact component={Homepage} /> : <Navbar />}
+            
             <Route path={'/register/:type'} exact component={RegisterPage} />
           {/* TODO: Add more page routes */}
             <Route path={'/user-page'} exact component={UserHomepageContainer} />
